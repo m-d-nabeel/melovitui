@@ -1,5 +1,3 @@
-use std::sync::{Arc, Mutex};
-
 use crate::state::AppState;
 use ratatui::{
     layout::{Alignment, Constraint, Direction, Layout, Rect},
@@ -47,9 +45,7 @@ impl PlaybackControlUI {
         format!("{:02}:{:02}", minutes, seconds)
     }
 
-    pub fn render(&self, frame: &mut Frame, area: Rect, app_state: Arc<Mutex<AppState>>) {
-        let app_state = app_state.lock().unwrap();
-
+    pub fn render(&self, frame: &mut Frame, area: Rect, app_state: &AppState) {
         let block = Block::default()
             .borders(Borders::ALL)
             .title("Playback Controls");
