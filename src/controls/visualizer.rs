@@ -1,4 +1,4 @@
-#[derive(Default, Clone)]
+#[derive(Default, Clone, Debug)]
 pub struct Visualizer {
     pub spectrum_data: Vec<f32>,
 }

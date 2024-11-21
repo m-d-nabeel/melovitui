@@ -46,12 +46,29 @@ impl UIManager {
             .constraints([Constraint::Percentage(50), Constraint::Percentage(50)])
             .split(main_layout[1]);
 
-        self.music_library.render(frame, chunks[0], app.get_state());
+        let library_state = app.get_library_state();
+        let visualizer_state = app.get_visualizer_state();
+        let sound_state = app.get_sound_state();
+        let playback_state = app.get_playback_state();
+
+        // Determine current track title
+        let playback_state_unarced = playback_state.lock().unwrap();
+        let library_state_unarced = library_state.lock().unwrap();
+        let song_text = playback_state_unarced
+            .current_track
+            .map(|idx| library_state_unarced.tracks[idx].title.clone())
+            .map(|track| format!("▶ {}", track))
+            .unwrap_or_else(|| "No song playing".to_string());
+
+        drop(playback_state_unarced);
+        drop(library_state_unarced);
+
+        self.music_library.render(frame, chunks[0], library_state);
         self.visualizer
-            .render(frame, main_layout[0], app.get_state());
+            .render(frame, main_layout[0], visualizer_state);
         self.sound_control
-            .render(frame, control_chunks[0], app.get_state());
+            .render(frame, control_chunks[0], sound_state);
         self.playback_controls
-            .render(frame, control_chunks[1], app.get_state());
+            .render(frame, control_chunks[1], playback_state, song_text);
     }
 }

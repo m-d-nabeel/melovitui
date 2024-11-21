@@ -1,4 +1,3 @@
-use crate::state::AppState;
 use ratatui::{
     layout::{Alignment, Rect},
     style::{Color, Modifier, Style},
@@ -7,6 +6,8 @@ use ratatui::{
     Frame,
 };
 use std::sync::{Arc, Mutex};
+
+use crate::controls::music_library::MusicLibrary;
 
 pub struct MusicLibraryUI {
     style: MusicLibraryStyle,
@@ -47,8 +48,8 @@ impl MusicLibraryUI {
         }
     }
 
-    pub fn render(&self, frame: &mut Frame, area: Rect, app_state: Arc<Mutex<AppState>>) {
-        let app_state = app_state.lock().unwrap();
+    pub fn render(&self, frame: &mut Frame, area: Rect, lib_state: Arc<Mutex<MusicLibrary>>) {
+        let lib_state = lib_state.lock().unwrap();
         let block = Block::default()
             .title("Music Library")
             .borders(Borders::ALL)
@@ -57,9 +58,9 @@ impl MusicLibraryUI {
         let inner = block.inner(area);
         frame.render_widget(block, area);
 
-        let tracks = &app_state.library.tracks;
-        let current_track_idx = app_state.playback.current_track;
-        let selected_track_idx = app_state.library.selected_index;
+        let tracks = &lib_state.tracks;
+        let current_track_idx = lib_state.current_index;
+        let selected_track_idx = lib_state.selected_index;
 
         log::info!("current_track_idx: {:?}", current_track_idx);
         log::info!("selected_track_idx: {:?}", current_track_idx);
@@ -75,7 +76,7 @@ impl MusicLibraryUI {
                 );
 
                 // Filename styling with enhanced selection and current track handling
-                let file_name = if Some(i) == current_track_idx {
+                let file_name = if i == current_track_idx {
                     Span::styled(
                         &track.title,
                         Style::default()

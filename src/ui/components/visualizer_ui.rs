@@ -1,6 +1,5 @@
 use std::sync::{Arc, Mutex};
 
-use crate::state::AppState;
 use ratatui::{
     layout::Rect,
     style::Color,
@@ -11,6 +10,8 @@ use ratatui::{
     },
     Frame,
 };
+
+use crate::controls::visualizer::Visualizer;
 
 pub struct VisualizerUI {
     style: VisualizerStyle,
@@ -39,8 +40,8 @@ impl VisualizerUI {
         }
     }
 
-    pub fn render(&self, frame: &mut Frame, area: Rect, app_state: Arc<Mutex<AppState>>) {
-        let app_state = app_state.lock().unwrap();
+    pub fn render(&self, frame: &mut Frame, area: Rect, visualizer_state: Arc<Mutex<Visualizer>>) {
+        let visualizer_state = visualizer_state.lock().unwrap();
 
         let block = Block::default()
             .borders(Borders::ALL)
@@ -49,7 +50,7 @@ impl VisualizerUI {
         let inner_area = block.inner(area);
         frame.render_widget(block, area);
 
-        let spectrum_data = &app_state.audio.spectrum_data;
+        let spectrum_data = &visualizer_state.spectrum_data;
 
         let canvas = Canvas::default()
             .marker(symbols::Marker::Dot)

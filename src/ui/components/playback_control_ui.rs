@@ -1,6 +1,5 @@
 use std::sync::{Arc, Mutex};
 
-use crate::state::AppState;
 use ratatui::{
     layout::{Alignment, Constraint, Direction, Layout, Rect},
     style::{Color, Style},
@@ -8,6 +7,8 @@ use ratatui::{
     widgets::{Block, Borders, LineGauge, Paragraph},
     Frame,
 };
+
+use crate::controls::playback_control::PlaybackControl;
 
 pub struct PlaybackControlUI {
     style: PlaybackControlStyle,
@@ -47,8 +48,14 @@ impl PlaybackControlUI {
         format!("{:02}:{:02}", minutes, seconds)
     }
 
-    pub fn render(&self, frame: &mut Frame, area: Rect, app_state: Arc<Mutex<AppState>>) {
-        let app_state = app_state.lock().unwrap();
+    pub fn render(
+        &self,
+        frame: &mut Frame,
+        area: Rect,
+        playback_state: Arc<Mutex<PlaybackControl>>,
+        song_text: String,
+    ) {
+        let playback_state = playback_state.lock().unwrap();
 
         let block = Block::default()
             .borders(Borders::ALL)
@@ -62,14 +69,6 @@ impl PlaybackControlUI {
             .constraints([Constraint::Ratio(1, 3), Constraint::Ratio(2, 3)])
             .margin(1)
             .split(inner);
-
-        // Determine current track title
-        let song_text = app_state
-            .playback
-            .current_track
-            .map(|idx| app_state.library.tracks[idx].title.clone())
-            .map(|track| format!("▶ {}", track))
-            .unwrap_or_else(|| "No song playing".to_string());
 
         frame.render_widget(
             Paragraph::new(song_text)
@@ -88,14 +87,14 @@ impl PlaybackControlUI {
             .split(chunks[1]);
 
         frame.render_widget(
-            Paragraph::new(Self::format_duration(app_state.playback.elapsed))
+            Paragraph::new(Self::format_duration(playback_state.elapsed))
                 .style(Style::default().fg(self.style.text_color))
                 .alignment(Alignment::Left),
             timeline_layout[0],
         );
 
-        let progress = if app_state.playback.duration.as_secs() > 0 {
-            app_state.playback.elapsed.as_secs_f64() / app_state.playback.duration.as_secs_f64()
+        let progress = if playback_state.duration.as_secs() > 0 {
+            playback_state.elapsed.as_secs_f64() / playback_state.duration.as_secs_f64()
         } else {
             0.0
         };
@@ -110,7 +109,7 @@ impl PlaybackControlUI {
         );
 
         frame.render_widget(
-            Paragraph::new(Self::format_duration(app_state.playback.duration))
+            Paragraph::new(Self::format_duration(playback_state.duration))
                 .style(Style::default().fg(self.style.text_color))
                 .alignment(Alignment::Right),
             timeline_layout[2],
