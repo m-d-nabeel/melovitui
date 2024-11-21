@@ -1,0 +1,453 @@
+2024-11-21T04:32:46.816144769+05:30 - INFO - Hello from Melovitui!!!
+2024-11-21T04:33:35.806774463+05:30 - INFO - Hello from Melovitui!!!
+2024-11-21T04:34:01.558149405+05:30 - INFO - Hello from Melovitui!!!
+2024-11-21T04:34:53.773347965+05:30 - INFO - Hello from Melovitui!!!
+2024-11-21T04:36:03.060034530+05:30 - INFO - Hello from Melovitui!!!
+2024-11-21T04:36:03.910194508+05:30 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2024-11-21T04:36:03.910271168+05:30 - INFO - found the format marker [ff, fb] @ 1239+2 bytes.
+2024-11-21T04:36:03.910312780+05:30 - INFO - using xing header for duration
+2024-11-21T04:49:15.996542242+05:30 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2024-11-21T04:49:15.996637780+05:30 - INFO - found the format marker [ff, fb] @ 1239+2 bytes.
+2024-11-21T04:49:15.996657242+05:30 - INFO - using xing header for duration
+2024-11-21T04:50:55.234673857+05:30 - INFO - current_track_idx: None
+2024-11-21T04:50:55.234721950+05:30 - INFO - selected_track_idx: None
+2024-11-21T04:50:58.898094261+05:30 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2024-11-21T04:50:58.898282083+05:30 - INFO - found the format marker [ff, fb] @ 1239+2 bytes.
+2024-11-21T04:50:58.898327514+05:30 - INFO - using xing header for duration
+2024-11-21T04:50:58.898559037+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T04:50:58.898580901+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T04:52:36.359040824+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T04:52:36.359099955+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T04:52:38.357883632+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T04:52:38.357974613+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T04:52:44.128474963+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T04:52:44.128569956+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T04:52:44.405375261+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T04:52:44.405444652+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T04:52:52.529290036+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T04:52:52.529350647+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T04:52:54.648710042+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T04:52:54.648792755+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T04:52:55.999187649+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T04:52:55.999269120+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T04:52:56.150402195+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T04:52:56.150469147+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T04:53:05.574643128+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T04:53:05.574690330+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T04:53:06.689957281+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T04:53:06.690014285+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T04:53:15.494477364+05:30 - INFO - current_track_idx: None
+2024-11-21T04:53:15.494530386+05:30 - INFO - selected_track_idx: None
+2024-11-21T04:53:17.281107360+05:30 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2024-11-21T04:53:17.281265328+05:30 - INFO - found the format marker [ff, fb] @ 1239+2 bytes.
+2024-11-21T04:53:17.281300774+05:30 - INFO - using xing header for duration
+2024-11-21T04:53:17.281492019+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T04:53:17.281513352+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:08:21.192971683+05:30 - INFO - current_track_idx: None
+2024-11-21T05:08:21.193036312+05:30 - INFO - selected_track_idx: None
+2024-11-21T05:08:24.704911430+05:30 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2024-11-21T05:08:24.705053142+05:30 - INFO - found the format marker [ff, fb] @ 1239+2 bytes.
+2024-11-21T05:08:24.705091666+05:30 - INFO - using xing header for duration
+2024-11-21T05:08:24.705292246+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:08:24.705311748+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:08:52.894567249+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:08:52.894653463+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:08:53.075456620+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:08:53.075524868+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:08:53.353940562+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:08:53.354007108+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:08:53.416563185+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:08:53.416621840+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:08:53.555667427+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:08:53.555731687+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:08:53.694348776+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:08:53.694413058+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:08:53.743547745+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:08:53.743608739+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:08:53.884652982+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:08:53.884718630+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:08:53.950804620+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:08:53.950873462+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:08:54.156470521+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:08:54.156534606+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:08:54.402060197+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:08:54.402123244+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:08:54.552987834+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:08:54.553053690+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:08:54.685912590+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:08:54.685976218+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:08:55.140390406+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:08:55.140472949+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:08:55.900132676+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:08:55.900196055+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:08:56.063703757+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:08:56.063768062+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:08:56.445436008+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:08:56.445514269+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:08:56.580535470+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:08:56.580600610+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:08:56.739566971+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:08:56.739660456+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:08:57.065064332+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:08:57.065128367+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:08:57.607153057+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:08:57.607233615+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:08:58.164802454+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:08:58.164930292+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:08:58.294867403+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:08:58.294931039+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:08:59.069235211+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:08:59.069315401+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:08:59.299299330+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:08:59.299362798+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:08:59.799989421+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:08:59.800060511+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:08:59.830417906+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:08:59.830476256+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:08:59.855391363+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:08:59.855479494+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:09:00.070445485+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:09:00.070524050+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:09:00.716409406+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:09:00.716496388+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:09:00.779269551+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:09:00.779296548+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:09:00.789774871+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:09:00.789836879+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:11:53.897276213+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:11:53.897368211+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:11:54.519394466+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:11:54.519486934+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:11:54.736321312+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:11:54.736391890+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:11:54.881468674+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:11:54.881537113+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:11:55.021930851+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:11:55.022010935+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:11:55.405600437+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:11:55.405668720+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:11:55.603411676+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:11:55.603506796+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:11:55.785063743+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:11:55.785133553+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:11:55.956199985+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:11:55.956263622+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:11:56.078258403+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:11:56.078338057+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:11:56.220092427+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:11:56.220159610+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:11:56.463964045+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:11:56.464038568+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:11:56.670442615+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:11:56.670514857+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:11:57.123889168+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:11:57.123973248+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:11:57.305453647+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:11:57.305521500+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:11:57.463590496+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:11:57.463668710+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:11:57.615079029+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:11:57.615147264+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:11:57.960122512+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:11:57.960190883+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:11:58.183187797+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:11:58.183269102+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:11:58.390243163+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:11:58.390313713+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:11:59.086881300+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:11:59.086954308+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:11:59.238229742+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:11:59.238309970+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:11:59.568926625+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:11:59.568994379+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:11:59.858933567+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:11:59.859008985+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:12:00.129315313+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:12:00.129378476+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:12:00.756569503+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:12:00.756681658+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:12:00.963189308+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:12:00.963252344+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:12:01.153737310+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:12:01.153810429+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:12:01.358786081+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:12:01.358852630+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:12:01.547903587+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:12:01.547969703+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:12:01.907482058+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:12:01.907559217+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:12:02.114016308+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:12:02.114082872+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:12:02.509959816+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:12:02.510037993+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:12:02.653602967+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:12:02.653672101+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:12:02.846646178+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:12:02.846715665+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:12:03.010693774+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:12:03.010775412+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:12:04.099954968+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:12:04.100053014+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:12:04.268997687+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:12:04.269073006+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:12:04.436584353+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:12:04.436655904+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:12:04.622735051+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:12:04.622802988+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:12:04.834754214+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:12:04.834823223+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:12:05.450009558+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:12:05.450096502+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:12:05.830380437+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:12:05.830450064+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:12:06.031236436+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:12:06.031309273+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:12:06.275852761+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:12:06.275922112+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:14:16.038129067+05:30 - INFO - All tracks: [Track { title: "Diviners, Philly K. - Savannah (feat. Philly K) [NCS Release].mp3", artist: None, path: "/home/m-d-nabeel/Music/Diviners, Philly K. - Savannah (feat. Philly K) [NCS Release].mp3", duration: None }, Track { title: "sapientdream, Slushii - Break My Heart [NCS Release].mp3", artist: None, path: "/home/m-d-nabeel/Music/sapientdream, Slushii - Break My Heart [NCS Release].mp3", duration: None }, Track { title: "Suniya Suniya Rata-(SongsPK).mp3", artist: None, path: "/home/m-d-nabeel/Music/Suniya Suniya Rata-(SongsPK).mp3", duration: None }]
+2024-11-21T05:14:16.049576988+05:30 - INFO - current_track_idx: None
+2024-11-21T05:14:16.049613748+05:30 - INFO - selected_track_idx: None
+2024-11-21T05:14:31.379032782+05:30 - INFO - Track Set: 0
+2024-11-21T05:14:31.379919132+05:30 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2024-11-21T05:14:31.380001106+05:30 - INFO - found the format marker [ff, fb] @ 1239+2 bytes.
+2024-11-21T05:14:31.380035504+05:30 - INFO - using xing header for duration
+2024-11-21T05:14:31.380216168+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:14:31.380235726+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:14:40.798223325+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:14:40.798327298+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:14:42.618372567+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:14:42.618451284+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:14:50.236750904+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:14:50.236832784+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:15:57.483447850+05:30 - INFO - All tracks: [Track { title: "Diviners, Philly K. - Savannah (feat. Philly K) [NCS Release].mp3", artist: None, path: "/home/m-d-nabeel/Music/Diviners, Philly K. - Savannah (feat. Philly K) [NCS Release].mp3", duration: None }, Track { title: "sapientdream, Slushii - Break My Heart [NCS Release].mp3", artist: None, path: "/home/m-d-nabeel/Music/sapientdream, Slushii - Break My Heart [NCS Release].mp3", duration: None }, Track { title: "Suniya Suniya Rata-(SongsPK).mp3", artist: None, path: "/home/m-d-nabeel/Music/Suniya Suniya Rata-(SongsPK).mp3", duration: None }]
+2024-11-21T05:15:57.495389776+05:30 - INFO - current_track_idx: None
+2024-11-21T05:15:57.495418451+05:30 - INFO - selected_track_idx: None
+2024-11-21T05:15:59.134705503+05:30 - INFO - Track Set: 0
+2024-11-21T05:15:59.135909628+05:30 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2024-11-21T05:15:59.136007488+05:30 - INFO - found the format marker [ff, fb] @ 1239+2 bytes.
+2024-11-21T05:15:59.136049533+05:30 - INFO - using xing header for duration
+2024-11-21T05:15:59.136255374+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:15:59.136276545+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:16:01.089197758+05:30 - INFO - All tracks: [Track { title: "Diviners, Philly K. - Savannah (feat. Philly K) [NCS Release].mp3", artist: None, path: "/home/m-d-nabeel/Music/Diviners, Philly K. - Savannah (feat. Philly K) [NCS Release].mp3", duration: None }, Track { title: "sapientdream, Slushii - Break My Heart [NCS Release].mp3", artist: None, path: "/home/m-d-nabeel/Music/sapientdream, Slushii - Break My Heart [NCS Release].mp3", duration: None }, Track { title: "Suniya Suniya Rata-(SongsPK).mp3", artist: None, path: "/home/m-d-nabeel/Music/Suniya Suniya Rata-(SongsPK).mp3", duration: None }]
+2024-11-21T05:16:01.101423930+05:30 - INFO - current_track_idx: None
+2024-11-21T05:16:01.101458427+05:30 - INFO - selected_track_idx: None
+2024-11-21T05:17:24.557683176+05:30 - INFO - All tracks: [Track { title: "Diviners, Philly K. - Savannah (feat. Philly K) [NCS Release].mp3", artist: None, path: "/home/m-d-nabeel/Music/Diviners, Philly K. - Savannah (feat. Philly K) [NCS Release].mp3", duration: None }, Track { title: "sapientdream, Slushii - Break My Heart [NCS Release].mp3", artist: None, path: "/home/m-d-nabeel/Music/sapientdream, Slushii - Break My Heart [NCS Release].mp3", duration: None }, Track { title: "Suniya Suniya Rata-(SongsPK).mp3", artist: None, path: "/home/m-d-nabeel/Music/Suniya Suniya Rata-(SongsPK).mp3", duration: None }]
+2024-11-21T05:17:24.568711506+05:30 - INFO - current_track_idx: None
+2024-11-21T05:17:24.568746758+05:30 - INFO - selected_track_idx: None
+2024-11-21T05:17:28.085731910+05:30 - INFO - Track Set: 0
+2024-11-21T05:17:28.086678711+05:30 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2024-11-21T05:17:28.086782849+05:30 - INFO - found the format marker [ff, fb] @ 1239+2 bytes.
+2024-11-21T05:17:28.086839392+05:30 - INFO - using xing header for duration
+2024-11-21T05:17:28.087130629+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:17:28.087163423+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:18:08.081989361+05:30 - INFO - All tracks: [Track { title: "Diviners, Philly K. - Savannah (feat. Philly K) [NCS Release].mp3", artist: None, path: "/home/m-d-nabeel/Music/Diviners, Philly K. - Savannah (feat. Philly K) [NCS Release].mp3", duration: None }, Track { title: "sapientdream, Slushii - Break My Heart [NCS Release].mp3", artist: None, path: "/home/m-d-nabeel/Music/sapientdream, Slushii - Break My Heart [NCS Release].mp3", duration: None }, Track { title: "Suniya Suniya Rata-(SongsPK).mp3", artist: None, path: "/home/m-d-nabeel/Music/Suniya Suniya Rata-(SongsPK).mp3", duration: None }]
+2024-11-21T05:18:08.093259859+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:18:08.093288208+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:18:13.590674570+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:18:13.590758604+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:18:14.244416422+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:18:14.244483568+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:18:15.002137527+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:18:15.002219158+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:18:15.196106789+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:18:15.196174704+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:18:15.352198554+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:18:15.352266979+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:18:15.477909633+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:18:15.477976902+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:18:27.733642343+05:30 - INFO - All tracks: [Track { title: "Diviners, Philly K. - Savannah (feat. Philly K) [NCS Release].mp3", artist: None, path: "/home/m-d-nabeel/Music/Diviners, Philly K. - Savannah (feat. Philly K) [NCS Release].mp3", duration: None }, Track { title: "sapientdream, Slushii - Break My Heart [NCS Release].mp3", artist: None, path: "/home/m-d-nabeel/Music/sapientdream, Slushii - Break My Heart [NCS Release].mp3", duration: None }, Track { title: "Suniya Suniya Rata-(SongsPK).mp3", artist: None, path: "/home/m-d-nabeel/Music/Suniya Suniya Rata-(SongsPK).mp3", duration: None }]
+2024-11-21T05:18:27.744918310+05:30 - INFO - current_track_idx: None
+2024-11-21T05:18:27.744953424+05:30 - INFO - selected_track_idx: None
+2024-11-21T05:20:34.804126505+05:30 - INFO - current_track_idx: None
+2024-11-21T05:20:34.804183763+05:30 - INFO - selected_track_idx: None
+2024-11-21T05:20:36.382884825+05:30 - INFO - current_track_idx: None
+2024-11-21T05:20:36.383012166+05:30 - INFO - selected_track_idx: None
+2024-11-21T05:20:36.883604812+05:30 - INFO - current_track_idx: None
+2024-11-21T05:20:36.883687013+05:30 - INFO - selected_track_idx: None
+2024-11-21T05:20:36.914153898+05:30 - INFO - current_track_idx: None
+2024-11-21T05:20:36.914228455+05:30 - INFO - selected_track_idx: None
+2024-11-21T05:20:36.944577410+05:30 - INFO - current_track_idx: None
+2024-11-21T05:20:36.944649062+05:30 - INFO - selected_track_idx: None
+2024-11-21T05:20:36.975249249+05:30 - INFO - current_track_idx: None
+2024-11-21T05:20:36.975326542+05:30 - INFO - selected_track_idx: None
+2024-11-21T05:20:37.005703879+05:30 - INFO - current_track_idx: None
+2024-11-21T05:20:37.005776351+05:30 - INFO - selected_track_idx: None
+2024-11-21T05:20:37.036225367+05:30 - INFO - current_track_idx: None
+2024-11-21T05:20:37.036302556+05:30 - INFO - selected_track_idx: None
+2024-11-21T05:20:37.066739262+05:30 - INFO - current_track_idx: None
+2024-11-21T05:20:37.066806583+05:30 - INFO - selected_track_idx: None
+2024-11-21T05:20:37.097301460+05:30 - INFO - current_track_idx: None
+2024-11-21T05:20:37.097365879+05:30 - INFO - selected_track_idx: None
+2024-11-21T05:20:37.127821131+05:30 - INFO - current_track_idx: None
+2024-11-21T05:20:37.127884011+05:30 - INFO - selected_track_idx: None
+2024-11-21T05:20:37.158443808+05:30 - INFO - current_track_idx: None
+2024-11-21T05:20:37.158505770+05:30 - INFO - selected_track_idx: None
+2024-11-21T05:20:37.189007526+05:30 - INFO - current_track_idx: None
+2024-11-21T05:20:37.189084715+05:30 - INFO - selected_track_idx: None
+2024-11-21T05:20:37.219533350+05:30 - INFO - current_track_idx: None
+2024-11-21T05:20:37.219595585+05:30 - INFO - selected_track_idx: None
+2024-11-21T05:20:37.250177677+05:30 - INFO - current_track_idx: None
+2024-11-21T05:20:37.250248015+05:30 - INFO - selected_track_idx: None
+2024-11-21T05:20:37.363259460+05:30 - INFO - current_track_idx: None
+2024-11-21T05:20:37.363322649+05:30 - INFO - selected_track_idx: None
+2024-11-21T05:20:37.660178564+05:30 - INFO - current_track_idx: None
+2024-11-21T05:20:37.660252158+05:30 - INFO - selected_track_idx: None
+2024-11-21T05:20:37.867786857+05:30 - INFO - current_track_idx: None
+2024-11-21T05:20:37.867848648+05:30 - INFO - selected_track_idx: None
+2024-11-21T05:20:38.018084683+05:30 - INFO - current_track_idx: None
+2024-11-21T05:20:38.018147629+05:30 - INFO - selected_track_idx: None
+2024-11-21T05:20:38.152532432+05:30 - INFO - current_track_idx: None
+2024-11-21T05:20:38.152591127+05:30 - INFO - selected_track_idx: None
+2024-11-21T05:20:38.251415287+05:30 - INFO - current_track_idx: None
+2024-11-21T05:20:38.251520942+05:30 - INFO - selected_track_idx: None
+2024-11-21T05:20:38.351223543+05:30 - INFO - current_track_idx: None
+2024-11-21T05:20:38.351292879+05:30 - INFO - selected_track_idx: None
+2024-11-21T05:20:41.211365118+05:30 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2024-11-21T05:20:41.211556754+05:30 - INFO - found the format marker [ff, fb] @ 1239+2 bytes.
+2024-11-21T05:20:41.211600507+05:30 - INFO - using xing header for duration
+2024-11-21T05:20:41.211842172+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:20:41.211862609+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:20:44.679662168+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:20:44.679755405+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:20:44.851668555+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:20:44.851738355+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:20:44.981730241+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:20:44.981798509+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:20:45.106378536+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:20:45.106447874+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:20:45.222211052+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:20:45.222279713+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:20:45.416291418+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:20:45.416356258+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:20:45.539978447+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:20:45.540048513+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:20:45.659107888+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:20:45.659175240+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:20:45.752127541+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:20:45.752208372+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:20:45.873139509+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:20:45.873201668+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:20:45.987337269+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:20:45.987404196+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:20:46.090255394+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:20:46.090406097+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:20:46.214969853+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:20:46.215034961+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:20:46.729179958+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:20:46.729247363+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:20:48.999984907+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:20:49.000067442+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:20:49.245048961+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:20:49.245115872+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:20:49.676598054+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:20:49.676674406+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:22:18.942349041+05:30 - INFO - current_track_idx: None
+2024-11-21T05:22:18.942400777+05:30 - INFO - selected_track_idx: None
+2024-11-21T05:22:23.289580512+05:30 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2024-11-21T05:22:23.289745387+05:30 - INFO - found the format marker [ff, fb] @ 1239+2 bytes.
+2024-11-21T05:22:23.289778873+05:30 - INFO - using xing header for duration
+2024-11-21T05:22:23.290003760+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:22:23.290026262+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:22:25.426274147+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:22:25.426351953+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:22:28.132254977+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:22:28.132338761+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:22:28.294810600+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:22:28.294882117+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:22:28.446080391+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:22:28.446146809+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:22:28.582420364+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:22:28.582484422+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:22:31.495067822+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:22:31.495154130+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:22:31.504564641+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:22:31.504609446+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:22:31.796773106+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:22:31.796850431+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:22:31.939460150+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:22:31.939533394+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:22:32.634697386+05:30 - INFO - K pressed -1
+2024-11-21T05:22:32.634874567+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:22:32.634893911+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:22:32.886430132+05:30 - INFO - J pressed +1
+2024-11-21T05:22:32.886590501+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:22:32.886607514+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:22:32.906403838+05:30 - INFO - K pressed -1
+2024-11-21T05:22:32.906565124+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:22:32.906580972+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:22:40.659185021+05:30 - INFO - J pressed +1
+2024-11-21T05:22:40.659357647+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:22:40.659373197+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:22:40.814793610+05:30 - INFO - J pressed +1
+2024-11-21T05:22:40.814952413+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:22:40.814969720+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:22:40.961223053+05:30 - INFO - J pressed +1
+2024-11-21T05:22:40.961391340+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:22:40.961407206+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:22:41.076794240+05:30 - INFO - J pressed +1
+2024-11-21T05:22:41.076973493+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:22:41.076995065+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:38:24.282329177+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:38:24.282425152+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:40:41.130385236+05:30 - INFO - current_track_idx: None
+2024-11-21T05:40:41.130432229+05:30 - INFO - selected_track_idx: None
+2024-11-21T05:40:42.464307294+05:30 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2024-11-21T05:40:42.464455903+05:30 - INFO - found the format marker [ff, fb] @ 1239+2 bytes.
+2024-11-21T05:40:42.464487528+05:30 - INFO - using xing header for duration
+2024-11-21T05:40:42.464743727+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:40:42.464773197+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:40:44.253221925+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:40:44.253407483+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:40:44.739711949+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:40:44.739782157+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:40:45.352791541+05:30 - INFO - K pressed -1
+2024-11-21T05:40:45.352953509+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:40:45.352970789+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:40:45.520740200+05:30 - INFO - K pressed -1
+2024-11-21T05:40:45.520876453+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:40:45.520891505+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:40:45.736445729+05:30 - INFO - J pressed +1
+2024-11-21T05:40:45.736603058+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:40:45.736631499+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:40:45.940997819+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:40:45.941063128+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:40:46.106523884+05:30 - INFO - K pressed -1
+2024-11-21T05:40:46.106719102+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:40:46.106747440+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:40:46.129390441+05:30 - INFO - J pressed +1
+2024-11-21T05:40:46.129663336+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:40:46.129688072+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:40:46.248275187+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:40:46.248345383+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:40:46.731163128+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:40:46.731244835+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:40:47.030108920+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:40:47.030175834+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:40:47.497732282+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:40:47.497799724+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:40:47.661343589+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:40:47.661411332+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:40:47.811729043+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:40:47.811808581+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:40:48.026953210+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:40:48.027083521+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:40:48.568575155+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:40:48.568642598+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:40:48.736487753+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:40:48.736555274+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:40:48.900786047+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:40:48.900859722+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:40:49.128907434+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:40:49.128974373+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:40:49.508259166+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:40:49.508338059+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:40:51.165661495+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:40:51.165743734+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:40:51.320920866+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:40:51.320998803+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:40:51.551803202+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:40:51.551869924+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:40:51.836260332+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:40:51.836326591+05:30 - INFO - selected_track_idx: Some(0)
+2024-11-21T05:40:52.021062497+05:30 - INFO - current_track_idx: Some(0)
+2024-11-21T05:40:52.021130010+05:30 - INFO - selected_track_idx: Some(0)

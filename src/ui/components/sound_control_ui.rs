@@ -1,3 +1,5 @@
+use std::sync::{Arc, Mutex};
+
 use ratatui::{
     layout::{Constraint, Direction, Layout, Rect},
     style::{Color, Style},
@@ -10,8 +12,7 @@ use crate::state::AppState;
 use super::audio_gauge::AudioGauge;
 
 pub struct ControlStyle {
-    knob_color: Color,
-    active_color: Color,
+    gauge_color: Color,
     text_color: Color,
 }
 
@@ -30,8 +31,7 @@ pub enum AudioControlType {
 impl Default for ControlStyle {
     fn default() -> Self {
         Self {
-            knob_color: Color::White,
-            active_color: Color::Green,
+            gauge_color: Color::White,
             text_color: Color::Gray,
         }
     }
@@ -44,7 +44,9 @@ impl SoundControlUI {
         }
     }
 
-    pub fn render(&self, frame: &mut Frame, area: Rect, app_state: &AppState) {
+    pub fn render(&self, frame: &mut Frame, area: Rect, app_state: Arc<Mutex<AppState>>) {
+        let app_state = app_state.lock().unwrap();
+
         let block = Block::default()
             .borders(Borders::ALL)
             .title("Audio Controls");
@@ -94,7 +96,7 @@ impl SoundControlUI {
 
         let value_text = format!("{:3}%", (value * 100.0) as u8);
         let audio_control_widget = AudioGauge::new(value, value_text.to_string())
-            .style(Style::default().fg(self.style.knob_color))
+            .style(Style::default().fg(self.style.gauge_color))
             .show_percentage(false);
 
         frame.render_widget(audio_control_widget, layout[1]);
