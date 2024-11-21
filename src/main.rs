@@ -13,9 +13,9 @@ use ratatui::{
 use ui::view::UIManager;
 
 mod app;
+mod audio;
 mod controls;
 mod logger;
-mod state;
 mod ui;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
