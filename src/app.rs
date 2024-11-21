@@ -1,14 +1,14 @@
 use std::error::Error;
 use std::path::PathBuf;
-use std::time::Duration;
+use std::sync::{Arc, Mutex};
 
-use ratatui::crossterm::event::{self, Event, KeyCode, KeyEvent, KeyModifiers};
+use ratatui::crossterm::event::{KeyCode, KeyEvent, KeyModifiers};
 
-use crate::audio::AudioSystem;
+use crate::controls::audio::AudioSystem;
 use crate::state::{AppState, AudioControl, PlaybackStatus, Track};
 
 pub struct App {
-    state: AppState,
+    state: Arc<Mutex<AppState>>,
     audio_system: AudioSystem,
 }
 
@@ -21,9 +21,10 @@ impl App {
         state.library.tracks = tracks;
         state.library.current_dir = root_dir;
 
+        let shared_state = Arc::new(Mutex::new(state));
         Ok(Self {
-            audio_system: AudioSystem::new(&state),
-            state,
+            audio_system: AudioSystem::new(Arc::clone(&shared_state)),
+            state: shared_state,
         })
     }
 
@@ -41,15 +42,20 @@ impl App {
     }
 
     pub fn toggle_playback(&mut self) -> Result<(), Box<dyn Error>> {
-        match self.state.playback.status {
+        let state = self.state.lock().unwrap();
+        match state.playback.status {
             PlaybackStatus::Playing => {
+                drop(state);
                 self.audio_system.pause();
             }
             PlaybackStatus::Paused | PlaybackStatus::Stopped => {
-                if self.state.playback.current_track.is_some() {
+                let current_track = state.playback.current_track;
+                let tracks_empty = state.library.tracks.is_empty();
+                drop(state);
+
+                if current_track.is_some() {
                     self.audio_system.resume();
-                } else if !self.state.library.tracks.is_empty() {
-                    // Default to first track if no track selected
+                } else if !tracks_empty {
                     self.select_track(0)?;
                 }
             }
@@ -58,112 +64,115 @@ impl App {
     }
 
     pub fn select_track(&mut self, index: usize) -> Result<(), Box<dyn Error>> {
-        if index < self.state.library.tracks.len() {
+        let state = self.state.lock().unwrap();
+        if index < state.library.tracks.len() {
+            let current_track = index;
+            drop(state);
+
             // Stop any current playback
             self.audio_system.stop();
 
             // Set the current track in state
-            self.state.set_current_track(index);
+            let mut state = self.state.lock().unwrap();
+            state.set_current_track(current_track);
+            drop(state);
 
             // Play the new track
-            self.audio_system.play_track();
+            let _ = self.audio_system.play_track();
         }
         Ok(())
     }
 
-    pub fn update(&mut self, delta: Duration) {
-        // Update spectrum data for visualization
-        let spectrum_data = self.audio_system.get_spectrum_data();
-        self.state.update_spectrum(spectrum_data);
+    pub fn update(&mut self) {
+        // TODO:  Update spectrum data for visualization
+
+        let state = self.state.lock().unwrap();
+        drop(state);
 
         // Update playback time
-        self.audio_system.update_playback(delta);
+        self.audio_system.update_playback();
 
         // Sync audio controls
-        self.audio_system.update_audio_controls();
+        //self.audio_system.update_audio_controls();
     }
 
     // Getter for UI to access state
-    pub fn get_state(&self) -> &AppState {
-        &self.state
+    pub fn get_state(&self) -> Arc<Mutex<AppState>> {
+        Arc::clone(&self.state)
     }
 }
+
 impl App {
-    // Add these methods to handle keybindings
     pub fn handle_key_event(&mut self, key_event: KeyEvent) -> Result<bool, Box<dyn Error>> {
+        let mut state = self.state.lock().unwrap();
+
         match key_event.code {
             // Playback controls
             KeyCode::Enter => {
-                if let Some(selected_index) = self.state.library.selected_index {
-                    self.select_track(selected_index)?;
+                if let Some(selected_index) = state.library.selected_index {
+                    log::info!("Selected Index: {}", selected_index);
+                    let index = selected_index;
+                    drop(state);
+                    self.select_track(index)?;
                 }
             }
             KeyCode::Char('p') => {
+                drop(state);
                 self.toggle_playback()?;
             }
             // Navigation in track list
             KeyCode::Char('k') => {
-                self.move_selection_up();
+                log::info!("K pressed -1");
+                if let Some(current_index) = state.library.selected_index {
+                    if current_index > 0 {
+                        state.library.selected_index = Some(current_index - 1);
+                    }
+                }
             }
             KeyCode::Char('j') => {
-                self.move_selection_down();
+                log::info!("J pressed +1");
+                if let Some(current_index) = state.library.selected_index {
+                    if current_index < state.library.tracks.len() - 1 {
+                        state.library.selected_index = Some(current_index + 1);
+                    }
+                }
             }
             // Audio controls
             KeyCode::Left => {
-                if key_event.modifiers == KeyModifiers::SHIFT {
-                    self.state
-                        .set_audio_control(AudioControl::Balance, self.state.audio.balance - 5.0);
+                let (control, value) = if key_event.modifiers == KeyModifiers::SHIFT {
+                    (AudioControl::Balance, state.audio.balance - 5.0)
                 } else {
-                    self.state
-                        .set_audio_control(AudioControl::Volume, self.state.audio.volume - 5.0);
-                }
+                    (AudioControl::Volume, state.audio.volume - 5.0)
+                };
+                state.set_audio_control(control, value);
             }
             KeyCode::Right => {
-                if key_event.modifiers == KeyModifiers::SHIFT {
-                    self.state
-                        .set_audio_control(AudioControl::Balance, self.state.audio.balance + 5.0);
+                let (control, value) = if key_event.modifiers == KeyModifiers::SHIFT {
+                    (AudioControl::Balance, state.audio.balance + 5.0)
                 } else {
-                    self.state
-                        .set_audio_control(AudioControl::Volume, self.state.audio.volume + 5.0);
-                }
+                    (AudioControl::Volume, state.audio.volume + 5.0)
+                };
+                state.set_audio_control(control, value);
             }
             KeyCode::Up => {
-                if key_event.modifiers == KeyModifiers::SHIFT {
-                    self.state
-                        .set_audio_control(AudioControl::Treble, self.state.audio.treble + 5.0);
+                let (control, value) = if key_event.modifiers == KeyModifiers::SHIFT {
+                    (AudioControl::Treble, state.audio.treble + 5.0)
                 } else {
-                    self.state
-                        .set_audio_control(AudioControl::Bass, self.state.audio.bass + 5.0);
-                }
+                    (AudioControl::Bass, state.audio.bass + 5.0)
+                };
+                state.set_audio_control(control, value);
             }
             KeyCode::Down => {
-                if key_event.modifiers == KeyModifiers::SHIFT {
-                    self.state
-                        .set_audio_control(AudioControl::Treble, self.state.audio.treble - 5.0);
+                let (control, value) = if key_event.modifiers == KeyModifiers::SHIFT {
+                    (AudioControl::Treble, state.audio.treble - 5.0)
                 } else {
-                    self.state
-                        .set_audio_control(AudioControl::Bass, self.state.audio.bass - 5.0);
-                }
+                    (AudioControl::Bass, state.audio.bass - 5.0)
+                };
+                state.set_audio_control(control, value);
             }
-            KeyCode::Char('q') => return Ok(false), // Signal to exit
+            KeyCode::Char('q') => return Ok(false),
             _ => {}
         }
         Ok(true)
-    }
-
-    fn move_selection_up(&mut self) {
-        if let Some(current_index) = self.state.library.selected_index {
-            if current_index > 0 {
-                self.state.library.selected_index = Some(current_index - 1);
-            }
-        }
-    }
-
-    fn move_selection_down(&mut self) {
-        if let Some(current_index) = self.state.library.selected_index {
-            if current_index < self.state.library.tracks.len() - 1 {
-                self.state.library.selected_index = Some(current_index + 1);
-            }
-        }
     }
 }

@@ -1,4 +1,4 @@
-use std::{io, time::Duration};
+use std::io;
 
 use app::App;
 use ratatui::{
@@ -13,20 +13,19 @@ use ratatui::{
 use ui::view::UIManager;
 
 mod app;
-mod audio;
 mod controls;
+mod logger;
 mod state;
 mod ui;
 
-pub type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
-
-fn main() -> Result<()> {
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    logger::setup_logging()?;
     // Setup terminal
     enable_raw_mode()?;
     let mut stdout = io::stdout();
-    execute!(stdout, EnterAlternateScreen, EnableMouseCapture)?;
-    let backend = CrosstermBackend::new(stdout);
+    execute!(stdout, EnterAlternateScreen, DisableMouseCapture)?;
 
+    let backend = CrosstermBackend::new(stdout);
     let mut ui_manager = UIManager::new();
     let mut terminal = Terminal::new(backend)?;
     let mut app = App::new(Into::into("/home/m-d-nabeel/Music/"))?;
@@ -40,7 +39,7 @@ fn main() -> Result<()> {
     execute!(
         terminal.backend_mut(),
         LeaveAlternateScreen,
-        DisableMouseCapture
+        EnableMouseCapture
     )?;
     terminal.show_cursor()?;
 
@@ -71,6 +70,6 @@ fn run_app<B: Backend>(
             }
         }
         // Update app state periodically
-        app.update(Duration::from_millis(200));
+        app.update();
     }
 }
