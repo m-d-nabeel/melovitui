@@ -1,6 +1,12 @@
 use std::error::Error;
 use std::path::PathBuf;
 use std::time::Duration;
+
+use symphonia::core::formats::FormatOptions;
+use symphonia::core::io::MediaSourceStream;
+use symphonia::core::meta::MetadataOptions;
+use symphonia::core::probe::Hint;
+use symphonia::default::get_probe;
 use walkdir::WalkDir;
 
 #[derive(Default, Clone)]
@@ -45,8 +51,8 @@ impl MusicLibrary {
             // Check if file has a supported audio extension
             if let Some(ext) = file_path.extension() {
                 if supported_extensions.contains(&ext.to_str().unwrap_or("")) {
-                    // Try to get metadata (you might want to use a library like metaflac or mp3-metadata)
-                    let track = Track::new(file_path);
+                    // Try to get metadata
+                    let track = Track::from_file(file_path)?;
                     self.add_track(track);
                 }
             }
@@ -78,83 +84,72 @@ impl MusicLibrary {
         }
     }
 
-    /// Remove a track by index
-    pub fn remove_track(&mut self, index: usize) -> Option<Track> {
-        if index < self.tracks.len() {
-            Some(self.tracks.remove(index))
-        } else {
-            None
-        }
-    }
-
-    /// Select previous track
+    /// Select previous track, wrapping around to the last track if at the beginning
     pub fn select_previous(&mut self) {
-        if let Some(current_index) = self.selected_index {
-            if current_index > 0 {
-                self.selected_index = Some(current_index - 1);
-            }
+        if self.current_index > 0 {
+            self.current_index -= 1;
         } else if !self.tracks.is_empty() {
-            // If no track is selected, select the last track
-            self.selected_index = Some(self.tracks.len() - 1);
+            self.current_index = self.tracks.len() - 1;
         }
     }
 
-    /// Select next track
+    /// Select next track, wrapping around to the first track if at the end
     pub fn select_next(&mut self) {
-        if let Some(current_index) = self.selected_index {
-            if current_index < self.tracks.len() - 1 {
-                self.selected_index = Some(current_index + 1);
-            }
+        if self.current_index + 1 < self.tracks.len() {
+            self.current_index += 1;
         } else if !self.tracks.is_empty() {
-            // If no track is selected, select the first track
-            self.selected_index = Some(0);
+            self.current_index = 0;
         }
-    }
-
-    /// Get the currently selected track
-    pub fn get_selected_track(&self) -> Option<&Track> {
-        self.selected_index.and_then(|index| self.tracks.get(index))
     }
 }
 
 impl Track {
-    /// Create a new track from a path
-    pub fn new(path: PathBuf) -> Self {
-        let filename = path
+    /// Create a new track from a file path and attempt to extract metadata
+    pub fn from_file(path: PathBuf) -> Result<Self, Box<dyn Error>> {
+        let title = path
             .file_name()
             .and_then(|name| name.to_str())
             .unwrap_or("Unknown")
             .to_string();
 
-        Self {
-            title: filename,
-            artist: None,
-            path,
-            duration: None,
-        }
-    }
+        let duration = Track::extract_duration(&path)?;
 
-    /// Create a track with full metadata
-    pub fn with_metadata(
-        path: PathBuf,
-        title: String,
-        artist: Option<String>,
-        duration: Option<Duration>,
-    ) -> Self {
-        Self {
+        Ok(Self {
             title,
-            artist,
+            artist: None, // Metadata for artist can also be extracted
             path,
             duration,
-        }
+        })
     }
 
-    /// Attempt to extract metadata (placeholder - you'd use a metadata library)
-    pub fn extract_metadata(&mut self) {
-        // TODO: Implement metadata extraction
-        // You might want to use libraries like:
-        // - metaflac for FLAC
-        // - mp3-metadata for MP3
-        // - symphonia for multiple formats
+    /// Extract duration of the audio file using Symphonia
+    fn extract_duration(path: &PathBuf) -> Result<Option<Duration>, Box<dyn Error>> {
+        // Prepare to probe the file
+        let hint = Hint::new();
+        let src = std::fs::File::open(path)?;
+        let mss = MediaSourceStream::new(Box::new(src), Default::default());
+        let format_opts = FormatOptions::default();
+        let metadata_opts = MetadataOptions::default();
+
+        // Probe the file
+        let probed = get_probe().format(&hint, mss, &format_opts, &metadata_opts)?;
+
+        // Get the first audio track
+        let track = probed
+            .format
+            .tracks()
+            .iter()
+            .find(|t| t.codec_params.sample_rate.is_some())
+            .ok_or("No playable audio tracks found")?;
+
+        // Calculate duration
+        if let Some(sample_rate) = track.codec_params.sample_rate {
+            if let Some(n_frames) = track.codec_params.n_frames {
+                let duration = Duration::from_secs_f64(n_frames as f64 / sample_rate as f64);
+                return Ok(Some(duration));
+            }
+        }
+
+        Ok(None)
     }
 }

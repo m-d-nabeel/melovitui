@@ -24,24 +24,6 @@ impl PlaybackControl {
         self.duration = total_duration;
     }
 
-    pub fn pause(&mut self) {
-        if self.status == PlaybackStatus::Playing {
-            self.status = PlaybackStatus::Paused;
-        }
-    }
-
-    pub fn resume(&mut self) {
-        if self.status == PlaybackStatus::Paused {
-            self.status = PlaybackStatus::Playing;
-        }
-    }
-
-    pub fn stop(&mut self) {
-        self.status = PlaybackStatus::Stopped;
-        self.current_track = None;
-        self.elapsed = Duration::ZERO;
-    }
-
     pub fn update_elapsed(&mut self, time: Duration) {
         self.elapsed = time.min(self.duration);
     }
