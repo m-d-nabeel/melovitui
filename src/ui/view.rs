@@ -3,7 +3,7 @@ use ratatui::{
     Frame,
 };
 
-use crate::app::App;
+use crate::{app::App, controls::playback_control::PlaybackStatus};
 
 use super::components::{
     music_library_ui::MusicLibraryUI, playback_control_ui::PlaybackControlUI,
@@ -51,17 +51,21 @@ impl UIManager {
         let sound_state = app.get_sound_state();
         let playback_state = app.get_playback_state();
 
-        // Determine current track title
-        let playback_state_unarced = playback_state.lock().unwrap();
-        let library_state_unarced = library_state.lock().unwrap();
-        let song_text = playback_state_unarced
-            .current_track
-            .map(|idx| library_state_unarced.tracks[idx].title.clone())
-            .map(|track| format!("▶ {}", track))
-            .unwrap_or_else(|| "No song playing".to_string());
+        let song_text = {
+            let playback_state = playback_state.lock();
+            let library_state = library_state.lock();
+            if let Some(idx) = playback_state.current_track {
+                let track_title = library_state.tracks[idx].title.clone();
 
-        drop(playback_state_unarced);
-        drop(library_state_unarced);
+                match playback_state.status {
+                    PlaybackStatus::Stopped => format!("■ {}", track_title),
+                    PlaybackStatus::Playing => format!("▶ {}", track_title),
+                    PlaybackStatus::Paused => format!("❚❚ {}", track_title),
+                }
+            } else {
+                "No song playing".to_string()
+            }
+        };
 
         self.music_library.render(frame, chunks[0], library_state);
         self.visualizer

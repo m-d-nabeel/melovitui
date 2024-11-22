@@ -1,3 +1,4 @@
+use parking_lot::Mutex;
 use ratatui::{
     layout::{Alignment, Rect},
     style::{Color, Modifier, Style},
@@ -5,7 +6,7 @@ use ratatui::{
     widgets::{Block, Borders, List, ListItem, Paragraph},
     Frame,
 };
-use std::sync::{Arc, Mutex};
+use std::sync::Arc;
 
 use crate::controls::music_library::MusicLibrary;
 
@@ -49,7 +50,8 @@ impl MusicLibraryUI {
     }
 
     pub fn render(&self, frame: &mut Frame, area: Rect, lib_state: Arc<Mutex<MusicLibrary>>) {
-        let lib_state = lib_state.lock().unwrap();
+        let lib_state = lib_state.lock();
+
         let block = Block::default()
             .title("Music Library")
             .borders(Borders::ALL)
@@ -61,9 +63,6 @@ impl MusicLibraryUI {
         let tracks = &lib_state.tracks;
         let current_track_idx = lib_state.current_index;
         let selected_track_idx = lib_state.selected_index;
-
-        log::info!("current_track_idx: {:?}", current_track_idx);
-        log::info!("selected_track_idx: {:?}", current_track_idx);
 
         let items: Vec<ListItem> = tracks
             .iter()

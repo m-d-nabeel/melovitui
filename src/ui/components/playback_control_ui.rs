@@ -1,5 +1,6 @@
-use std::sync::{Arc, Mutex};
+use std::sync::Arc;
 
+use parking_lot::Mutex;
 use ratatui::{
     layout::{Alignment, Constraint, Direction, Layout, Rect},
     style::{Color, Style},
@@ -55,7 +56,7 @@ impl PlaybackControlUI {
         playback_state: Arc<Mutex<PlaybackControl>>,
         song_text: String,
     ) {
-        let playback_state = playback_state.lock().unwrap();
+        let playback_state = playback_state.lock();
 
         let block = Block::default()
             .borders(Borders::ALL)

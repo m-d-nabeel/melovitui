@@ -1,5 +1,6 @@
-use std::sync::{Arc, Mutex};
+use std::sync::Arc;
 
+use parking_lot::Mutex;
 use ratatui::{
     layout::Rect,
     style::Color,
@@ -41,7 +42,7 @@ impl VisualizerUI {
     }
 
     pub fn render(&self, frame: &mut Frame, area: Rect, visualizer_state: Arc<Mutex<Visualizer>>) {
-        let visualizer_state = visualizer_state.lock().unwrap();
+        let visualizer_state = visualizer_state.lock();
 
         let block = Block::default()
             .borders(Borders::ALL)

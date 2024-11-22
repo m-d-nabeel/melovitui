@@ -1,4 +1,7 @@
-use std::io;
+use std::{
+    io,
+    time::{Duration, Instant},
+};
 
 use app::App;
 use ratatui::{
@@ -13,7 +16,7 @@ use ratatui::{
 use ui::view::UIManager;
 
 mod app;
-mod audio;
+mod audio_system;
 mod controls;
 mod logger;
 mod ui;
@@ -55,21 +58,36 @@ fn run_app<B: Backend>(
     app: &mut App,
     ui_manager: &mut UIManager,
 ) -> io::Result<()> {
+    // Define the update interval (e.g., 16ms for ~60 FPS)
+    let tick_rate = Duration::from_millis(16);
+    let mut last_tick = Instant::now();
+
     loop {
-        // Render
+        // Render UI
         terminal.draw(|f| ui_manager.render(f, app))?;
-        // Event handling
-        if let Event::Key(key_event) = event::read()? {
-            match app.handle_key_event(key_event) {
-                Ok(true) => continue,
-                Ok(false) => return Ok(()), // Exit app
-                Err(e) => {
-                    // Handle or log error
-                    eprintln!("Error handling key event: {:?}", e);
+
+        // Handle timing for updates
+        let timeout = tick_rate
+            .checked_sub(last_tick.elapsed())
+            .unwrap_or_else(|| Duration::from_secs(0));
+
+        // Poll for events with a timeout
+        if event::poll(timeout)? {
+            if let Event::Key(key_event) = event::read()? {
+                match app.handle_key_event(key_event) {
+                    Ok(true) => continue,
+                    Ok(false) => return Ok(()), // Exit app
+                    Err(e) => {
+                        eprintln!("Error handling key event: {:?}", e);
+                    }
                 }
             }
         }
-        // Update app state periodically
-        app.update();
+
+        // Check if we should update the app state
+        if last_tick.elapsed() >= tick_rate {
+            app.update();
+            last_tick = Instant::now();
+        }
     }
 }

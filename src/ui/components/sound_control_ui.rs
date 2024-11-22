@@ -1,5 +1,6 @@
-use std::sync::{Arc, Mutex};
+use std::sync::Arc;
 
+use parking_lot::Mutex;
 use ratatui::{
     layout::{Constraint, Direction, Layout, Rect},
     style::{Color, Style},
@@ -7,7 +8,7 @@ use ratatui::{
     Frame,
 };
 
-use crate::controls::sound_control::SoundControl;
+use crate::audio_system::SoundControl;
 
 use super::audio_gauge::AudioGauge;
 
@@ -45,7 +46,7 @@ impl SoundControlUI {
     }
 
     pub fn render(&self, frame: &mut Frame, area: Rect, sound_state: Arc<Mutex<SoundControl>>) {
-        let sound_state = sound_state.lock().unwrap();
+        let sound_state = sound_state.lock();
 
         let block = Block::default()
             .borders(Borders::ALL)
@@ -65,12 +66,12 @@ impl SoundControlUI {
             .split(inner);
 
         let controls = [
-            (AudioControlType::Volume, sound_state.volume / 100.0),
-            (AudioControlType::Bass, sound_state.bass / 100.0),
-            (AudioControlType::Treble, sound_state.treble / 100.0),
+            (AudioControlType::Volume, sound_state.volume() / 100.0),
+            (AudioControlType::Bass, sound_state.bass() / 100.0),
+            (AudioControlType::Treble, sound_state.treble() / 100.0),
             (
                 AudioControlType::Balance,
-                (sound_state.balance + 100.0) / 200.0,
+                (sound_state.balance() + 100.0) / 200.0,
             ),
         ];
 
