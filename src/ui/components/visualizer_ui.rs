@@ -1,6 +1,3 @@
-use std::sync::Arc;
-
-use parking_lot::Mutex;
 use ratatui::{
     layout::Rect,
     style::Color,
@@ -11,8 +8,6 @@ use ratatui::{
     },
     Frame,
 };
-
-use crate::controls::visualizer::Visualizer;
 
 pub struct VisualizerUI {
     style: VisualizerStyle,
@@ -41,9 +36,7 @@ impl VisualizerUI {
         }
     }
 
-    pub fn render(&self, frame: &mut Frame, area: Rect, visualizer_state: Arc<Mutex<Visualizer>>) {
-        let visualizer_state = visualizer_state.lock();
-
+    pub fn render(&self, frame: &mut Frame, area: Rect, spectrum: &[f32]) {
         let block = Block::default()
             .borders(Borders::ALL)
             .title("Spectrum Analyzer");
@@ -51,7 +44,7 @@ impl VisualizerUI {
         let inner_area = block.inner(area);
         frame.render_widget(block, area);
 
-        let spectrum_data = &visualizer_state.spectrum_data;
+        let spectrum_data = spectrum;
 
         let canvas = Canvas::default()
             .marker(symbols::Marker::Dot)
@@ -85,3 +78,71 @@ impl VisualizerUI {
         frame.render_widget(canvas, inner_area);
     }
 }
+
+//#[derive(Default, Clone, Debug)]
+//pub struct Visualizer {
+//    smooth: Vec<f32>,
+//}
+//
+//impl Visualizer {
+//    pub fn new((width, height): (usize, usize)) -> Self {
+//        Self {
+//            smooth: vec![0.0; 1024],
+//        }
+//    }
+//
+//    pub fn update_spectrum(&mut self, frame: &[f32]) {
+//        for (i, value) in self.smooth.iter_mut().enumerate() {
+//            let mut new_value: f32 = 0.0;
+//            let p = i as f32 * 0.25;
+//            let r = 4.0;
+//            let range = (p - r).clamp(0.0, frame.len() as f32) as usize
+//                ..(p + r).clamp(0.0, frame.len() as f32) as usize;
+//
+//            for q in range {
+//                let d = p - q as f32;
+//                new_value +=
+//                    (self.height as f32 / 16.0) * (1.0 + q as f32 / 8.0) * frame[q] / (1.0 + d * d);
+//            }
+//
+//            *value += (new_value.sqrt() - *value) * 0.2;
+//        }
+//    }
+//
+//    pub fn render(&self, frame: &mut Frame, area: Rect) {
+//        let min = self.smooth.iter().copied().fold(f32::MAX, f32::min);
+//
+//        // Calculate the drawing dimensions based on the provided area
+//        let width = area.width as usize;
+//        let height = area.height as usize;
+//
+//        // Create points for the spectrum
+//        let points: Vec<(String, (u16, u16))> = (0..width / 2)
+//            .flat_map(|x| {
+//                let mut points = Vec::new();
+//
+//                // Upper half of spectrum
+//                let y =
+//                    height as f32 - 2.0 - (self.smooth[x] - min).clamp(0.0, (height - 2) as f32);
+//                points.push(("•".to_string(), (x as u16, y as u16)));
+//                points.push(("•".to_string(), ((width - 1 - x) as u16, y as u16)));
+//
+//                // Lower half of spectrum
+//                let y = (self.smooth[width / 2 + x] - min).clamp(0.0, (height - 2) as f32);
+//                points.push(("•".to_string(), (x as u16, y as u16)));
+//                points.push(("•".to_string(), ((width - 1 - x) as u16, y as u16)));
+//
+//                points
+//            })
+//            .collect();
+//
+//        // Draw each point using Canvas
+//        for (symbol, (x, y)) in points {
+//            // Ensure the point is within the area bounds
+//            if x < area.width && y < area.height {
+//                let buffer = frame.buffer_mut();
+//                buffer[(area.left() + x, area.top() + y)].set_symbol(&symbol);
+//            }
+//        }
+//    }
+//}

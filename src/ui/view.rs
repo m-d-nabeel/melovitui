@@ -47,9 +47,11 @@ impl UIManager {
             .split(main_layout[1]);
 
         let library_state = app.get_library_state();
-        let visualizer_state = app.get_visualizer_state();
         let sound_state = app.get_sound_state();
         let playback_state = app.get_playback_state();
+        let binding = app.get_audio_system();
+        let binding = binding.lock();
+        let spectrum = binding.get_current_frame();
 
         let song_text = {
             let playback_state = playback_state.lock();
@@ -66,10 +68,8 @@ impl UIManager {
                 "No song playing".to_string()
             }
         };
-
         self.music_library.render(frame, chunks[0], library_state);
-        self.visualizer
-            .render(frame, main_layout[0], visualizer_state);
+        self.visualizer.render(frame, main_layout[0], spectrum);
         self.sound_control
             .render(frame, control_chunks[0], sound_state);
         self.playback_controls
