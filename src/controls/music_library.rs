@@ -14,12 +14,14 @@ pub struct MusicLibrary {
     pub tracks: Vec<Track>,
     pub selected_index: Option<usize>,
     pub current_index: usize,
+    #[allow(dead_code)]
     pub current_dir: PathBuf,
 }
 
 #[derive(Clone, Debug)]
 pub struct Track {
     pub title: String,
+    #[allow(dead_code)]
     pub artist: Option<String>,
     pub path: PathBuf,
     pub duration: Option<Duration>,

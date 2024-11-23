@@ -1,3 +1,5 @@
+use config::get_music_dir;
+
 use std::{
     io,
     time::{Duration, Instant},
@@ -6,6 +8,7 @@ use std::{
 use app::App;
 use ratatui::{
     crossterm::{
+        cursor::{Hide, Show},
         event::{self, DisableMouseCapture, EnableMouseCapture, Event},
         execute,
         terminal::{disable_raw_mode, enable_raw_mode, EnterAlternateScreen, LeaveAlternateScreen},
@@ -17,22 +20,27 @@ use ui::view::UIManager;
 
 mod app;
 mod audio_system;
+mod config;
 mod controls;
 mod logger;
 mod ui;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     logger::setup_logging()?;
+    // Get music directory path
+    let music_dir = get_music_dir();
+    log::info!("Using music directory: {:?}", music_dir);
+
     // Setup terminal
     enable_raw_mode()?;
     let mut stdout = io::stdout();
-    execute!(stdout, EnterAlternateScreen, DisableMouseCapture)?;
-
+    execute!(stdout, EnterAlternateScreen, DisableMouseCapture, Hide)?;
     let backend = CrosstermBackend::new(stdout);
     let mut ui_manager = UIManager::new();
     let mut terminal = Terminal::new(backend)?;
-    let mut app = App::new(Into::into("/home/m-d-nabeel/Music/"))?;
+
     // Create app state and initialize audio
+    let mut app = App::new(music_dir)?;
 
     // Run main app loop
     let result = run_app(&mut terminal, &mut app, &mut ui_manager);
@@ -42,7 +50,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     execute!(
         terminal.backend_mut(),
         LeaveAlternateScreen,
-        EnableMouseCapture
+        EnableMouseCapture,
+        Show
     )?;
     terminal.show_cursor()?;
 
@@ -52,7 +61,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     Ok(())
 }
-
 fn run_app<B: Backend>(
     terminal: &mut Terminal<B>,
     app: &mut App,
