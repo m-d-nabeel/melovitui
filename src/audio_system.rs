@@ -4,7 +4,6 @@ use std::io::BufReader;
 use std::path::Path;
 use std::sync::Arc;
 use std::time::Duration;
-use std::usize;
 
 use parking_lot::Mutex;
 use rodio::{Decoder, OutputStream, OutputStreamHandle, Sink, Source};

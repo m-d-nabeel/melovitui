@@ -18,8 +18,14 @@ pub struct PlaybackControlUI {
 struct PlaybackControlStyle {
     text_color: Color,
     timeline_color: Color,
+
+    #[allow(dead_code)]
     timeline_bg_color: Color,
+
+    #[allow(dead_code)]
     button_color: Color,
+
+    #[allow(dead_code)]
     active_button_color: Color,
 }
 
