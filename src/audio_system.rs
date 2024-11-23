@@ -185,7 +185,6 @@ impl AudioSystem {
 
                     // Increment elapsed time
                     let current_elapsed = playback.elapsed + Duration::from_millis(16);
-                    log::info!("==>ElapsedTime: {:?}", current_elapsed);
                     playback.update_elapsed(current_elapsed);
 
                     // Check if track has finished

@@ -29,9 +29,8 @@ pub struct AudioEngine {
 }
 
 impl AudioEngine {
-    pub fn new() -> Self {
+    pub fn new(state: Arc<Mutex<SoundControl>>) -> Self {
         let (spectrum_tx, spectrum_rx) = channel::bounded(2);
-        let state = Arc::new(Mutex::new(SoundControl::default()));
 
         Self {
             state,
@@ -217,63 +216,6 @@ where
         }
     }
 }
-
-//// Integration with your AudioSystem
-//impl AudioSystem {
-//    pub fn with_engine(
-//        library: Arc<Mutex<MusicLibrary>>,
-//        playback: Arc<Mutex<PlaybackControl>>,
-//        visualizer: Arc<Mutex<Visualizer>>,
-//    ) -> Result<(Self, AudioEngine), Box<dyn Error>> {
-//        let system = Self::new(library, playback.clone(), visualizer)?;
-//        let engine = AudioEngine::new();
-//        Ok((system, engine))
-//    }
-//
-//    // Modified play_track method
-//    pub fn play_track_with_processing(
-//        &mut self,
-//        track_index: Option<usize>,
-//        engine: &AudioEngine,
-//    ) -> Result<(), Box<dyn Error>> {
-//        let index = track_index.unwrap_or_else(|| self.library.lock().selected_index.unwrap_or(0));
-//
-//        let track_path = {
-//            let library = self.library.lock();
-//            library
-//                .tracks
-//                .get(index)
-//                .ok_or_else(|| format!("Invalid track index: {}", index))?
-//                .path
-//                .clone()
-//        };
-//
-//        // Decode and process the track
-//        let file = std::fs::File::open(&track_path)?;
-//        let source = rodio::Decoder::new(file)?;
-//        let processed_source = engine.process_source(source);
-//
-//        self.sink.clear();
-//        self.sink.append(processed_source);
-//        self.sink.play();
-//
-//        // Update playback state
-//        {
-//            let mut playback = self.playback.lock();
-//            if let Some(duration) = self
-//                .library
-//                .lock()
-//                .tracks
-//                .get(index)
-//                .and_then(|track| track.duration)
-//            {
-//                playback.start(index, duration);
-//            }
-//        }
-//
-//        Ok(())
-//    }
-//}
 
 //// Integration with your AudioSystem
 //impl AudioSystem {
