@@ -7,13 +7,11 @@ use std::sync::Arc;
 use crate::audio_system::{AudioSystem, SoundControl};
 use crate::controls::music_library::MusicLibrary;
 use crate::controls::playback_control::PlaybackControl;
-use crate::controls::visualizer::Visualizer;
 
 pub struct App {
     audio_system: Arc<Mutex<AudioSystem>>,
     library: Arc<Mutex<MusicLibrary>>,
     playback: Arc<Mutex<PlaybackControl>>,
-    visualizer: Arc<Mutex<Visualizer>>,
 }
 
 impl App {
@@ -22,15 +20,10 @@ impl App {
         let library = MusicLibrary::new(root_dir)?;
         let library = Arc::new(Mutex::new(library));
         let playback = Arc::new(Mutex::new(PlaybackControl::default()));
-        let visualizer = Arc::new(Mutex::new(Visualizer::default()));
 
         // Initialize audio system with references to necessary components
         // [[CHECKPOINT]]
-        let audio_system = AudioSystem::new(
-            Arc::clone(&library),
-            Arc::clone(&playback),
-            Arc::clone(&visualizer),
-        )?;
+        let audio_system = AudioSystem::new(Arc::clone(&library), Arc::clone(&playback))?;
 
         #[allow(clippy::arc_with_non_send_sync)]
         let audio_system = Arc::new(Mutex::new(audio_system));
@@ -39,15 +32,13 @@ impl App {
             audio_system,
             library,
             playback,
-            visualizer,
         })
     }
 
     pub fn update(&mut self) {
         let mut audio = self.audio_system.lock();
-        // Update playback state
+        // Update playback state update visualizer with it
         audio.update_playback();
-        // TODO: Update visualization
     }
 }
 
@@ -120,13 +111,14 @@ impl App {
     pub fn get_library_state(&self) -> Arc<Mutex<MusicLibrary>> {
         Arc::clone(&self.library)
     }
-    pub fn get_visualizer_state(&self) -> Arc<Mutex<Visualizer>> {
-        Arc::clone(&self.visualizer)
-    }
+
     pub fn get_sound_state(&self) -> Arc<Mutex<SoundControl>> {
         Arc::clone(&self.audio_system.lock().get_sound_state())
     }
     pub fn get_playback_state(&self) -> Arc<Mutex<PlaybackControl>> {
         Arc::clone(&self.playback)
+    }
+    pub fn get_audio_system(&self) -> Arc<Mutex<AudioSystem>> {
+        Arc::clone(&self.audio_system)
     }
 }

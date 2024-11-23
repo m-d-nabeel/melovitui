@@ -1,13 +1,19 @@
 use std::error::Error;
+use std::fs::File;
+use std::io::BufReader;
+use std::path::Path;
 use std::sync::Arc;
 use std::time::Duration;
+use std::usize;
 
 use parking_lot::Mutex;
-use rodio::{OutputStream, OutputStreamHandle, Sink};
+use rodio::{Decoder, OutputStream, OutputStreamHandle, Sink, Source};
+use rustfft::num_complex::Complex;
+use rustfft::{FftDirection, FftPlanner};
 
 use crate::controls::music_library::MusicLibrary;
 use crate::controls::playback_control::{PlaybackControl, PlaybackStatus};
-use crate::controls::visualizer::Visualizer;
+use crate::controls::spectrum::Spectrum;
 
 /// Represents audio settings with well-defined constraints
 #[derive(Debug, Clone)]
@@ -88,13 +94,12 @@ pub struct AudioSystem {
     stream: OutputStream,
     #[allow(dead_code)]
     stream_handle: OutputStreamHandle,
-    visualizer: Arc<Mutex<Visualizer>>,
+    spectrum: Spectrum,
 }
 impl AudioSystem {
     pub fn new(
         library: Arc<Mutex<MusicLibrary>>,
         playback: Arc<Mutex<PlaybackControl>>,
-        visualizer: Arc<Mutex<Visualizer>>,
     ) -> Result<Self, Box<dyn Error>> {
         let (stream, stream_handle) = OutputStream::try_default()?;
         let sink = Sink::try_new(&stream_handle)?;
@@ -107,7 +112,7 @@ impl AudioSystem {
             sink,
             stream,
             stream_handle,
-            visualizer,
+            spectrum: Spectrum::default(),
         })
     }
 }
@@ -133,6 +138,9 @@ impl AudioSystem {
         };
 
         log::info!("Track Path: {:?}", track_path);
+
+        // For visualizer dumb approach
+        self.spectrum = AudioSystem::fft(&track_path)?;
 
         // Decode and play the track
         let file = std::fs::File::open(&track_path)?;
@@ -201,11 +209,6 @@ impl AudioSystem {
         if should_advance {
             self.advance_track();
         }
-
-        // Update visualizer with dummy spectrum (placeholder)
-        let mut visualizer = self.visualizer.lock();
-        let dummy_spectrum = vec![0.0; 32];
-        visualizer.update_spectrum(dummy_spectrum);
     }
 
     /// Advance to the next track automatically
@@ -328,5 +331,70 @@ impl AudioSystem {
     /// Get a clone of the sound control state
     pub fn get_sound_state(&self) -> Arc<Mutex<SoundControl>> {
         Arc::clone(&self.sound)
+    }
+}
+
+impl AudioSystem {
+    pub fn fft(path: impl AsRef<Path>) -> Result<Spectrum, Box<dyn Error>> {
+        let src = File::open(path).unwrap();
+
+        let source = Decoder::new_mp3(BufReader::new(src)).unwrap();
+
+        let samples = source.convert_samples::<f32>();
+
+        let ch = samples.channels() as usize;
+        let rate = samples.sample_rate();
+        assert!(rate % 60 == 0); // assume sample rate is divisible by 60 so that we can stream each frame 60 times per second
+        let size = (rate / 60) as usize;
+        let msize = size * ch;
+
+        let mut planner = FftPlanner::<f32>::new();
+        let fft = planner.plan_fft(size, FftDirection::Forward);
+
+        let mut slices = vec![];
+
+        let nuttall = apodize::hanning_iter(size)
+            .map(|n| n as f32)
+            .collect::<Vec<f32>>();
+
+        let samples = samples.buffered();
+
+        // TODO buffer not needed bc.: process(&mut slices[a..b])
+        let mut buffer = vec![];
+        for (k, b) in samples.enumerate() {
+            if k != 0 && k % msize == 0 {
+                fft.process(&mut buffer);
+                if buffer.len() != size {
+                    break;
+                }
+                slices.append(&mut buffer);
+            }
+            if k % ch == 0 {
+                buffer.push(Complex {
+                    re: b * nuttall[(k % msize) / 2] as f32,
+                    im: 0.0,
+                });
+            }
+        }
+
+        let out = slices
+            .into_iter()
+            .map(|v| (v.re * v.re + v.im * v.im).sqrt())
+            .collect::<Vec<f32>>();
+
+        // in buffer, frames are every `size`, 60 frames = 1sec
+
+        Ok(Spectrum {
+            inner: out,
+            size,
+            fps: 60,
+        })
+    }
+
+    pub fn get_current_frame(&self) -> &[f32] {
+        let elapsed = self.playback.lock().elapsed.as_millis() as usize;
+        let ptr =
+            self.spectrum.size * (elapsed as f32 / (1000.0 / self.spectrum.fps as f32)) as usize;
+        &self.spectrum.inner[ptr..][..self.spectrum.size]
     }
 }
