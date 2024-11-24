@@ -94,6 +94,7 @@ pub struct AudioSystem {
     #[allow(dead_code)]
     stream_handle: OutputStreamHandle,
     spectrum: Spectrum,
+    visualizer_canvas: usize,
 }
 impl AudioSystem {
     pub fn new(
@@ -112,6 +113,7 @@ impl AudioSystem {
             stream,
             stream_handle,
             spectrum: Spectrum::default(),
+            visualizer_canvas: 3,
         })
     }
 }
@@ -327,9 +329,18 @@ impl AudioSystem {
         }
         self.apply_sound_settings();
     }
+    pub fn set_visualizer_canvas_type(&mut self, canvas_type: usize) {
+        if canvas_type <= 9 {
+            self.visualizer_canvas = canvas_type;
+        }
+    }
     /// Get a clone of the sound control state
     pub fn get_sound_state(&self) -> Arc<Mutex<SoundControl>> {
         Arc::clone(&self.sound)
+    }
+
+    pub fn get_visualizer_canvas_type(&self) -> usize {
+        self.visualizer_canvas
     }
 }
 

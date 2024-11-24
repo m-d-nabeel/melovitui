@@ -52,6 +52,7 @@ impl UIManager {
         let binding = app.get_audio_system();
         let binding = binding.lock();
         let spectrum = binding.get_current_frame();
+        let canvas_type = binding.get_visualizer_canvas_type();
 
         let song_text = {
             let playback_state = playback_state.lock();
@@ -69,7 +70,7 @@ impl UIManager {
             }
         };
         self.music_library.render(frame, chunks[0], library_state);
-        self.visualizer.render(frame, main_layout[0], spectrum);
+        self.visualizer.render(frame, main_layout[0], spectrum, canvas_type);
         self.sound_control
             .render(frame, control_chunks[0], sound_state);
         self.playback_controls

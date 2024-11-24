@@ -99,6 +99,12 @@ impl App {
                 log::info!("Quit key pressed");
                 return Ok(false);
             }
+            KeyCode::Char(c) if c.is_ascii_digit() && c.is_ascii_digit() => {
+                let canvas_type = c.to_digit(10).unwrap() as usize;
+                self.audio_system
+                    .lock()
+                    .set_visualizer_canvas_type(canvas_type);
+            }
             _ => {
                 log::info!("Unhandled key event: {:?}", key_event);
             }
