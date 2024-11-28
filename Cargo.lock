@@ -242,7 +242,9 @@ checksum = "a21f936df1771bf62b77f047b726c4625ff2e8aa607c01ec06e5a05bd8463401"
 dependencies = [
  "android-tzdata",
  "iana-time-zone",
+ "js-sys",
  "num-traits",
+ "wasm-bindgen",
  "windows-targets 0.52.6",
 ]
 
@@ -732,9 +734,9 @@ dependencies = [
 
 [[package]]
 name = "libc"
-version = "0.2.164"
+version = "0.2.166"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "433bfe06b8c75da9b2e3fbea6e5329ff87748f0b144ef75306e674c3f6f7c13f"
+checksum = "c2ccc108bbc0b1331bd061864e7cd823c0cab660bbe6970e66e2c0614decde36"
 
 [[package]]
 name = "libloading"
@@ -835,11 +837,14 @@ dependencies = [
 
 [[package]]
 name = "melovitui"
-version = "1.1.0"
+version = "1.2.0"
 dependencies = [
  "apodize",
+ "chrono",
  "clap",
  "directories",
+ "lazy_static",
+ "libc",
  "log",
  "log4rs",
  "parking_lot",

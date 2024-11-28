@@ -52,7 +52,7 @@ impl VisualizerUI {
         }
     }
 
-    pub fn render(&self, frame: &mut Frame, area: Rect, spectrum: &[f32], canvas_type: usize) {
+    pub fn render(&self, frame: &mut Frame, area: Rect, spectrum: Vec<f32>, canvas_type: usize) {
         let time = std::time::SystemTime::now()
             .duration_since(std::time::UNIX_EPOCH)
             .unwrap()
@@ -72,16 +72,16 @@ impl VisualizerUI {
 
         // Select the appropriate canvas based on `canvas_type`
         let canvas = match canvas_type {
-            1 => self.get_canvas_1(inner_area, spectrum, time),
-            2 => self.get_canvas_2(inner_area, spectrum, time),
-            3 => self.get_canvas_3(inner_area, spectrum, time),
-            4 => self.get_canvas_4(inner_area, spectrum, time),
-            5 => self.get_canvas_5(inner_area, spectrum, time),
-            6 => self.get_canvas_6(inner_area, spectrum, time),
-            7 => self.get_canvas_7(inner_area, spectrum, time),
-            8 => self.get_canvas_8(inner_area, spectrum, time),
-            9 => self.get_canvas_9(inner_area, spectrum, time),
-            _ => self.get_canvas_3(inner_area, spectrum, time), // Fallback canvas
+            1 => self.get_canvas_1(inner_area, &spectrum, time),
+            2 => self.get_canvas_2(inner_area, &spectrum, time),
+            3 => self.get_canvas_3(inner_area, &spectrum, time),
+            4 => self.get_canvas_4(inner_area, &spectrum, time),
+            5 => self.get_canvas_5(inner_area, &spectrum, time),
+            6 => self.get_canvas_6(inner_area, &spectrum, time),
+            7 => self.get_canvas_7(inner_area, &spectrum, time),
+            8 => self.get_canvas_8(inner_area, &spectrum, time),
+            9 => self.get_canvas_9(inner_area, &spectrum, time),
+            _ => self.get_canvas_3(inner_area, &spectrum, time), // Fallback canvas
         };
 
         // Render the selected canvas
