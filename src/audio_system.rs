@@ -93,7 +93,7 @@ pub struct AudioSystem {
     stream: OutputStream,
     #[allow(dead_code)]
     stream_handle: OutputStreamHandle,
-    spectrum: Spectrum,
+    spectrum: Arc<Mutex<Spectrum>>,
     visualizer_canvas: usize,
 }
 impl AudioSystem {
@@ -104,6 +104,7 @@ impl AudioSystem {
         let (stream, stream_handle) = OutputStream::try_default()?;
         let sink = Sink::try_new(&stream_handle)?;
         let sound = Arc::new(Mutex::new(SoundControl::new()));
+        let spectrum = Arc::new(Mutex::new(Spectrum::default()));
 
         Ok(Self {
             library,
@@ -112,7 +113,7 @@ impl AudioSystem {
             sink,
             stream,
             stream_handle,
-            spectrum: Spectrum::default(),
+            spectrum,
             visualizer_canvas: 3,
         })
     }
@@ -141,7 +142,14 @@ impl AudioSystem {
         log::info!("Track Path: {:?}", track_path);
 
         // For visualizer dumb approach
-        self.spectrum = AudioSystem::fft(&track_path)?;
+        // Try to compute FFT for visualization, but don't let it block playback
+        {
+            let mut spectrum = self.spectrum.lock();
+            *spectrum = AudioSystem::fft(&track_path).unwrap_or_else(|e| {
+                log::warn!("Failed to compute FFT for visualization: {}", e);
+                Spectrum::default()
+            });
+        }
 
         // Decode and play the track
         let file = std::fs::File::open(&track_path)?;
@@ -225,8 +233,16 @@ impl AudioSystem {
             library.selected_index = Some(next_index);
             drop(library);
 
-            if let Err(e) = self.play_track(Some(next_index)) {
-                log::error!("Failed to advance track: {}", e);
+            match self.play_track(Some(next_index)) {
+                Ok(_) => {
+                    log::info!("Successfully advanced to next track");
+                }
+                Err(e) => {
+                    log::error!("Failed to play next track: {}", e);
+                    // Try to recover by advancing to the next track
+                    let mut playback = self.playback.lock();
+                    playback.status = PlaybackStatus::Stopped;
+                }
             }
         }
     }
@@ -363,7 +379,7 @@ impl AudioSystem {
 
         let mut slices = vec![];
 
-        let nuttall = apodize::hanning_iter(size)
+        let hamming = apodize::hamming_iter(size)
             .map(|n| n as f32)
             .collect::<Vec<f32>>();
 
@@ -381,7 +397,7 @@ impl AudioSystem {
             }
             if k % ch == 0 {
                 buffer.push(Complex {
-                    re: b * nuttall[(k % msize) / 2] as f32,
+                    re: b * hamming[(k % msize) / 2] as f32,
                     im: 0.0,
                 });
             }
@@ -401,10 +417,21 @@ impl AudioSystem {
         })
     }
 
-    pub fn get_current_frame(&self) -> &[f32] {
+    pub fn get_current_frame(&self) -> Vec<f32> {
+        // Lock the spectrum to gain access
+        let spectrum = self.spectrum.lock();
+
         let elapsed = self.playback.lock().elapsed.as_millis() as usize;
-        let ptr =
-            self.spectrum.size * (elapsed as f32 / (1000.0 / self.spectrum.fps as f32)) as usize;
-        &self.spectrum.inner[ptr..][..self.spectrum.size]
+
+        // Calculate the pointer offset for the current frame
+        let ptr = spectrum.size * (elapsed as f32 / (1000.0 / spectrum.fps as f32)) as usize;
+
+        // Ensure bounds safety
+        if ptr + spectrum.size > spectrum.inner.len() {
+            return vec![]; // Return an empty vector if out of bounds
+        }
+
+        // Copy the current frame into a new vector
+        spectrum.inner[ptr..ptr + spectrum.size].to_vec()
     }
 }

@@ -26,7 +26,7 @@ mod logger;
 mod ui;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    logger::setup_logging()?;
+    logger::setup_logging().expect("Failed to setup logging");
     // Get music directory path
     let music_dir = get_music_dir();
     log::info!("Using music directory: {:?}", music_dir);
