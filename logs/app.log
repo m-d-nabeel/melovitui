@@ -662,3 +662,94 @@ Backtrace [{ fn: "melovitui::logger::setup_panic_handler::{{closure}}" }, { fn: 
 2024-12-05 15:51:17 - INFO - ==>Track: Track { title: "i_feel_it_coming.mp3", artist: None, path: "/home/m-d-nabeel/Music/i_feel_it_coming.mp3", duration: Some(297.691428571s) }
 2024-12-05 15:51:17 - INFO - ==>Track Duration: 297.691428571s
 2024-12-05 15:51:32 - INFO - Quit key pressed
+2025-01-11 02:36:40 - INFO - Successfully redirected stderr to file
+2025-01-11 02:36:40 - INFO - Logging system initialized
+2025-01-11 02:36:40 - INFO - Using music directory: "/home/m-d-nabeel/Music"
+2025-01-11 02:36:40 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 02:36:40 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 02:36:40 - INFO - using xing header for duration
+2025-01-11 02:36:40 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 02:36:40 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 02:36:40 - INFO - using xing header for duration
+2025-01-11 02:36:40 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 02:36:40 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 02:36:40 - INFO - using xing header for duration
+2025-01-11 02:36:40 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 02:36:40 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 02:36:40 - INFO - using xing header for duration
+2025-01-11 02:36:40 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 02:36:40 - INFO - found the format marker [ff, fb] @ 1239+2 bytes.
+2025-01-11 02:36:40 - INFO - using xing header for duration
+2025-01-11 02:36:40 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
+2025-01-11 02:36:40 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
+2025-01-11 02:36:40 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 02:36:40 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 02:36:40 - INFO - using xing header for duration
+2025-01-11 02:36:40 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 02:36:40 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 02:36:40 - INFO - using xing header for duration
+2025-01-11 02:36:40 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 02:36:40 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 02:36:40 - INFO - using xing header for duration
+2025-01-11 02:36:40 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 02:36:40 - INFO - found the format marker [ff, fb] @ 172032+2 bytes.
+2025-01-11 02:36:40 - INFO - using xing header for duration
+2025-01-11 02:36:40 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 02:36:40 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 02:36:40 - INFO - using xing header for duration
+2025-01-11 02:36:40 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
+2025-01-11 02:36:40 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
+2025-01-11 02:36:41 - INFO - Selected next track
+2025-01-11 02:36:43 - INFO - Track Path: "/home/m-d-nabeel/Music/Diviners, Philly K. - Savannah (feat. Philly K) [NCS Release].mp3"
+2025-01-11 02:36:43 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 02:36:43 - INFO - found the format marker [ff, fb] @ 1239+2 bytes.
+2025-01-11 02:36:43 - INFO - using xing header for duration
+2025-01-11 02:36:43 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 02:36:43 - INFO - found the format marker [ff, fb] @ 1239+2 bytes.
+2025-01-11 02:36:43 - INFO - using xing header for duration
+2025-01-11 02:36:43 - INFO - ==>Track: Track { title: "Diviners, Philly K. - Savannah (feat. Philly K) [NCS Release].mp3", artist: None, path: "/home/m-d-nabeel/Music/Diviners, Philly K. - Savannah (feat. Philly K) [NCS Release].mp3", duration: Some(204.016326531s) }
+2025-01-11 02:36:43 - INFO - ==>Track Duration: 204.016326531s
+2025-01-11 02:36:45 - INFO - Playback paused
+2025-01-11 02:36:45 - INFO - Playback resumed
+2025-01-11 02:36:48 - INFO - Selected next track
+2025-01-11 02:36:48 - INFO - Selected next track
+2025-01-11 02:36:48 - INFO - Selected next track
+2025-01-11 02:36:48 - INFO - Selected next track
+2025-01-11 02:36:49 - INFO - Track Path: "/home/m-d-nabeel/Music/Suniya Suniya Rata-(SongsPK).mp3"
+2025-01-11 02:36:49 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 02:36:49 - INFO - found the format marker [ff, fb] @ 172032+2 bytes.
+2025-01-11 02:36:49 - INFO - using xing header for duration
+2025-01-11 02:36:50 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 02:36:50 - INFO - found the format marker [ff, fb] @ 172032+2 bytes.
+2025-01-11 02:36:50 - INFO - using xing header for duration
+2025-01-11 02:36:50 - INFO - ==>Track: Track { title: "Suniya Suniya Rata-(SongsPK).mp3", artist: None, path: "/home/m-d-nabeel/Music/Suniya Suniya Rata-(SongsPK).mp3", duration: Some(197.590204082s) }
+2025-01-11 02:36:50 - INFO - ==>Track Duration: 197.590204082s
+2025-01-11 02:36:51 - INFO - Selected next track
+2025-01-11 02:36:51 - INFO - Track Path: "/home/m-d-nabeel/Music/die_for_you.mp3"
+2025-01-11 02:36:51 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 02:36:51 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 02:36:51 - INFO - using xing header for duration
+2025-01-11 02:36:52 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 02:36:52 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 02:36:52 - INFO - using xing header for duration
+2025-01-11 02:36:52 - INFO - ==>Track: Track { title: "die_for_you.mp3", artist: None, path: "/home/m-d-nabeel/Music/die_for_you.mp3", duration: Some(260.310204082s) }
+2025-01-11 02:36:52 - INFO - ==>Track Duration: 260.310204082s
+2025-01-11 02:36:53 - INFO - Selected next track
+2025-01-11 02:36:53 - INFO - Track Path: "/home/m-d-nabeel/Music/elemental-magic-spell-impact-outgoing-228342.mp3"
+2025-01-11 02:36:53 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
+2025-01-11 02:36:53 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
+2025-01-11 02:36:53 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
+2025-01-11 02:36:53 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
+2025-01-11 02:36:53 - INFO - ==>Track: Track { title: "elemental-magic-spell-impact-outgoing-228342.mp3", artist: None, path: "/home/m-d-nabeel/Music/elemental-magic-spell-impact-outgoing-228342.mp3", duration: Some(3.192s) }
+2025-01-11 02:36:53 - INFO - ==>Track Duration: 3.192s
+2025-01-11 02:36:57 - INFO - Track Path: "/home/m-d-nabeel/Music/i_feel_it_coming.mp3"
+2025-01-11 02:36:57 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 02:36:57 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 02:36:57 - INFO - using xing header for duration
+2025-01-11 02:36:57 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 02:36:57 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 02:36:57 - INFO - using xing header for duration
+2025-01-11 02:36:57 - INFO - ==>Track: Track { title: "i_feel_it_coming.mp3", artist: None, path: "/home/m-d-nabeel/Music/i_feel_it_coming.mp3", duration: Some(297.691428571s) }
+2025-01-11 02:36:57 - INFO - ==>Track Duration: 297.691428571s
+2025-01-11 02:36:57 - INFO - Successfully advanced to next track
+2025-01-11 02:37:00 - INFO - Quit key pressed
