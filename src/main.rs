@@ -27,7 +27,7 @@ mod ui;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     logger::setup_logging().expect("Failed to setup logging");
-    // Get music directory path
+
     let music_dir = get_music_dir();
     log::info!("Using music directory: {:?}", music_dir);
 
@@ -39,10 +39,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut ui_manager = UIManager::new();
     let mut terminal = Terminal::new(backend)?;
 
-    // Create app state and initialize audio
     let mut app = App::new(music_dir)?;
 
-    // Run main app loop
     let result = run_app(&mut terminal, &mut app, &mut ui_manager);
 
     // Restore terminal
@@ -71,7 +69,6 @@ fn run_app<B: Backend>(
     let mut last_tick = Instant::now();
 
     loop {
-        // Render UI
         terminal.draw(|f| ui_manager.render(f, app))?;
 
         // Handle timing for updates
