@@ -34,55 +34,6 @@ impl Default for SoundControl {
     }
 }
 
-impl SoundControl {
-    /// Creates a new SoundControl with validated initial values
-    pub fn new() -> Self {
-        Self::default()
-    }
-
-    /// Adjusts the volume by a delta and clamps it within the valid range
-    pub fn adjust_volume(&mut self, delta: f32) {
-        self.volume = (self.volume + delta).clamp(0.0, 100.0);
-        log::info!("Volume adjusted to {}", self.volume);
-    }
-
-    /// Adjusts the bass by a delta and clamps it within the valid range
-    pub fn adjust_bass(&mut self, delta: f32) {
-        self.bass = (self.bass + delta).clamp(-100.0, 100.0);
-        log::info!("Bass adjusted to {}", self.bass);
-    }
-
-    /// Adjusts the treble by a delta and clamps it within the valid range
-    pub fn adjust_treble(&mut self, delta: f32) {
-        self.treble = (self.treble + delta).clamp(-100.0, 100.0);
-        log::info!("Treble adjusted to {}", self.treble);
-    }
-
-    /// Adjusts the balance by a delta and clamps it within the valid range
-    pub fn adjust_balance(&mut self, delta: f32) {
-        self.balance = (self.balance + delta).clamp(-100.0, 100.0);
-        log::info!("Balance adjusted to {}", self.balance);
-    }
-    /// Getter for volume
-    pub fn volume(&self) -> f32 {
-        self.volume
-    }
-    /// Getter for bass
-    pub fn bass(&self) -> f32 {
-        self.bass
-    }
-
-    /// Getter for treble
-    pub fn treble(&self) -> f32 {
-        self.treble
-    }
-
-    /// Getter for balance
-    pub fn balance(&self) -> f32 {
-        self.balance
-    }
-}
-
 /// Primary audio system managing playback, library, and sound controls
 pub struct AudioSystem {
     library: Arc<Mutex<MusicLibrary>>,
@@ -291,76 +242,6 @@ impl AudioSystem {
 }
 
 impl AudioSystem {
-    /// Pause current playback
-    pub fn pause(&mut self) {
-        let mut playback = self.playback.lock();
-        playback.status = PlaybackStatus::Paused;
-        self.sink.pause();
-    }
-
-    /// Resume paused playback
-    pub fn resume(&mut self) {
-        let mut playback = self.playback.lock();
-        playback.status = PlaybackStatus::Playing;
-        self.sink.play();
-    }
-
-    /// Stop current playback
-    pub fn stop(&mut self) {
-        let mut playback = self.playback.lock();
-        playback.status = PlaybackStatus::Stopped;
-        playback.elapsed = Duration::ZERO;
-        self.sink.stop();
-    }
-}
-impl AudioSystem {
-    pub fn adjust_volume(&mut self, delta: f32) {
-        {
-            let mut sound_control = self.sound.lock();
-            sound_control.adjust_volume(delta);
-        }
-        self.apply_sound_settings();
-    }
-
-    pub fn adjust_bass(&mut self, delta: f32) {
-        {
-            let mut sound_control = self.sound.lock();
-            sound_control.adjust_bass(delta);
-        }
-        self.apply_sound_settings();
-    }
-
-    pub fn adjust_treble(&mut self, delta: f32) {
-        {
-            let mut sound_control = self.sound.lock();
-            sound_control.adjust_treble(delta);
-        }
-        self.apply_sound_settings();
-    }
-
-    pub fn adjust_balance(&mut self, delta: f32) {
-        {
-            let mut sound_control = self.sound.lock();
-            sound_control.adjust_balance(delta);
-        }
-        self.apply_sound_settings();
-    }
-    pub fn set_visualizer_canvas_type(&mut self, canvas_type: usize) {
-        if canvas_type <= 9 {
-            self.visualizer_canvas = canvas_type;
-        }
-    }
-    /// Get a clone of the sound control state
-    pub fn get_sound_state(&self) -> Arc<Mutex<SoundControl>> {
-        Arc::clone(&self.sound)
-    }
-
-    pub fn get_visualizer_canvas_type(&self) -> usize {
-        self.visualizer_canvas
-    }
-}
-
-impl AudioSystem {
     pub fn fft(path: impl AsRef<Path>) -> Result<Spectrum, Box<dyn Error>> {
         let src = File::open(path).unwrap();
 
@@ -433,5 +314,125 @@ impl AudioSystem {
 
         // Copy the current frame into a new vector
         spectrum.inner[ptr..ptr + spectrum.size].to_vec()
+    }
+}
+
+impl AudioSystem {
+    /// Pause current playback
+    pub fn pause(&mut self) {
+        let mut playback = self.playback.lock();
+        playback.status = PlaybackStatus::Paused;
+        self.sink.pause();
+    }
+
+    /// Resume paused playback
+    pub fn resume(&mut self) {
+        let mut playback = self.playback.lock();
+        playback.status = PlaybackStatus::Playing;
+        self.sink.play();
+    }
+
+    /// Stop current playback
+    pub fn stop(&mut self) {
+        let mut playback = self.playback.lock();
+        playback.status = PlaybackStatus::Stopped;
+        playback.elapsed = Duration::ZERO;
+        self.sink.stop();
+    }
+}
+
+impl AudioSystem {
+    pub fn adjust_volume(&mut self, delta: f32) {
+        {
+            let mut sound_control = self.sound.lock();
+            sound_control.adjust_volume(delta);
+        }
+        self.apply_sound_settings();
+    }
+
+    pub fn adjust_bass(&mut self, delta: f32) {
+        {
+            let mut sound_control = self.sound.lock();
+            sound_control.adjust_bass(delta);
+        }
+        self.apply_sound_settings();
+    }
+
+    pub fn adjust_treble(&mut self, delta: f32) {
+        {
+            let mut sound_control = self.sound.lock();
+            sound_control.adjust_treble(delta);
+        }
+        self.apply_sound_settings();
+    }
+
+    pub fn adjust_balance(&mut self, delta: f32) {
+        {
+            let mut sound_control = self.sound.lock();
+            sound_control.adjust_balance(delta);
+        }
+        self.apply_sound_settings();
+    }
+    pub fn set_visualizer_canvas_type(&mut self, canvas_type: usize) {
+        if canvas_type <= 9 {
+            self.visualizer_canvas = canvas_type;
+        }
+    }
+    /// Get a clone of the sound control state
+    pub fn get_sound_state(&self) -> Arc<Mutex<SoundControl>> {
+        Arc::clone(&self.sound)
+    }
+
+    pub fn get_visualizer_canvas_type(&self) -> usize {
+        self.visualizer_canvas
+    }
+}
+
+impl SoundControl {
+    /// Creates a new SoundControl with validated initial values
+    pub fn new() -> Self {
+        Self::default()
+    }
+
+    /// Adjusts the volume by a delta and clamps it within the valid range
+    pub fn adjust_volume(&mut self, delta: f32) {
+        self.volume = (self.volume + delta).clamp(0.0, 100.0);
+        log::info!("Volume adjusted to {}", self.volume);
+    }
+
+    /// Adjusts the bass by a delta and clamps it within the valid range
+    pub fn adjust_bass(&mut self, delta: f32) {
+        self.bass = (self.bass + delta).clamp(-100.0, 100.0);
+        log::info!("Bass adjusted to {}", self.bass);
+    }
+
+    /// Adjusts the treble by a delta and clamps it within the valid range
+    pub fn adjust_treble(&mut self, delta: f32) {
+        self.treble = (self.treble + delta).clamp(-100.0, 100.0);
+        log::info!("Treble adjusted to {}", self.treble);
+    }
+
+    /// Adjusts the balance by a delta and clamps it within the valid range
+    pub fn adjust_balance(&mut self, delta: f32) {
+        self.balance = (self.balance + delta).clamp(-100.0, 100.0);
+        log::info!("Balance adjusted to {}", self.balance);
+    }
+    /// Getter for volume
+    pub fn volume(&self) -> f32 {
+        self.volume
+    }
+    /// Getter for bass
+    pub fn bass(&self) -> f32 {
+        self.bass
+    }
+
+    /// Getter for treble
+    pub fn treble(&self) -> f32 {
+        self.treble
+    }
+
+    /// Getter for balance
+    pub fn balance(&self) -> f32 {
+        self.balance
     }
 }

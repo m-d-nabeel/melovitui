@@ -493,3 +493,172 @@ Backtrace [{ fn: "melovitui::logger::setup_panic_handler::{{closure}}" }, { fn: 
 2024-11-28 08:06:59 - INFO - ==>Track Duration: 297.691428571s
 2024-11-28 08:06:59 - INFO - Successfully advanced to next track
 2024-11-28 08:07:01 - INFO - Quit key pressed
+2024-12-05 15:49:29 - INFO - Successfully redirected stderr to file
+2024-12-05 15:49:29 - INFO - Logging system initialized
+2024-12-05 15:49:29 - INFO - Using music directory: "/home/m-d-nabeel/Music"
+2024-12-05 15:49:29 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2024-12-05 15:49:29 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2024-12-05 15:49:29 - INFO - using xing header for duration
+2024-12-05 15:49:29 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2024-12-05 15:49:29 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2024-12-05 15:49:29 - INFO - using xing header for duration
+2024-12-05 15:49:29 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2024-12-05 15:49:29 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2024-12-05 15:49:29 - INFO - using xing header for duration
+2024-12-05 15:49:29 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2024-12-05 15:49:29 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2024-12-05 15:49:29 - INFO - using xing header for duration
+2024-12-05 15:49:29 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2024-12-05 15:49:29 - INFO - found the format marker [ff, fb] @ 1239+2 bytes.
+2024-12-05 15:49:29 - INFO - using xing header for duration
+2024-12-05 15:49:29 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
+2024-12-05 15:49:29 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
+2024-12-05 15:49:29 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2024-12-05 15:49:29 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2024-12-05 15:49:29 - INFO - using xing header for duration
+2024-12-05 15:49:29 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2024-12-05 15:49:29 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2024-12-05 15:49:29 - INFO - using xing header for duration
+2024-12-05 15:49:29 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2024-12-05 15:49:29 - INFO - found the format marker [ff, fb] @ 172032+2 bytes.
+2024-12-05 15:49:29 - INFO - using xing header for duration
+2024-12-05 15:49:29 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2024-12-05 15:49:29 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2024-12-05 15:49:29 - INFO - using xing header for duration
+2024-12-05 15:49:29 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
+2024-12-05 15:49:29 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
+2024-12-05 15:49:36 - INFO - Selected next track
+2024-12-05 15:49:36 - INFO - Selected next track
+2024-12-05 15:49:36 - INFO - Selected next track
+2024-12-05 15:49:37 - INFO - Selected next track
+2024-12-05 15:49:37 - INFO - Selected next track
+2024-12-05 15:49:37 - INFO - Selected previous track
+2024-12-05 15:49:38 - INFO - Track Path: "/home/m-d-nabeel/Music/Suniya Suniya Rata-(SongsPK).mp3"
+2024-12-05 15:49:38 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2024-12-05 15:49:38 - INFO - found the format marker [ff, fb] @ 172032+2 bytes.
+2024-12-05 15:49:38 - INFO - using xing header for duration
+2024-12-05 15:49:38 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2024-12-05 15:49:38 - INFO - found the format marker [ff, fb] @ 172032+2 bytes.
+2024-12-05 15:49:38 - INFO - using xing header for duration
+2024-12-05 15:49:38 - INFO - ==>Track: Track { title: "Suniya Suniya Rata-(SongsPK).mp3", artist: None, path: "/home/m-d-nabeel/Music/Suniya Suniya Rata-(SongsPK).mp3", duration: Some(197.590204082s) }
+2024-12-05 15:49:38 - INFO - ==>Track Duration: 197.590204082s
+2024-12-05 15:50:12 - INFO - Volume adjusted to 55
+2024-12-05 15:50:12 - INFO - Volume adjusted to 60
+2024-12-05 15:50:12 - INFO - Volume adjusted to 65
+2024-12-05 15:50:12 - INFO - Volume adjusted to 70
+2024-12-05 15:50:13 - INFO - Volume adjusted to 75
+2024-12-05 15:50:13 - INFO - Volume adjusted to 80
+2024-12-05 15:50:13 - INFO - Volume adjusted to 85
+2024-12-05 15:50:13 - INFO - Volume adjusted to 80
+2024-12-05 15:50:14 - INFO - Volume adjusted to 75
+2024-12-05 15:50:14 - INFO - Volume adjusted to 70
+2024-12-05 15:50:14 - INFO - Volume adjusted to 65
+2024-12-05 15:50:14 - INFO - Volume adjusted to 60
+2024-12-05 15:50:14 - INFO - Volume adjusted to 55
+2024-12-05 15:50:14 - INFO - Volume adjusted to 50
+2024-12-05 15:50:14 - INFO - Volume adjusted to 45
+2024-12-05 15:50:16 - INFO - Bass adjusted to 5
+2024-12-05 15:50:16 - INFO - Bass adjusted to 10
+2024-12-05 15:50:16 - INFO - Bass adjusted to 15
+2024-12-05 15:50:16 - INFO - Bass adjusted to 20
+2024-12-05 15:50:16 - INFO - Bass adjusted to 25
+2024-12-05 15:50:17 - INFO - Bass adjusted to 30
+2024-12-05 15:50:17 - INFO - Bass adjusted to 35
+2024-12-05 15:50:17 - INFO - Bass adjusted to 40
+2024-12-05 15:50:17 - INFO - Bass adjusted to 35
+2024-12-05 15:50:18 - INFO - Bass adjusted to 30
+2024-12-05 15:50:18 - INFO - Bass adjusted to 25
+2024-12-05 15:50:18 - INFO - Bass adjusted to 20
+2024-12-05 15:50:18 - INFO - Bass adjusted to 15
+2024-12-05 15:50:19 - INFO - Balance adjusted to 5
+2024-12-05 15:50:19 - INFO - Balance adjusted to 10
+2024-12-05 15:50:20 - INFO - Balance adjusted to 15
+2024-12-05 15:50:20 - INFO - Balance adjusted to 10
+2024-12-05 15:50:20 - INFO - Balance adjusted to 5
+2024-12-05 15:50:20 - INFO - Balance adjusted to 0
+2024-12-05 15:50:20 - INFO - Balance adjusted to -5
+2024-12-05 15:50:21 - INFO - Volume adjusted to 40
+2024-12-05 15:50:22 - INFO - Volume adjusted to 45
+2024-12-05 15:50:22 - INFO - Volume adjusted to 40
+2024-12-05 15:50:22 - INFO - Volume adjusted to 35
+2024-12-05 15:50:22 - INFO - Volume adjusted to 30
+2024-12-05 15:50:23 - INFO - Volume adjusted to 35
+2024-12-05 15:50:23 - INFO - Volume adjusted to 40
+2024-12-05 15:50:23 - INFO - Volume adjusted to 45
+2024-12-05 15:50:25 - INFO - Treble adjusted to 5
+2024-12-05 15:50:25 - INFO - Treble adjusted to 10
+2024-12-05 15:50:26 - INFO - Treble adjusted to 15
+2024-12-05 15:50:26 - INFO - Treble adjusted to 20
+2024-12-05 15:50:26 - INFO - Treble adjusted to 15
+2024-12-05 15:50:26 - INFO - Treble adjusted to 10
+2024-12-05 15:50:26 - INFO - Treble adjusted to 5
+2024-12-05 15:50:27 - INFO - Treble adjusted to 10
+2024-12-05 15:50:28 - INFO - Balance adjusted to 0
+2024-12-05 15:50:28 - INFO - Balance adjusted to 5
+2024-12-05 15:50:28 - INFO - Balance adjusted to 0
+2024-12-05 15:50:29 - INFO - Balance adjusted to -5
+2024-12-05 15:50:29 - INFO - Balance adjusted to -10
+2024-12-05 15:50:29 - INFO - Balance adjusted to -15
+2024-12-05 15:50:30 - INFO - Volume adjusted to 50
+2024-12-05 15:50:31 - INFO - Volume adjusted to 55
+2024-12-05 15:50:31 - INFO - Volume adjusted to 50
+2024-12-05 15:50:31 - INFO - Bass adjusted to 20
+2024-12-05 15:50:32 - INFO - Bass adjusted to 15
+2024-12-05 15:50:33 - INFO - Unhandled key event: KeyEvent { code: Char(' '), modifiers: KeyModifiers(0x0), kind: Press, state: KeyEventState(0x0) }
+2024-12-05 15:50:34 - INFO - Unhandled key event: KeyEvent { code: Char(' '), modifiers: KeyModifiers(0x0), kind: Press, state: KeyEventState(0x0) }
+2024-12-05 15:50:35 - INFO - Playback paused
+2024-12-05 15:50:40 - INFO - Playback resumed
+2024-12-05 15:51:12 - INFO - Selected next track
+2024-12-05 15:51:12 - INFO - Selected next track
+2024-12-05 15:51:12 - INFO - Selected next track
+2024-12-05 15:51:12 - INFO - Selected previous track
+2024-12-05 15:51:12 - INFO - Selected next track
+2024-12-05 15:51:12 - INFO - Selected previous track
+2024-12-05 15:51:13 - INFO - Selected next track
+2024-12-05 15:51:13 - INFO - Selected previous track
+2024-12-05 15:51:13 - INFO - Selected next track
+2024-12-05 15:51:13 - INFO - Selected next track
+2024-12-05 15:51:14 - INFO - Selected next track
+2024-12-05 15:51:14 - INFO - Selected next track
+2024-12-05 15:51:14 - INFO - Selected next track
+2024-12-05 15:51:14 - INFO - Selected next track
+2024-12-05 15:51:14 - INFO - Selected next track
+2024-12-05 15:51:14 - INFO - Selected next track
+2024-12-05 15:51:14 - INFO - Selected next track
+2024-12-05 15:51:14 - INFO - Selected next track
+2024-12-05 15:51:14 - INFO - Selected next track
+2024-12-05 15:51:14 - INFO - Selected next track
+2024-12-05 15:51:14 - INFO - Selected next track
+2024-12-05 15:51:14 - INFO - Selected next track
+2024-12-05 15:51:14 - INFO - Selected next track
+2024-12-05 15:51:14 - INFO - Selected next track
+2024-12-05 15:51:14 - INFO - Selected next track
+2024-12-05 15:51:14 - INFO - Selected next track
+2024-12-05 15:51:14 - INFO - Selected next track
+2024-12-05 15:51:14 - INFO - Selected next track
+2024-12-05 15:51:14 - INFO - Selected next track
+2024-12-05 15:51:14 - INFO - Selected next track
+2024-12-05 15:51:14 - INFO - Selected next track
+2024-12-05 15:51:15 - INFO - Selected next track
+2024-12-05 15:51:15 - INFO - Selected next track
+2024-12-05 15:51:15 - INFO - Selected next track
+2024-12-05 15:51:15 - INFO - Selected next track
+2024-12-05 15:51:15 - INFO - Selected next track
+2024-12-05 15:51:15 - INFO - Selected next track
+2024-12-05 15:51:15 - INFO - Selected next track
+2024-12-05 15:51:15 - INFO - Selected next track
+2024-12-05 15:51:15 - INFO - Selected next track
+2024-12-05 15:51:15 - INFO - Selected next track
+2024-12-05 15:51:15 - INFO - Selected next track
+2024-12-05 15:51:15 - INFO - Selected previous track
+2024-12-05 15:51:16 - INFO - Selected next track
+2024-12-05 15:51:16 - INFO - Track Path: "/home/m-d-nabeel/Music/i_feel_it_coming.mp3"
+2024-12-05 15:51:16 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2024-12-05 15:51:16 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2024-12-05 15:51:16 - INFO - using xing header for duration
+2024-12-05 15:51:17 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2024-12-05 15:51:17 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2024-12-05 15:51:17 - INFO - using xing header for duration
+2024-12-05 15:51:17 - INFO - ==>Track: Track { title: "i_feel_it_coming.mp3", artist: None, path: "/home/m-d-nabeel/Music/i_feel_it_coming.mp3", duration: Some(297.691428571s) }
+2024-12-05 15:51:17 - INFO - ==>Track Duration: 297.691428571s
+2024-12-05 15:51:32 - INFO - Quit key pressed
