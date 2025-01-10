@@ -13,7 +13,6 @@ use log4rs::{
 use std::{
     fs::{File, OpenOptions},
     io::Write,
-    os::fd::AsRawFd,
     panic,
     sync::Mutex,
 };
@@ -91,18 +90,22 @@ fn setup_panic_handler() {
 }
 
 fn redirect_stderr() -> Result<(), Box<dyn std::error::Error>> {
-    let stderr_file = OpenOptions::new()
-        .create(true)
-        .append(true)
-        .open("logs/stderr.log")?;
+    #[cfg(unix)]
+    {
+        use std::os::fd::AsRawFd;
+        let stderr_file = OpenOptions::new()
+            .create(true)
+            .append(true)
+            .open("logs/stderr.log")?;
 
-    std::env::set_var("RUST_BACKTRACE", "1");
+        std::env::set_var("RUST_BACKTRACE", "1");
 
-    unsafe {
-        if libc::dup2(stderr_file.as_raw_fd(), std::io::stderr().as_raw_fd()) != -1 {
-            info!("Successfully redirected stderr to file");
-        } else {
-            warn!("Failed to redirect stderr to file");
+        unsafe {
+            if libc::dup2(stderr_file.as_raw_fd(), std::io::stderr().as_raw_fd()) != -1 {
+                info!("Successfully redirected stderr to file");
+            } else {
+                warn!("Failed to redirect stderr to file");
+            }
         }
     }
 

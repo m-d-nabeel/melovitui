@@ -1,755 +1,176 @@
-2024-11-28T06:05:21.192922560+05:30 - INFO - Using music directory: "/home/m-d-nabeel/Music"
-2024-11-28T06:05:21.193245717+05:30 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28T06:05:21.193269838+05:30 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28T06:05:21.193297232+05:30 - INFO - using xing header for duration
-2024-11-28T06:05:21.193316544+05:30 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28T06:05:21.193321352+05:30 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28T06:05:21.193325011+05:30 - INFO - using xing header for duration
-2024-11-28T06:05:21.193368327+05:30 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28T06:05:21.193371398+05:30 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28T06:05:21.193373826+05:30 - INFO - using xing header for duration
-2024-11-28T06:05:21.193380315+05:30 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28T06:05:21.193383085+05:30 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28T06:05:21.193386853+05:30 - INFO - using xing header for duration
-2024-11-28T06:05:21.193397828+05:30 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28T06:05:21.193409443+05:30 - INFO - found the format marker [ff, fb] @ 1239+2 bytes.
-2024-11-28T06:05:21.193413816+05:30 - INFO - using xing header for duration
-2024-11-28T06:05:21.193425276+05:30 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28T06:05:21.193429955+05:30 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28T06:05:21.193434146+05:30 - INFO - using xing header for duration
-2024-11-28T06:05:21.193442226+05:30 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28T06:05:21.193444682+05:30 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28T06:05:21.193446935+05:30 - INFO - using xing header for duration
-2024-11-28T06:05:21.193456189+05:30 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28T06:05:21.193636332+05:30 - INFO - found the format marker [ff, fb] @ 172032+2 bytes.
-2024-11-28T06:05:21.193641707+05:30 - INFO - using xing header for duration
-2024-11-28T06:05:21.193664035+05:30 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28T06:05:21.193669419+05:30 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28T06:05:21.193672445+05:30 - INFO - using xing header for duration
-2024-11-28T06:05:21.193687202+05:30 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
-2024-11-28T06:05:21.193692216+05:30 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
-2024-11-28T06:05:36.407053018+05:30 - INFO - Selected next track
-2024-11-28T06:05:36.585328793+05:30 - INFO - Selected next track
-2024-11-28T06:05:36.760476930+05:30 - INFO - Selected next track
-2024-11-28T06:05:36.938369326+05:30 - INFO - Selected next track
-2024-11-28T06:05:40.265313816+05:30 - INFO - Selected next track
-2024-11-28T06:05:40.450224547+05:30 - INFO - Selected next track
-2024-11-28T06:05:40.624496363+05:30 - INFO - Selected next track
-2024-11-28T06:05:43.380046975+05:30 - INFO - Selected next track
-2024-11-28T06:05:44.594647552+05:30 - INFO - Selected previous track
-2024-11-28T06:05:44.932113847+05:30 - INFO - Track Path: "/home/m-d-nabeel/Music/relaxing-guitar-loop-v5-245859.mp3"
-2024-11-28T06:05:44.932210683+05:30 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
-2024-11-28T06:05:44.932230099+05:30 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
-2024-11-28T06:05:44.981206146+05:30 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
-2024-11-28T06:05:44.981241423+05:30 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
-2024-11-28T06:05:44.981292218+05:30 - INFO - ==>Track: Track { title: "relaxing-guitar-loop-v5-245859.mp3", artist: None, path: "/home/m-d-nabeel/Music/relaxing-guitar-loop-v5-245859.mp3", duration: Some(18.311836735s) }
-2024-11-28T06:05:44.981299973+05:30 - INFO - ==>Track Duration: 18.311836735s
-2024-11-28 06:13:57 - INFO - Successfully redirected stderr to file
-2024-11-28 06:13:57 - INFO - Logging system initialized
-2024-11-28 06:13:57 - INFO - Using music directory: "/home/m-d-nabeel/Music"
-2024-11-28 06:13:57 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:13:57 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:13:57 - INFO - using xing header for duration
-2024-11-28 06:13:57 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:13:57 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:13:57 - INFO - using xing header for duration
-2024-11-28 06:13:57 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:13:57 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:13:57 - INFO - using xing header for duration
-2024-11-28 06:13:57 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:13:57 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:13:57 - INFO - using xing header for duration
-2024-11-28 06:13:57 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:13:57 - INFO - found the format marker [ff, fb] @ 1239+2 bytes.
-2024-11-28 06:13:57 - INFO - using xing header for duration
-2024-11-28 06:13:57 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:13:57 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:13:57 - INFO - using xing header for duration
-2024-11-28 06:13:57 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:13:57 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:13:57 - INFO - using xing header for duration
-2024-11-28 06:13:57 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:13:57 - INFO - found the format marker [ff, fb] @ 172032+2 bytes.
-2024-11-28 06:13:57 - INFO - using xing header for duration
-2024-11-28 06:13:57 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:13:57 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:13:57 - INFO - using xing header for duration
-2024-11-28 06:13:57 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
-2024-11-28 06:13:57 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
-2024-11-28 06:14:04 - INFO - Selected next track
-2024-11-28 06:14:04 - INFO - Selected next track
-2024-11-28 06:14:04 - INFO - Selected next track
-2024-11-28 06:14:04 - INFO - Selected next track
-2024-11-28 06:14:05 - INFO - Selected next track
-2024-11-28 06:14:05 - INFO - Selected next track
-2024-11-28 06:14:06 - INFO - Selected next track
-2024-11-28 06:14:08 - INFO - Track Path: "/home/m-d-nabeel/Music/relaxing-guitar-loop-v5-245859.mp3"
-2024-11-28 06:14:08 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
-2024-11-28 06:14:08 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
-2024-11-28 06:14:08 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
-2024-11-28 06:14:08 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
-2024-11-28 06:14:08 - INFO - ==>Track: Track { title: "relaxing-guitar-loop-v5-245859.mp3", artist: None, path: "/home/m-d-nabeel/Music/relaxing-guitar-loop-v5-245859.mp3", duration: Some(18.311836735s) }
-2024-11-28 06:14:08 - INFO - ==>Track Duration: 18.311836735s
-2024-11-28 06:14:27 - ERROR - PANIC: 
-[PANIC] 2024-11-28 06:14:27 - Thread: main
-Info: PanicHookInfo { payload: Any { .. }, location: Location { file: "src/audio_system.rs", line: 425, col: 36 }, can_unwind: true, force_no_backtrace: false }
-Backtrace:
-Backtrace [{ fn: "melovitui::logger::setup_panic_handler::{{closure}}" }, { fn: "std::panicking::rust_panic_with_hook" }, { fn: "std::panicking::begin_panic_handler::{{closure}}" }, { fn: "std::sys::backtrace::__rust_end_short_backtrace" }, { fn: "rust_begin_unwind" }, { fn: "core::panicking::panic_fmt" }, { fn: "core::slice::index::slice_end_index_len_fail" }, { fn: "melovitui::audio_system::AudioSystem::get_current_frame" }, { fn: "melovitui::ui::view::UIManager::render" }, { fn: "ratatui::terminal::terminal::Terminal<B>::try_draw" }, { fn: "melovitui::run_app" }, { fn: "melovitui::main" }, { fn: "std::sys::backtrace::__rust_begin_short_backtrace" }, { fn: "std::rt::lang_start::{{closure}}" }, { fn: "std::rt::lang_start_internal" }, { fn: "main" }, { fn: "__libc_start_call_main", file: "./csu/../sysdeps/nptl/libc_start_call_main.h", line: 58 }, { fn: "__libc_start_main_impl", file: "./csu/../csu/libc-start.c", line: 360 }, { fn: "_start" }]
-
-2024-11-28 06:21:02 - INFO - Successfully redirected stderr to file
-2024-11-28 06:21:02 - INFO - Logging system initialized
-2024-11-28 06:21:02 - INFO - Using music directory: "/home/m-d-nabeel/Music"
-2024-11-28 06:21:02 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:21:02 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:21:02 - INFO - using xing header for duration
-2024-11-28 06:21:02 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:21:02 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:21:02 - INFO - using xing header for duration
-2024-11-28 06:21:02 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:21:02 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:21:02 - INFO - using xing header for duration
-2024-11-28 06:21:02 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:21:02 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:21:02 - INFO - using xing header for duration
-2024-11-28 06:21:02 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:21:02 - INFO - found the format marker [ff, fb] @ 1239+2 bytes.
-2024-11-28 06:21:02 - INFO - using xing header for duration
-2024-11-28 06:21:02 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:21:02 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:21:02 - INFO - using xing header for duration
-2024-11-28 06:21:02 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:21:02 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:21:02 - INFO - using xing header for duration
-2024-11-28 06:21:02 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:21:02 - INFO - found the format marker [ff, fb] @ 172032+2 bytes.
-2024-11-28 06:21:02 - INFO - using xing header for duration
-2024-11-28 06:21:02 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:21:02 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:21:02 - INFO - using xing header for duration
-2024-11-28 06:21:02 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
-2024-11-28 06:21:02 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
-2024-11-28 06:21:16 - INFO - Selected next track
-2024-11-28 06:21:16 - INFO - Selected next track
-2024-11-28 06:21:16 - INFO - Selected next track
-2024-11-28 06:21:16 - INFO - Selected next track
-2024-11-28 06:21:17 - INFO - Selected next track
-2024-11-28 06:21:17 - INFO - Selected next track
-2024-11-28 06:21:17 - INFO - Selected next track
-2024-11-28 06:21:18 - INFO - Track Path: "/home/m-d-nabeel/Music/relaxing-guitar-loop-v5-245859.mp3"
-2024-11-28 06:21:18 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
-2024-11-28 06:21:18 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
-2024-11-28 06:21:18 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
-2024-11-28 06:21:18 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
-2024-11-28 06:21:18 - INFO - ==>Track: Track { title: "relaxing-guitar-loop-v5-245859.mp3", artist: None, path: "/home/m-d-nabeel/Music/relaxing-guitar-loop-v5-245859.mp3", duration: Some(18.311836735s) }
-2024-11-28 06:21:18 - INFO - ==>Track Duration: 18.311836735s
-2024-11-28 06:21:37 - ERROR - PANIC: 
-[PANIC] 2024-11-28 06:21:37 - Thread: main
-Info: PanicHookInfo { payload: Any { .. }, location: Location { file: "src/audio_system.rs", line: 425, col: 36 }, can_unwind: true, force_no_backtrace: false }
-Backtrace:
-Backtrace [{ fn: "melovitui::logger::setup_panic_handler::{{closure}}" }, { fn: "std::panicking::rust_panic_with_hook" }, { fn: "std::panicking::begin_panic_handler::{{closure}}" }, { fn: "std::sys::backtrace::__rust_end_short_backtrace" }, { fn: "rust_begin_unwind" }, { fn: "core::panicking::panic_fmt" }, { fn: "core::slice::index::slice_end_index_len_fail" }, { fn: "melovitui::audio_system::AudioSystem::get_current_frame" }, { fn: "melovitui::ui::view::UIManager::render" }, { fn: "ratatui::terminal::terminal::Terminal<B>::try_draw" }, { fn: "melovitui::main" }, { fn: "std::sys::backtrace::__rust_begin_short_backtrace" }, { fn: "std::rt::lang_start::{{closure}}" }, { fn: "std::rt::lang_start_internal" }, { fn: "main" }, { fn: "__libc_start_call_main", file: "./csu/../sysdeps/nptl/libc_start_call_main.h", line: 58 }, { fn: "__libc_start_main_impl", file: "./csu/../csu/libc-start.c", line: 360 }, { fn: "_start" }]
-
-2024-11-28 06:22:15 - INFO - Successfully redirected stderr to file
-2024-11-28 06:22:15 - INFO - Logging system initialized
-2024-11-28 06:22:15 - INFO - Using music directory: "/home/m-d-nabeel/Music"
-2024-11-28 06:22:15 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:22:15 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:22:15 - INFO - using xing header for duration
-2024-11-28 06:22:15 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:22:15 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:22:15 - INFO - using xing header for duration
-2024-11-28 06:22:15 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:22:15 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:22:15 - INFO - using xing header for duration
-2024-11-28 06:22:15 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:22:15 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:22:15 - INFO - using xing header for duration
-2024-11-28 06:22:15 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:22:15 - INFO - found the format marker [ff, fb] @ 1239+2 bytes.
-2024-11-28 06:22:15 - INFO - using xing header for duration
-2024-11-28 06:22:15 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:22:15 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:22:15 - INFO - using xing header for duration
-2024-11-28 06:22:15 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:22:15 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:22:15 - INFO - using xing header for duration
-2024-11-28 06:22:15 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:22:15 - INFO - found the format marker [ff, fb] @ 172032+2 bytes.
-2024-11-28 06:22:15 - INFO - using xing header for duration
-2024-11-28 06:22:15 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:22:15 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:22:15 - INFO - using xing header for duration
-2024-11-28 06:22:15 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
-2024-11-28 06:22:15 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
-2024-11-28 06:22:15 - INFO - Selected next track
-2024-11-28 06:22:16 - INFO - Selected next track
-2024-11-28 06:22:16 - INFO - Selected next track
-2024-11-28 06:22:16 - INFO - Selected next track
-2024-11-28 06:22:16 - INFO - Selected next track
-2024-11-28 06:22:16 - INFO - Selected next track
-2024-11-28 06:22:16 - INFO - Selected next track
-2024-11-28 06:22:17 - INFO - Track Path: "/home/m-d-nabeel/Music/relaxing-guitar-loop-v5-245859.mp3"
-2024-11-28 06:22:17 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
-2024-11-28 06:22:17 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
-2024-11-28 06:22:17 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
-2024-11-28 06:22:17 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
-2024-11-28 06:22:17 - INFO - ==>Track: Track { title: "relaxing-guitar-loop-v5-245859.mp3", artist: None, path: "/home/m-d-nabeel/Music/relaxing-guitar-loop-v5-245859.mp3", duration: Some(18.311836735s) }
-2024-11-28 06:22:17 - INFO - ==>Track Duration: 18.311836735s
-2024-11-28 06:22:36 - ERROR - PANIC: 
-[PANIC] 2024-11-28 06:22:36 - Thread: main
-Info: PanicHookInfo { payload: Any { .. }, location: Location { file: "src/audio_system.rs", line: 425, col: 36 }, can_unwind: true, force_no_backtrace: false }
-Backtrace:
-Backtrace [{ fn: "melovitui::logger::setup_panic_handler::{{closure}}" }, { fn: "std::panicking::rust_panic_with_hook" }, { fn: "std::panicking::begin_panic_handler::{{closure}}" }, { fn: "std::sys::backtrace::__rust_end_short_backtrace" }, { fn: "rust_begin_unwind" }, { fn: "core::panicking::panic_fmt" }, { fn: "core::slice::index::slice_end_index_len_fail" }, { fn: "melovitui::audio_system::AudioSystem::get_current_frame" }, { fn: "melovitui::ui::view::UIManager::render" }, { fn: "ratatui::terminal::terminal::Terminal<B>::try_draw" }, { fn: "melovitui::main" }, { fn: "std::sys::backtrace::__rust_begin_short_backtrace" }, { fn: "std::rt::lang_start::{{closure}}" }, { fn: "std::rt::lang_start_internal" }, { fn: "main" }, { fn: "__libc_start_call_main", file: "./csu/../sysdeps/nptl/libc_start_call_main.h", line: 58 }, { fn: "__libc_start_main_impl", file: "./csu/../csu/libc-start.c", line: 360 }, { fn: "_start" }]
-
-2024-11-28 06:26:45 - INFO - Successfully redirected stderr to file
-2024-11-28 06:26:45 - INFO - Logging system initialized
-2024-11-28 06:26:45 - INFO - Using music directory: "/home/m-d-nabeel/Music"
-2024-11-28 06:26:45 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:26:45 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:26:45 - INFO - using xing header for duration
-2024-11-28 06:26:45 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:26:45 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:26:45 - INFO - using xing header for duration
-2024-11-28 06:26:45 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:26:45 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:26:45 - INFO - using xing header for duration
-2024-11-28 06:26:45 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:26:45 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:26:45 - INFO - using xing header for duration
-2024-11-28 06:26:45 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:26:45 - INFO - found the format marker [ff, fb] @ 1239+2 bytes.
-2024-11-28 06:26:45 - INFO - using xing header for duration
-2024-11-28 06:26:45 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:26:45 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:26:45 - INFO - using xing header for duration
-2024-11-28 06:26:45 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:26:45 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:26:45 - INFO - using xing header for duration
-2024-11-28 06:26:45 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:26:45 - INFO - found the format marker [ff, fb] @ 172032+2 bytes.
-2024-11-28 06:26:45 - INFO - using xing header for duration
-2024-11-28 06:26:45 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:26:45 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:26:45 - INFO - using xing header for duration
-2024-11-28 06:26:45 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
-2024-11-28 06:26:45 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
-2024-11-28 06:26:45 - INFO - Selected next track
-2024-11-28 06:26:46 - INFO - Selected next track
-2024-11-28 06:26:46 - INFO - Selected next track
-2024-11-28 06:26:46 - INFO - Selected next track
-2024-11-28 06:26:46 - INFO - Selected next track
-2024-11-28 06:26:46 - INFO - Selected next track
-2024-11-28 06:26:46 - INFO - Selected next track
-2024-11-28 06:26:47 - INFO - Track Path: "/home/m-d-nabeel/Music/relaxing-guitar-loop-v5-245859.mp3"
-2024-11-28 06:26:47 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
-2024-11-28 06:26:47 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
-2024-11-28 06:26:47 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
-2024-11-28 06:26:47 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
-2024-11-28 06:26:47 - INFO - ==>Track: Track { title: "relaxing-guitar-loop-v5-245859.mp3", artist: None, path: "/home/m-d-nabeel/Music/relaxing-guitar-loop-v5-245859.mp3", duration: Some(18.311836735s) }
-2024-11-28 06:26:47 - INFO - ==>Track Duration: 18.311836735s
-2024-11-28 06:26:51 - INFO - Volume adjusted to 55
-2024-11-28 06:26:51 - INFO - Volume adjusted to 60
-2024-11-28 06:26:51 - INFO - Volume adjusted to 65
-2024-11-28 06:26:51 - INFO - Volume adjusted to 70
-2024-11-28 06:26:51 - INFO - Volume adjusted to 75
-2024-11-28 06:26:51 - INFO - Volume adjusted to 80
-2024-11-28 06:26:51 - INFO - Volume adjusted to 85
-2024-11-28 06:26:51 - INFO - Volume adjusted to 90
-2024-11-28 06:26:51 - INFO - Volume adjusted to 95
-2024-11-28 06:26:51 - INFO - Volume adjusted to 100
-2024-11-28 06:26:51 - INFO - Volume adjusted to 100
-2024-11-28 06:26:51 - INFO - Volume adjusted to 100
-2024-11-28 06:26:52 - INFO - Volume adjusted to 100
-2024-11-28 06:26:52 - INFO - Volume adjusted to 100
-2024-11-28 06:26:53 - INFO - Volume adjusted to 95
-2024-11-28 06:26:54 - INFO - Volume adjusted to 90
-2024-11-28 06:26:54 - INFO - Volume adjusted to 85
-2024-11-28 06:26:54 - INFO - Volume adjusted to 80
-2024-11-28 06:26:54 - INFO - Volume adjusted to 75
-2024-11-28 06:26:54 - INFO - Volume adjusted to 70
-2024-11-28 06:26:55 - INFO - Volume adjusted to 65
-2024-11-28 06:27:06 - ERROR - PANIC: 
-[PANIC] 2024-11-28 06:27:06 - Thread: main
-Info: PanicHookInfo { payload: Any { .. }, location: Location { file: "src/audio_system.rs", line: 425, col: 36 }, can_unwind: true, force_no_backtrace: false }
-Backtrace:
-Backtrace [{ fn: "melovitui::logger::setup_panic_handler::{{closure}}" }, { fn: "std::panicking::rust_panic_with_hook" }, { fn: "std::panicking::begin_panic_handler::{{closure}}" }, { fn: "std::sys::backtrace::__rust_end_short_backtrace" }, { fn: "rust_begin_unwind" }, { fn: "core::panicking::panic_fmt" }, { fn: "core::slice::index::slice_end_index_len_fail" }, { fn: "melovitui::audio_system::AudioSystem::get_current_frame" }, { fn: "melovitui::ui::view::UIManager::render" }, { fn: "ratatui::terminal::terminal::Terminal<B>::try_draw" }, { fn: "melovitui::main" }, { fn: "std::sys::backtrace::__rust_begin_short_backtrace" }, { fn: "std::rt::lang_start::{{closure}}" }, { fn: "std::rt::lang_start_internal" }, { fn: "main" }, { fn: "__libc_start_call_main", file: "./csu/../sysdeps/nptl/libc_start_call_main.h", line: 58 }, { fn: "__libc_start_main_impl", file: "./csu/../csu/libc-start.c", line: 360 }, { fn: "_start" }]
-
-2024-11-28 06:40:46 - INFO - Successfully redirected stderr to file
-2024-11-28 06:40:46 - INFO - Logging system initialized
-2024-11-28 06:40:46 - INFO - Using music directory: "/home/m-d-nabeel/Music"
-2024-11-28 06:40:46 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:40:46 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:40:46 - INFO - using xing header for duration
-2024-11-28 06:40:46 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:40:46 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:40:46 - INFO - using xing header for duration
-2024-11-28 06:40:46 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:40:46 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:40:46 - INFO - using xing header for duration
-2024-11-28 06:40:46 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:40:46 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:40:46 - INFO - using xing header for duration
-2024-11-28 06:40:46 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:40:46 - INFO - found the format marker [ff, fb] @ 1239+2 bytes.
-2024-11-28 06:40:46 - INFO - using xing header for duration
-2024-11-28 06:40:46 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:40:46 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:40:46 - INFO - using xing header for duration
-2024-11-28 06:40:46 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:40:46 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:40:46 - INFO - using xing header for duration
-2024-11-28 06:40:46 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:40:46 - INFO - found the format marker [ff, fb] @ 172032+2 bytes.
-2024-11-28 06:40:46 - INFO - using xing header for duration
-2024-11-28 06:40:46 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:40:46 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:40:46 - INFO - using xing header for duration
-2024-11-28 06:40:46 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
-2024-11-28 06:40:46 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
-2024-11-28 06:40:48 - INFO - Selected next track
-2024-11-28 06:40:48 - INFO - Selected next track
-2024-11-28 06:40:48 - INFO - Selected next track
-2024-11-28 06:40:49 - INFO - Selected next track
-2024-11-28 06:40:49 - INFO - Selected next track
-2024-11-28 06:40:51 - INFO - Quit key pressed
-2024-11-28 06:40:56 - INFO - Successfully redirected stderr to file
-2024-11-28 06:40:56 - INFO - Logging system initialized
-2024-11-28 06:40:56 - INFO - Using music directory: "/home/m-d-nabeel/Music"
-2024-11-28 06:40:56 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:40:56 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:40:56 - INFO - using xing header for duration
-2024-11-28 06:40:56 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:40:56 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:40:56 - INFO - using xing header for duration
-2024-11-28 06:40:56 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:40:56 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:40:56 - INFO - using xing header for duration
-2024-11-28 06:40:56 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:40:56 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:40:56 - INFO - using xing header for duration
-2024-11-28 06:40:56 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:40:56 - INFO - found the format marker [ff, fb] @ 1239+2 bytes.
-2024-11-28 06:40:56 - INFO - using xing header for duration
-2024-11-28 06:40:56 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:40:56 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:40:56 - INFO - using xing header for duration
-2024-11-28 06:40:56 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:40:56 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:40:56 - INFO - using xing header for duration
-2024-11-28 06:40:56 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:40:56 - INFO - found the format marker [ff, fb] @ 172032+2 bytes.
-2024-11-28 06:40:56 - INFO - using xing header for duration
-2024-11-28 06:40:56 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:40:56 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:40:56 - INFO - using xing header for duration
-2024-11-28 06:40:56 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
-2024-11-28 06:40:56 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
-2024-11-28 06:40:57 - INFO - Quit key pressed
-2024-11-28 06:41:11 - INFO - Successfully redirected stderr to file
-2024-11-28 06:41:11 - INFO - Logging system initialized
-2024-11-28 06:41:11 - INFO - Using music directory: "/home/m-d-nabeel/Music"
-2024-11-28 06:41:11 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:41:11 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:41:11 - INFO - using xing header for duration
-2024-11-28 06:41:11 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:41:11 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:41:11 - INFO - using xing header for duration
-2024-11-28 06:41:11 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:41:11 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:41:11 - INFO - using xing header for duration
-2024-11-28 06:41:11 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:41:11 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:41:11 - INFO - using xing header for duration
-2024-11-28 06:41:11 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:41:11 - INFO - found the format marker [ff, fb] @ 1239+2 bytes.
-2024-11-28 06:41:11 - INFO - using xing header for duration
-2024-11-28 06:41:11 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
-2024-11-28 06:41:11 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
-2024-11-28 06:41:11 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:41:11 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:41:11 - INFO - using xing header for duration
-2024-11-28 06:41:11 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:41:11 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:41:11 - INFO - using xing header for duration
-2024-11-28 06:41:11 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:41:11 - INFO - found the format marker [ff, fb] @ 172032+2 bytes.
-2024-11-28 06:41:11 - INFO - using xing header for duration
-2024-11-28 06:41:11 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:41:11 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:41:11 - INFO - using xing header for duration
-2024-11-28 06:41:11 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
-2024-11-28 06:41:11 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
-2024-11-28 06:41:13 - INFO - Selected next track
-2024-11-28 06:41:13 - INFO - Selected next track
-2024-11-28 06:41:13 - INFO - Selected next track
-2024-11-28 06:41:13 - INFO - Selected next track
-2024-11-28 06:41:13 - INFO - Selected next track
-2024-11-28 06:41:13 - INFO - Selected next track
-2024-11-28 06:41:14 - INFO - Track Path: "/home/m-d-nabeel/Music/elemental-magic-spell-impact-outgoing-228342.mp3"
-2024-11-28 06:41:14 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
-2024-11-28 06:41:14 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
-2024-11-28 06:41:14 - INFO - ==>Track: Track { title: "elemental-magic-spell-impact-outgoing-228342.mp3", artist: None, path: "/home/m-d-nabeel/Music/elemental-magic-spell-impact-outgoing-228342.mp3", duration: Some(3.192s) }
-2024-11-28 06:41:14 - INFO - ==>Track Duration: 3.192s
-2024-11-28 06:41:17 - INFO - Track Path: "/home/m-d-nabeel/Music/i_feel_it_coming.mp3"
-2024-11-28 06:41:17 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 06:41:17 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 06:41:17 - INFO - using xing header for duration
-2024-11-28 06:41:17 - INFO - ==>Track: Track { title: "i_feel_it_coming.mp3", artist: None, path: "/home/m-d-nabeel/Music/i_feel_it_coming.mp3", duration: Some(297.691428571s) }
-2024-11-28 06:41:17 - INFO - ==>Track Duration: 297.691428571s
-2024-11-28 06:41:17 - INFO - Successfully advanced to next track
-2024-11-28 06:41:25 - INFO - Quit key pressed
-2024-11-28 08:06:35 - INFO - Successfully redirected stderr to file
-2024-11-28 08:06:35 - INFO - Logging system initialized
-2024-11-28 08:06:35 - INFO - Using music directory: "/home/m-d-nabeel/Music"
-2024-11-28 08:06:35 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 08:06:35 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 08:06:35 - INFO - using xing header for duration
-2024-11-28 08:06:35 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 08:06:35 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 08:06:35 - INFO - using xing header for duration
-2024-11-28 08:06:35 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 08:06:35 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 08:06:35 - INFO - using xing header for duration
-2024-11-28 08:06:35 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 08:06:35 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 08:06:35 - INFO - using xing header for duration
-2024-11-28 08:06:35 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 08:06:35 - INFO - found the format marker [ff, fb] @ 1239+2 bytes.
-2024-11-28 08:06:35 - INFO - using xing header for duration
-2024-11-28 08:06:35 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
-2024-11-28 08:06:35 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
-2024-11-28 08:06:35 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 08:06:35 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 08:06:35 - INFO - using xing header for duration
-2024-11-28 08:06:35 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 08:06:35 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 08:06:35 - INFO - using xing header for duration
-2024-11-28 08:06:35 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 08:06:35 - INFO - found the format marker [ff, fb] @ 172032+2 bytes.
-2024-11-28 08:06:35 - INFO - using xing header for duration
-2024-11-28 08:06:35 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 08:06:35 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 08:06:35 - INFO - using xing header for duration
-2024-11-28 08:06:35 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
-2024-11-28 08:06:35 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
-2024-11-28 08:06:36 - INFO - Selected next track
-2024-11-28 08:06:36 - INFO - Selected next track
-2024-11-28 08:06:36 - INFO - Selected next track
-2024-11-28 08:06:37 - INFO - Selected next track
-2024-11-28 08:06:37 - INFO - Selected next track
-2024-11-28 08:06:37 - INFO - Selected next track
-2024-11-28 08:06:38 - INFO - Track Path: "/home/m-d-nabeel/Music/elemental-magic-spell-impact-outgoing-228342.mp3"
-2024-11-28 08:06:38 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
-2024-11-28 08:06:38 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
-2024-11-28 08:06:38 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
-2024-11-28 08:06:38 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
-2024-11-28 08:06:38 - INFO - ==>Track: Track { title: "elemental-magic-spell-impact-outgoing-228342.mp3", artist: None, path: "/home/m-d-nabeel/Music/elemental-magic-spell-impact-outgoing-228342.mp3", duration: Some(3.192s) }
-2024-11-28 08:06:38 - INFO - ==>Track Duration: 3.192s
-2024-11-28 08:06:42 - INFO - Track Path: "/home/m-d-nabeel/Music/i_feel_it_coming.mp3"
-2024-11-28 08:06:42 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 08:06:42 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 08:06:42 - INFO - using xing header for duration
-2024-11-28 08:06:42 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 08:06:42 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 08:06:42 - INFO - using xing header for duration
-2024-11-28 08:06:42 - INFO - ==>Track: Track { title: "i_feel_it_coming.mp3", artist: None, path: "/home/m-d-nabeel/Music/i_feel_it_coming.mp3", duration: Some(297.691428571s) }
-2024-11-28 08:06:42 - INFO - ==>Track Duration: 297.691428571s
-2024-11-28 08:06:42 - INFO - Successfully advanced to next track
-2024-11-28 08:06:49 - INFO - Selected previous track
-2024-11-28 08:06:50 - INFO - Selected next track
-2024-11-28 08:06:50 - INFO - Selected previous track
-2024-11-28 08:06:51 - INFO - Track Path: "/home/m-d-nabeel/Music/die_for_you.mp3"
-2024-11-28 08:06:51 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 08:06:51 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 08:06:51 - INFO - using xing header for duration
-2024-11-28 08:06:51 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 08:06:51 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 08:06:51 - INFO - using xing header for duration
-2024-11-28 08:06:51 - INFO - ==>Track: Track { title: "die_for_you.mp3", artist: None, path: "/home/m-d-nabeel/Music/die_for_you.mp3", duration: Some(260.310204082s) }
-2024-11-28 08:06:51 - INFO - ==>Track Duration: 260.310204082s
-2024-11-28 08:06:53 - INFO - Selected previous track
-2024-11-28 08:06:54 - INFO - Selected previous track
-2024-11-28 08:06:54 - INFO - Selected previous track
-2024-11-28 08:06:55 - INFO - Selected next track
-2024-11-28 08:06:55 - INFO - Selected next track
-2024-11-28 08:06:55 - INFO - Selected next track
-2024-11-28 08:06:55 - INFO - Selected next track
-2024-11-28 08:06:55 - INFO - Track Path: "/home/m-d-nabeel/Music/elemental-magic-spell-impact-outgoing-228342.mp3"
-2024-11-28 08:06:55 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
-2024-11-28 08:06:55 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
-2024-11-28 08:06:55 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
-2024-11-28 08:06:55 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
-2024-11-28 08:06:55 - INFO - ==>Track: Track { title: "elemental-magic-spell-impact-outgoing-228342.mp3", artist: None, path: "/home/m-d-nabeel/Music/elemental-magic-spell-impact-outgoing-228342.mp3", duration: Some(3.192s) }
-2024-11-28 08:06:55 - INFO - ==>Track Duration: 3.192s
-2024-11-28 08:06:56 - INFO - Selected next track
-2024-11-28 08:06:57 - INFO - Selected next track
-2024-11-28 08:06:59 - INFO - Track Path: "/home/m-d-nabeel/Music/i_feel_it_coming.mp3"
-2024-11-28 08:06:59 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 08:06:59 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 08:06:59 - INFO - using xing header for duration
-2024-11-28 08:06:59 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-11-28 08:06:59 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-11-28 08:06:59 - INFO - using xing header for duration
-2024-11-28 08:06:59 - INFO - ==>Track: Track { title: "i_feel_it_coming.mp3", artist: None, path: "/home/m-d-nabeel/Music/i_feel_it_coming.mp3", duration: Some(297.691428571s) }
-2024-11-28 08:06:59 - INFO - ==>Track Duration: 297.691428571s
-2024-11-28 08:06:59 - INFO - Successfully advanced to next track
-2024-11-28 08:07:01 - INFO - Quit key pressed
-2024-12-05 15:49:29 - INFO - Successfully redirected stderr to file
-2024-12-05 15:49:29 - INFO - Logging system initialized
-2024-12-05 15:49:29 - INFO - Using music directory: "/home/m-d-nabeel/Music"
-2024-12-05 15:49:29 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-12-05 15:49:29 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-12-05 15:49:29 - INFO - using xing header for duration
-2024-12-05 15:49:29 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-12-05 15:49:29 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-12-05 15:49:29 - INFO - using xing header for duration
-2024-12-05 15:49:29 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-12-05 15:49:29 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-12-05 15:49:29 - INFO - using xing header for duration
-2024-12-05 15:49:29 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-12-05 15:49:29 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-12-05 15:49:29 - INFO - using xing header for duration
-2024-12-05 15:49:29 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-12-05 15:49:29 - INFO - found the format marker [ff, fb] @ 1239+2 bytes.
-2024-12-05 15:49:29 - INFO - using xing header for duration
-2024-12-05 15:49:29 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
-2024-12-05 15:49:29 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
-2024-12-05 15:49:29 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-12-05 15:49:29 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-12-05 15:49:29 - INFO - using xing header for duration
-2024-12-05 15:49:29 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-12-05 15:49:29 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-12-05 15:49:29 - INFO - using xing header for duration
-2024-12-05 15:49:29 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-12-05 15:49:29 - INFO - found the format marker [ff, fb] @ 172032+2 bytes.
-2024-12-05 15:49:29 - INFO - using xing header for duration
-2024-12-05 15:49:29 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-12-05 15:49:29 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-12-05 15:49:29 - INFO - using xing header for duration
-2024-12-05 15:49:29 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
-2024-12-05 15:49:29 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
-2024-12-05 15:49:36 - INFO - Selected next track
-2024-12-05 15:49:36 - INFO - Selected next track
-2024-12-05 15:49:36 - INFO - Selected next track
-2024-12-05 15:49:37 - INFO - Selected next track
-2024-12-05 15:49:37 - INFO - Selected next track
-2024-12-05 15:49:37 - INFO - Selected previous track
-2024-12-05 15:49:38 - INFO - Track Path: "/home/m-d-nabeel/Music/Suniya Suniya Rata-(SongsPK).mp3"
-2024-12-05 15:49:38 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-12-05 15:49:38 - INFO - found the format marker [ff, fb] @ 172032+2 bytes.
-2024-12-05 15:49:38 - INFO - using xing header for duration
-2024-12-05 15:49:38 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-12-05 15:49:38 - INFO - found the format marker [ff, fb] @ 172032+2 bytes.
-2024-12-05 15:49:38 - INFO - using xing header for duration
-2024-12-05 15:49:38 - INFO - ==>Track: Track { title: "Suniya Suniya Rata-(SongsPK).mp3", artist: None, path: "/home/m-d-nabeel/Music/Suniya Suniya Rata-(SongsPK).mp3", duration: Some(197.590204082s) }
-2024-12-05 15:49:38 - INFO - ==>Track Duration: 197.590204082s
-2024-12-05 15:50:12 - INFO - Volume adjusted to 55
-2024-12-05 15:50:12 - INFO - Volume adjusted to 60
-2024-12-05 15:50:12 - INFO - Volume adjusted to 65
-2024-12-05 15:50:12 - INFO - Volume adjusted to 70
-2024-12-05 15:50:13 - INFO - Volume adjusted to 75
-2024-12-05 15:50:13 - INFO - Volume adjusted to 80
-2024-12-05 15:50:13 - INFO - Volume adjusted to 85
-2024-12-05 15:50:13 - INFO - Volume adjusted to 80
-2024-12-05 15:50:14 - INFO - Volume adjusted to 75
-2024-12-05 15:50:14 - INFO - Volume adjusted to 70
-2024-12-05 15:50:14 - INFO - Volume adjusted to 65
-2024-12-05 15:50:14 - INFO - Volume adjusted to 60
-2024-12-05 15:50:14 - INFO - Volume adjusted to 55
-2024-12-05 15:50:14 - INFO - Volume adjusted to 50
-2024-12-05 15:50:14 - INFO - Volume adjusted to 45
-2024-12-05 15:50:16 - INFO - Bass adjusted to 5
-2024-12-05 15:50:16 - INFO - Bass adjusted to 10
-2024-12-05 15:50:16 - INFO - Bass adjusted to 15
-2024-12-05 15:50:16 - INFO - Bass adjusted to 20
-2024-12-05 15:50:16 - INFO - Bass adjusted to 25
-2024-12-05 15:50:17 - INFO - Bass adjusted to 30
-2024-12-05 15:50:17 - INFO - Bass adjusted to 35
-2024-12-05 15:50:17 - INFO - Bass adjusted to 40
-2024-12-05 15:50:17 - INFO - Bass adjusted to 35
-2024-12-05 15:50:18 - INFO - Bass adjusted to 30
-2024-12-05 15:50:18 - INFO - Bass adjusted to 25
-2024-12-05 15:50:18 - INFO - Bass adjusted to 20
-2024-12-05 15:50:18 - INFO - Bass adjusted to 15
-2024-12-05 15:50:19 - INFO - Balance adjusted to 5
-2024-12-05 15:50:19 - INFO - Balance adjusted to 10
-2024-12-05 15:50:20 - INFO - Balance adjusted to 15
-2024-12-05 15:50:20 - INFO - Balance adjusted to 10
-2024-12-05 15:50:20 - INFO - Balance adjusted to 5
-2024-12-05 15:50:20 - INFO - Balance adjusted to 0
-2024-12-05 15:50:20 - INFO - Balance adjusted to -5
-2024-12-05 15:50:21 - INFO - Volume adjusted to 40
-2024-12-05 15:50:22 - INFO - Volume adjusted to 45
-2024-12-05 15:50:22 - INFO - Volume adjusted to 40
-2024-12-05 15:50:22 - INFO - Volume adjusted to 35
-2024-12-05 15:50:22 - INFO - Volume adjusted to 30
-2024-12-05 15:50:23 - INFO - Volume adjusted to 35
-2024-12-05 15:50:23 - INFO - Volume adjusted to 40
-2024-12-05 15:50:23 - INFO - Volume adjusted to 45
-2024-12-05 15:50:25 - INFO - Treble adjusted to 5
-2024-12-05 15:50:25 - INFO - Treble adjusted to 10
-2024-12-05 15:50:26 - INFO - Treble adjusted to 15
-2024-12-05 15:50:26 - INFO - Treble adjusted to 20
-2024-12-05 15:50:26 - INFO - Treble adjusted to 15
-2024-12-05 15:50:26 - INFO - Treble adjusted to 10
-2024-12-05 15:50:26 - INFO - Treble adjusted to 5
-2024-12-05 15:50:27 - INFO - Treble adjusted to 10
-2024-12-05 15:50:28 - INFO - Balance adjusted to 0
-2024-12-05 15:50:28 - INFO - Balance adjusted to 5
-2024-12-05 15:50:28 - INFO - Balance adjusted to 0
-2024-12-05 15:50:29 - INFO - Balance adjusted to -5
-2024-12-05 15:50:29 - INFO - Balance adjusted to -10
-2024-12-05 15:50:29 - INFO - Balance adjusted to -15
-2024-12-05 15:50:30 - INFO - Volume adjusted to 50
-2024-12-05 15:50:31 - INFO - Volume adjusted to 55
-2024-12-05 15:50:31 - INFO - Volume adjusted to 50
-2024-12-05 15:50:31 - INFO - Bass adjusted to 20
-2024-12-05 15:50:32 - INFO - Bass adjusted to 15
-2024-12-05 15:50:33 - INFO - Unhandled key event: KeyEvent { code: Char(' '), modifiers: KeyModifiers(0x0), kind: Press, state: KeyEventState(0x0) }
-2024-12-05 15:50:34 - INFO - Unhandled key event: KeyEvent { code: Char(' '), modifiers: KeyModifiers(0x0), kind: Press, state: KeyEventState(0x0) }
-2024-12-05 15:50:35 - INFO - Playback paused
-2024-12-05 15:50:40 - INFO - Playback resumed
-2024-12-05 15:51:12 - INFO - Selected next track
-2024-12-05 15:51:12 - INFO - Selected next track
-2024-12-05 15:51:12 - INFO - Selected next track
-2024-12-05 15:51:12 - INFO - Selected previous track
-2024-12-05 15:51:12 - INFO - Selected next track
-2024-12-05 15:51:12 - INFO - Selected previous track
-2024-12-05 15:51:13 - INFO - Selected next track
-2024-12-05 15:51:13 - INFO - Selected previous track
-2024-12-05 15:51:13 - INFO - Selected next track
-2024-12-05 15:51:13 - INFO - Selected next track
-2024-12-05 15:51:14 - INFO - Selected next track
-2024-12-05 15:51:14 - INFO - Selected next track
-2024-12-05 15:51:14 - INFO - Selected next track
-2024-12-05 15:51:14 - INFO - Selected next track
-2024-12-05 15:51:14 - INFO - Selected next track
-2024-12-05 15:51:14 - INFO - Selected next track
-2024-12-05 15:51:14 - INFO - Selected next track
-2024-12-05 15:51:14 - INFO - Selected next track
-2024-12-05 15:51:14 - INFO - Selected next track
-2024-12-05 15:51:14 - INFO - Selected next track
-2024-12-05 15:51:14 - INFO - Selected next track
-2024-12-05 15:51:14 - INFO - Selected next track
-2024-12-05 15:51:14 - INFO - Selected next track
-2024-12-05 15:51:14 - INFO - Selected next track
-2024-12-05 15:51:14 - INFO - Selected next track
-2024-12-05 15:51:14 - INFO - Selected next track
-2024-12-05 15:51:14 - INFO - Selected next track
-2024-12-05 15:51:14 - INFO - Selected next track
-2024-12-05 15:51:14 - INFO - Selected next track
-2024-12-05 15:51:14 - INFO - Selected next track
-2024-12-05 15:51:14 - INFO - Selected next track
-2024-12-05 15:51:15 - INFO - Selected next track
-2024-12-05 15:51:15 - INFO - Selected next track
-2024-12-05 15:51:15 - INFO - Selected next track
-2024-12-05 15:51:15 - INFO - Selected next track
-2024-12-05 15:51:15 - INFO - Selected next track
-2024-12-05 15:51:15 - INFO - Selected next track
-2024-12-05 15:51:15 - INFO - Selected next track
-2024-12-05 15:51:15 - INFO - Selected next track
-2024-12-05 15:51:15 - INFO - Selected next track
-2024-12-05 15:51:15 - INFO - Selected next track
-2024-12-05 15:51:15 - INFO - Selected next track
-2024-12-05 15:51:15 - INFO - Selected previous track
-2024-12-05 15:51:16 - INFO - Selected next track
-2024-12-05 15:51:16 - INFO - Track Path: "/home/m-d-nabeel/Music/i_feel_it_coming.mp3"
-2024-12-05 15:51:16 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-12-05 15:51:16 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-12-05 15:51:16 - INFO - using xing header for duration
-2024-12-05 15:51:17 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2024-12-05 15:51:17 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2024-12-05 15:51:17 - INFO - using xing header for duration
-2024-12-05 15:51:17 - INFO - ==>Track: Track { title: "i_feel_it_coming.mp3", artist: None, path: "/home/m-d-nabeel/Music/i_feel_it_coming.mp3", duration: Some(297.691428571s) }
-2024-12-05 15:51:17 - INFO - ==>Track Duration: 297.691428571s
-2024-12-05 15:51:32 - INFO - Quit key pressed
-2025-01-11 02:36:40 - INFO - Successfully redirected stderr to file
-2025-01-11 02:36:40 - INFO - Logging system initialized
-2025-01-11 02:36:40 - INFO - Using music directory: "/home/m-d-nabeel/Music"
-2025-01-11 02:36:40 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2025-01-11 02:36:40 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2025-01-11 02:36:40 - INFO - using xing header for duration
-2025-01-11 02:36:40 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2025-01-11 02:36:40 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2025-01-11 02:36:40 - INFO - using xing header for duration
-2025-01-11 02:36:40 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2025-01-11 02:36:40 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2025-01-11 02:36:40 - INFO - using xing header for duration
-2025-01-11 02:36:40 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2025-01-11 02:36:40 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2025-01-11 02:36:40 - INFO - using xing header for duration
-2025-01-11 02:36:40 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2025-01-11 02:36:40 - INFO - found the format marker [ff, fb] @ 1239+2 bytes.
-2025-01-11 02:36:40 - INFO - using xing header for duration
-2025-01-11 02:36:40 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
-2025-01-11 02:36:40 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
-2025-01-11 02:36:40 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2025-01-11 02:36:40 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2025-01-11 02:36:40 - INFO - using xing header for duration
-2025-01-11 02:36:40 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2025-01-11 02:36:40 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2025-01-11 02:36:40 - INFO - using xing header for duration
-2025-01-11 02:36:40 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2025-01-11 02:36:40 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2025-01-11 02:36:40 - INFO - using xing header for duration
-2025-01-11 02:36:40 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2025-01-11 02:36:40 - INFO - found the format marker [ff, fb] @ 172032+2 bytes.
-2025-01-11 02:36:40 - INFO - using xing header for duration
-2025-01-11 02:36:40 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2025-01-11 02:36:40 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2025-01-11 02:36:40 - INFO - using xing header for duration
-2025-01-11 02:36:40 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
-2025-01-11 02:36:40 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
-2025-01-11 02:36:41 - INFO - Selected next track
-2025-01-11 02:36:43 - INFO - Track Path: "/home/m-d-nabeel/Music/Diviners, Philly K. - Savannah (feat. Philly K) [NCS Release].mp3"
-2025-01-11 02:36:43 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2025-01-11 02:36:43 - INFO - found the format marker [ff, fb] @ 1239+2 bytes.
-2025-01-11 02:36:43 - INFO - using xing header for duration
-2025-01-11 02:36:43 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2025-01-11 02:36:43 - INFO - found the format marker [ff, fb] @ 1239+2 bytes.
-2025-01-11 02:36:43 - INFO - using xing header for duration
-2025-01-11 02:36:43 - INFO - ==>Track: Track { title: "Diviners, Philly K. - Savannah (feat. Philly K) [NCS Release].mp3", artist: None, path: "/home/m-d-nabeel/Music/Diviners, Philly K. - Savannah (feat. Philly K) [NCS Release].mp3", duration: Some(204.016326531s) }
-2025-01-11 02:36:43 - INFO - ==>Track Duration: 204.016326531s
-2025-01-11 02:36:45 - INFO - Playback paused
-2025-01-11 02:36:45 - INFO - Playback resumed
-2025-01-11 02:36:48 - INFO - Selected next track
-2025-01-11 02:36:48 - INFO - Selected next track
-2025-01-11 02:36:48 - INFO - Selected next track
-2025-01-11 02:36:48 - INFO - Selected next track
-2025-01-11 02:36:49 - INFO - Track Path: "/home/m-d-nabeel/Music/Suniya Suniya Rata-(SongsPK).mp3"
-2025-01-11 02:36:49 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2025-01-11 02:36:49 - INFO - found the format marker [ff, fb] @ 172032+2 bytes.
-2025-01-11 02:36:49 - INFO - using xing header for duration
-2025-01-11 02:36:50 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2025-01-11 02:36:50 - INFO - found the format marker [ff, fb] @ 172032+2 bytes.
-2025-01-11 02:36:50 - INFO - using xing header for duration
-2025-01-11 02:36:50 - INFO - ==>Track: Track { title: "Suniya Suniya Rata-(SongsPK).mp3", artist: None, path: "/home/m-d-nabeel/Music/Suniya Suniya Rata-(SongsPK).mp3", duration: Some(197.590204082s) }
-2025-01-11 02:36:50 - INFO - ==>Track Duration: 197.590204082s
-2025-01-11 02:36:51 - INFO - Selected next track
-2025-01-11 02:36:51 - INFO - Track Path: "/home/m-d-nabeel/Music/die_for_you.mp3"
-2025-01-11 02:36:51 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2025-01-11 02:36:51 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2025-01-11 02:36:51 - INFO - using xing header for duration
-2025-01-11 02:36:52 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2025-01-11 02:36:52 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2025-01-11 02:36:52 - INFO - using xing header for duration
-2025-01-11 02:36:52 - INFO - ==>Track: Track { title: "die_for_you.mp3", artist: None, path: "/home/m-d-nabeel/Music/die_for_you.mp3", duration: Some(260.310204082s) }
-2025-01-11 02:36:52 - INFO - ==>Track Duration: 260.310204082s
-2025-01-11 02:36:53 - INFO - Selected next track
-2025-01-11 02:36:53 - INFO - Track Path: "/home/m-d-nabeel/Music/elemental-magic-spell-impact-outgoing-228342.mp3"
-2025-01-11 02:36:53 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
-2025-01-11 02:36:53 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
-2025-01-11 02:36:53 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
-2025-01-11 02:36:53 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
-2025-01-11 02:36:53 - INFO - ==>Track: Track { title: "elemental-magic-spell-impact-outgoing-228342.mp3", artist: None, path: "/home/m-d-nabeel/Music/elemental-magic-spell-impact-outgoing-228342.mp3", duration: Some(3.192s) }
-2025-01-11 02:36:53 - INFO - ==>Track Duration: 3.192s
-2025-01-11 02:36:57 - INFO - Track Path: "/home/m-d-nabeel/Music/i_feel_it_coming.mp3"
-2025-01-11 02:36:57 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2025-01-11 02:36:57 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2025-01-11 02:36:57 - INFO - using xing header for duration
-2025-01-11 02:36:57 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
-2025-01-11 02:36:57 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
-2025-01-11 02:36:57 - INFO - using xing header for duration
-2025-01-11 02:36:57 - INFO - ==>Track: Track { title: "i_feel_it_coming.mp3", artist: None, path: "/home/m-d-nabeel/Music/i_feel_it_coming.mp3", duration: Some(297.691428571s) }
-2025-01-11 02:36:57 - INFO - ==>Track Duration: 297.691428571s
-2025-01-11 02:36:57 - INFO - Successfully advanced to next track
-2025-01-11 02:37:00 - INFO - Quit key pressed
+2025-01-11 03:54:05 - INFO - Successfully redirected stderr to file
+2025-01-11 03:54:05 - INFO - Logging system initialized
+2025-01-11 03:54:05 - INFO - Using music directory: "/home/m-d-nabeel/Music"
+2025-01-11 03:54:05 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 03:54:05 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 03:54:05 - INFO - using xing header for duration
+2025-01-11 03:54:05 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 03:54:05 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 03:54:05 - INFO - using xing header for duration
+2025-01-11 03:54:05 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 03:54:05 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 03:54:05 - INFO - using xing header for duration
+2025-01-11 03:54:05 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 03:54:05 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 03:54:05 - INFO - using xing header for duration
+2025-01-11 03:54:05 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 03:54:05 - INFO - found the format marker [ff, fb] @ 1239+2 bytes.
+2025-01-11 03:54:05 - INFO - using xing header for duration
+2025-01-11 03:54:05 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
+2025-01-11 03:54:05 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
+2025-01-11 03:54:05 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 03:54:05 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 03:54:05 - INFO - using xing header for duration
+2025-01-11 03:54:05 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 03:54:05 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 03:54:05 - INFO - using xing header for duration
+2025-01-11 03:54:05 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 03:54:05 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 03:54:05 - INFO - using xing header for duration
+2025-01-11 03:54:05 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 03:54:05 - INFO - found the format marker [ff, fb] @ 172032+2 bytes.
+2025-01-11 03:54:05 - INFO - using xing header for duration
+2025-01-11 03:54:05 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 03:54:05 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 03:54:05 - INFO - using xing header for duration
+2025-01-11 03:54:05 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
+2025-01-11 03:54:05 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
+2025-01-11 03:54:08 - INFO - Selected next track
+2025-01-11 03:54:08 - INFO - Selected next track
+2025-01-11 03:54:09 - INFO - Selected previous track
+2025-01-11 03:54:09 - INFO - Selected next track
+2025-01-11 03:54:09 - INFO - Selected next track
+2025-01-11 03:54:10 - INFO - Selected next track
+2025-01-11 03:54:10 - INFO - Selected next track
+2025-01-11 03:54:10 - INFO - Selected next track
+2025-01-11 03:54:10 - INFO - Selected next track
+2025-01-11 03:54:10 - INFO - Selected next track
+2025-01-11 03:54:10 - INFO - Selected next track
+2025-01-11 03:54:11 - INFO - Selected next track
+2025-01-11 03:54:11 - INFO - Selected next track
+2025-01-11 03:54:12 - INFO - Track Path: "/home/m-d-nabeel/Music/six_feet_under.mp3"
+2025-01-11 03:54:12 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 03:54:12 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 03:54:12 - INFO - using xing header for duration
+2025-01-11 03:54:12 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 03:54:12 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 03:54:12 - INFO - using xing header for duration
+2025-01-11 03:54:12 - INFO - ==>Track: Track { title: "six_feet_under.mp3", artist: None, path: "/home/m-d-nabeel/Music/six_feet_under.mp3", duration: Some(237.635918367s) }
+2025-01-11 03:54:12 - INFO - ==>Track Duration: 237.635918367s
+2025-01-11 03:54:54 - INFO - Selected previous track
+2025-01-11 03:54:56 - INFO - Track Path: "/home/m-d-nabeel/Music/sapientdream, Slushii - Break My Heart [NCS Release].mp3"
+2025-01-11 03:54:56 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 03:54:56 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 03:54:56 - INFO - using xing header for duration
+2025-01-11 03:54:57 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 03:54:57 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 03:54:57 - INFO - using xing header for duration
+2025-01-11 03:54:57 - INFO - ==>Track: Track { title: "sapientdream, Slushii - Break My Heart [NCS Release].mp3", artist: None, path: "/home/m-d-nabeel/Music/sapientdream, Slushii - Break My Heart [NCS Release].mp3", duration: Some(183.484081633s) }
+2025-01-11 03:54:57 - INFO - ==>Track Duration: 183.484081633s
+2025-01-11 03:55:06 - INFO - Selected previous track
+2025-01-11 03:55:07 - INFO - Selected previous track
+2025-01-11 03:55:08 - INFO - Selected previous track
+2025-01-11 03:55:08 - INFO - Selected previous track
+2025-01-11 03:55:08 - INFO - Selected previous track
+2025-01-11 03:55:09 - INFO - Selected previous track
+2025-01-11 03:55:09 - INFO - Track Path: "/home/m-d-nabeel/Music/Sitara (Official Video) ｜ Aashiq Khan x Mitika Kanwar ｜ Denny ｜ Shloke Lal ｜ Hindi Song [o6vrwaUKk3M].mp3"
+2025-01-11 03:55:09 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 03:55:09 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 03:55:09 - INFO - using xing header for duration
+2025-01-11 03:55:10 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 03:55:10 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 03:55:10 - INFO - using xing header for duration
+2025-01-11 03:55:10 - INFO - ==>Track: Track { title: "Sitara (Official Video) ｜ Aashiq Khan x Mitika Kanwar ｜ Denny ｜ Shloke Lal ｜ Hindi Song [o6vrwaUKk3M].mp3", artist: None, path: "/home/m-d-nabeel/Music/Sitara (Official Video) ｜ Aashiq Khan x Mitika Kanwar ｜ Denny ｜ Shloke Lal ｜ Hindi Song [o6vrwaUKk3M].mp3", duration: Some(186.072s) }
+2025-01-11 03:55:10 - INFO - ==>Track Duration: 186.072s
+2025-01-11 03:55:14 - INFO - Quit key pressed
+2025-01-11 04:28:37 - INFO - Successfully redirected stderr to file
+2025-01-11 04:28:37 - INFO - Logging system initialized
+2025-01-11 04:28:37 - INFO - Using music directory: "/home/m-d-nabeel/Music"
+2025-01-11 04:28:37 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 04:28:37 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 04:28:37 - INFO - using xing header for duration
+2025-01-11 04:28:37 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 04:28:37 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 04:28:37 - INFO - using xing header for duration
+2025-01-11 04:28:37 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 04:28:37 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 04:28:37 - INFO - using xing header for duration
+2025-01-11 04:28:37 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 04:28:37 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 04:28:37 - INFO - using xing header for duration
+2025-01-11 04:28:37 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 04:28:37 - INFO - found the format marker [ff, fb] @ 1239+2 bytes.
+2025-01-11 04:28:37 - INFO - using xing header for duration
+2025-01-11 04:28:37 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
+2025-01-11 04:28:37 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
+2025-01-11 04:28:37 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 04:28:37 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 04:28:37 - INFO - using xing header for duration
+2025-01-11 04:28:37 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 04:28:37 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 04:28:37 - INFO - using xing header for duration
+2025-01-11 04:28:37 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 04:28:37 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 04:28:37 - INFO - using xing header for duration
+2025-01-11 04:28:37 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 04:28:37 - INFO - found the format marker [ff, fb] @ 172032+2 bytes.
+2025-01-11 04:28:37 - INFO - using xing header for duration
+2025-01-11 04:28:37 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 04:28:37 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 04:28:37 - INFO - using xing header for duration
+2025-01-11 04:28:37 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
+2025-01-11 04:28:37 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
+2025-01-11 04:28:39 - INFO - Selected next track
+2025-01-11 04:28:40 - INFO - Track Path: "/home/m-d-nabeel/Music/Diviners, Philly K. - Savannah (feat. Philly K) [NCS Release].mp3"
+2025-01-11 04:28:40 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 04:28:40 - INFO - found the format marker [ff, fb] @ 1239+2 bytes.
+2025-01-11 04:28:40 - INFO - using xing header for duration
+2025-01-11 04:28:40 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 04:28:40 - INFO - found the format marker [ff, fb] @ 1239+2 bytes.
+2025-01-11 04:28:40 - INFO - using xing header for duration
+2025-01-11 04:28:40 - INFO - ==>Track: Track { title: "Diviners, Philly K. - Savannah (feat. Philly K) [NCS Release].mp3", artist: None, path: "/home/m-d-nabeel/Music/Diviners, Philly K. - Savannah (feat. Philly K) [NCS Release].mp3", duration: Some(204.016326531s) }
+2025-01-11 04:28:40 - INFO - ==>Track Duration: 204.016326531s
+2025-01-11 04:28:42 - INFO - Selected next track
+2025-01-11 04:28:42 - INFO - Selected next track
+2025-01-11 04:28:42 - INFO - Selected next track
+2025-01-11 04:28:42 - INFO - Track Path: "/home/m-d-nabeel/Music/Sitara (Official Video) ｜ Aashiq Khan x Mitika Kanwar ｜ Denny ｜ Shloke Lal ｜ Hindi Song [o6vrwaUKk3M].mp3"
+2025-01-11 04:28:42 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 04:28:42 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 04:28:42 - INFO - using xing header for duration
+2025-01-11 04:28:43 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 04:28:43 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 04:28:43 - INFO - using xing header for duration
+2025-01-11 04:28:43 - INFO - ==>Track: Track { title: "Sitara (Official Video) ｜ Aashiq Khan x Mitika Kanwar ｜ Denny ｜ Shloke Lal ｜ Hindi Song [o6vrwaUKk3M].mp3", artist: None, path: "/home/m-d-nabeel/Music/Sitara (Official Video) ｜ Aashiq Khan x Mitika Kanwar ｜ Denny ｜ Shloke Lal ｜ Hindi Song [o6vrwaUKk3M].mp3", duration: Some(186.072s) }
+2025-01-11 04:28:43 - INFO - ==>Track Duration: 186.072s
+2025-01-11 04:28:44 - INFO - Playback paused
+2025-01-11 04:28:54 - INFO - Playback resumed
+2025-01-11 04:28:57 - INFO - Selected next track
+2025-01-11 04:28:57 - INFO - Selected next track
+2025-01-11 04:28:58 - INFO - Track Path: "/home/m-d-nabeel/Music/die_for_you.mp3"
+2025-01-11 04:28:58 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 04:28:58 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 04:28:58 - INFO - using xing header for duration
+2025-01-11 04:28:58 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 04:28:58 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 04:28:58 - INFO - using xing header for duration
+2025-01-11 04:28:58 - INFO - ==>Track: Track { title: "die_for_you.mp3", artist: None, path: "/home/m-d-nabeel/Music/die_for_you.mp3", duration: Some(260.310204082s) }
+2025-01-11 04:28:58 - INFO - ==>Track Duration: 260.310204082s
+2025-01-11 04:29:05 - INFO - Selected next track
+2025-01-11 04:29:05 - INFO - Track Path: "/home/m-d-nabeel/Music/elemental-magic-spell-impact-outgoing-228342.mp3"
+2025-01-11 04:29:05 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
+2025-01-11 04:29:05 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
+2025-01-11 04:29:05 - INFO - found the format marker [ff, fb] @ 0+2 bytes.
+2025-01-11 04:29:05 - INFO - estimating duration from bitrate, may be inaccurate for vbr files
+2025-01-11 04:29:05 - INFO - ==>Track: Track { title: "elemental-magic-spell-impact-outgoing-228342.mp3", artist: None, path: "/home/m-d-nabeel/Music/elemental-magic-spell-impact-outgoing-228342.mp3", duration: Some(3.192s) }
+2025-01-11 04:29:05 - INFO - ==>Track Duration: 3.192s
+2025-01-11 04:29:08 - INFO - Track Path: "/home/m-d-nabeel/Music/i_feel_it_coming.mp3"
+2025-01-11 04:29:08 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 04:29:08 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 04:29:08 - INFO - using xing header for duration
+2025-01-11 04:29:09 - INFO - found the format marker [49, 44, 33] @ 0+2 bytes.
+2025-01-11 04:29:09 - INFO - found the format marker [ff, fb] @ 44+2 bytes.
+2025-01-11 04:29:09 - INFO - using xing header for duration
+2025-01-11 04:29:09 - INFO - ==>Track: Track { title: "i_feel_it_coming.mp3", artist: None, path: "/home/m-d-nabeel/Music/i_feel_it_coming.mp3", duration: Some(297.691428571s) }
+2025-01-11 04:29:09 - INFO - ==>Track Duration: 297.691428571s
+2025-01-11 04:29:09 - INFO - Successfully advanced to next track
+2025-01-11 04:29:13 - INFO - Quit key pressed
