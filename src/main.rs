@@ -9,7 +9,7 @@ use app::App;
 use ratatui::{
     crossterm::{
         cursor::{Hide, Show},
-        event::{self, DisableMouseCapture, EnableMouseCapture, Event},
+        event::{self, DisableMouseCapture, Event},
         execute,
         terminal::{disable_raw_mode, enable_raw_mode, EnterAlternateScreen, LeaveAlternateScreen},
     },
@@ -48,7 +48,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     execute!(
         terminal.backend_mut(),
         LeaveAlternateScreen,
-        EnableMouseCapture,
+        // Random bytes on mouse capture on exit when mouse capture is enabled
+        // as each mouse capture generates a particular byte for event handling
+        // 64;61;48M, 65;61;48M, 66;61;48M, 67;61;48M
         Show
     )?;
     terminal.show_cursor()?;
