@@ -6,7 +6,7 @@ use ratatui::{
 use crate::{app::App, controls::playback_control::PlaybackStatus};
 
 use super::components::{
-    music_library_ui::MusicLibraryUI, playback_control_ui::PlaybackControlUI,
+    help_ui::HelpUI, music_library_ui::MusicLibraryUI, playback_control_ui::PlaybackControlUI,
     sound_control_ui::SoundControlUI, visualizer_ui::VisualizerUI,
 };
 
@@ -27,7 +27,8 @@ impl UIManager {
         }
     }
 
-    pub fn render(&self, frame: &mut Frame, app: &App) {
+    pub fn render(&mut self, frame: &mut Frame, app: &App) {
+        // Base layout
         let chunks = Layout::default()
             .direction(Direction::Horizontal)
             .constraints([Constraint::Ratio(2, 10), Constraint::Ratio(8, 10)])
@@ -72,6 +73,8 @@ impl UIManager {
                 "No song playing".to_string()
             }
         };
+
+        // Render main UI components
         self.music_library.render(frame, chunks[0], library_state);
         self.visualizer
             .render(frame, main_layout[0], spectrum, canvas_type);
@@ -79,5 +82,12 @@ impl UIManager {
             .render(frame, control_chunks[0], sound_state);
         self.playback_controls
             .render(frame, control_chunks[1], playback_state, song_text);
+
+        if app.show_help {
+            // takes whole frame as a board for render
+            // makes the bg dim and creates an overlay
+            // no need to intantiate an object for this
+            HelpUI::render(frame, app.get_keybindings());
+        }
     }
 }

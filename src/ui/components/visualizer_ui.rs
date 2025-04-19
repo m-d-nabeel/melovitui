@@ -90,7 +90,7 @@ impl VisualizerUI {
 }
 
 impl VisualizerUI {
-    #[allow(dead_code)]
+    #[allow(dead_code, elided_named_lifetimes)]
     fn get_canvas_1<'a>(
         &'a self,
         inner_area: Rect,
@@ -227,7 +227,7 @@ impl VisualizerUI {
             }))
     }
 
-    #[allow(dead_code)]
+    #[allow(dead_code, elided_named_lifetimes)]
     fn get_canvas_2<'a>(
         &'a self,
         inner_area: Rect,
@@ -301,7 +301,7 @@ impl VisualizerUI {
                 }
             }))
     }
-    #[allow(dead_code)]
+    #[allow(dead_code, elided_named_lifetimes)]
     fn get_canvas_3<'a>(
         &'a self,
         inner_area: Rect,
@@ -418,7 +418,7 @@ impl VisualizerUI {
     }
 }
 impl VisualizerUI {
-    #[allow(dead_code)]
+    #[allow(dead_code, elided_named_lifetimes)]
     fn get_canvas_4<'a>(
         &'a self,
         inner_area: Rect,
@@ -484,7 +484,7 @@ impl VisualizerUI {
             }))
     }
 
-    #[allow(dead_code)]
+    #[allow(dead_code, elided_named_lifetimes)]
     fn get_canvas_5<'a>(
         &'a self,
         inner_area: Rect,
@@ -559,7 +559,7 @@ impl VisualizerUI {
             }))
     }
 
-    #[allow(dead_code)]
+    #[allow(dead_code, elided_named_lifetimes)]
     fn get_canvas_6<'a>(
         &'a self,
         inner_area: Rect,
@@ -647,7 +647,7 @@ impl VisualizerUI {
 }
 
 impl VisualizerUI {
-    #[allow(dead_code)]
+    #[allow(dead_code, elided_named_lifetimes)]
     fn get_canvas_7<'a>(
         &'a self,
         inner_area: Rect,
@@ -741,7 +741,7 @@ impl VisualizerUI {
             }))
     }
 
-    #[allow(dead_code)]
+    #[allow(dead_code, elided_named_lifetimes)]
     fn get_canvas_8<'a>(
         &'a self,
         inner_area: Rect,
@@ -810,7 +810,7 @@ impl VisualizerUI {
             }))
     }
 
-    #[allow(dead_code)]
+    #[allow(dead_code, elided_named_lifetimes)]
     fn get_canvas_9<'a>(
         &'a self,
         inner_area: Rect,
