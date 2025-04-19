@@ -848,7 +848,7 @@ dependencies = [
 
 [[package]]
 name = "melovitui"
-version = "1.3.2"
+version = "1.4.2"
 dependencies = [
  "apodize",
  "chrono",

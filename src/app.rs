@@ -1,10 +1,11 @@
 use parking_lot::Mutex;
-use ratatui::crossterm::event::{KeyCode, KeyEvent, KeyModifiers};
+use ratatui::crossterm::event::{KeyCode, KeyEvent};
 use std::error::Error;
 use std::path::PathBuf;
 use std::sync::Arc;
 
 use crate::audio_system::{AudioSystem, SoundControl};
+use crate::controls::keybindings::Keybindings;
 use crate::controls::music_library::MusicLibrary;
 use crate::controls::playback_control::PlaybackControl;
 
@@ -12,6 +13,8 @@ pub struct App {
     audio_system: Arc<Mutex<AudioSystem>>,
     library: Arc<Mutex<MusicLibrary>>,
     playback: Arc<Mutex<PlaybackControl>>,
+    keybindings: Keybindings,
+    pub show_help: bool,
 }
 
 impl App {
@@ -32,6 +35,8 @@ impl App {
             audio_system,
             library,
             playback,
+            keybindings: Keybindings::new(),
+            show_help: false,
         })
     }
 
@@ -44,71 +49,86 @@ impl App {
 
 impl App {
     pub fn handle_key_event(&mut self, key_event: KeyEvent) -> Result<bool, Box<dyn Error>> {
-        match key_event.code {
-            KeyCode::Enter => {
-                let current_index = self.library.lock().current_index;
-                self.library.lock().select_track(current_index);
-                self.playback.lock().current_track = Some(current_index);
-                self.audio_system.lock().play_track(None)?;
-            }
-            KeyCode::Char('p') => {
-                if let Err(err) = self.audio_system.lock().toggle_playback() {
-                    log::error!("Error toggling playback: {}", err);
-                }
-            }
-            KeyCode::Char('k') => {
-                self.library.lock().select_previous();
-                log::info!("Selected previous track");
-            }
-            KeyCode::Char('j') => {
-                self.library.lock().select_next();
-                log::info!("Selected next track");
-            }
-
-            KeyCode::Left | KeyCode::Right => {
-                let delta = if key_event.code == KeyCode::Left {
-                    -5.0
-                } else {
-                    5.0
-                };
-
-                if key_event.modifiers == KeyModifiers::SHIFT {
-                    self.audio_system.lock().adjust_balance(delta);
-                } else {
-                    self.audio_system.lock().adjust_volume(delta);
-                }
-            }
-
-            KeyCode::Up | KeyCode::Down => {
-                let delta = if key_event.code == KeyCode::Down {
-                    -5.0
-                } else {
-                    5.0
-                };
-
-                if key_event.modifiers == KeyModifiers::SHIFT {
-                    self.audio_system.lock().adjust_treble(delta);
-                } else {
-                    self.audio_system.lock().adjust_bass(delta);
-                }
-            }
-            KeyCode::Char('s') => {
-                self.audio_system.lock().stop();
-            }
-            KeyCode::Char('q') => {
-                log::info!("Quit key pressed");
-                return Ok(false);
-            }
-            KeyCode::Char(c) if c.is_ascii_digit() && c.is_ascii_digit() => {
-                let canvas_type = c.to_digit(10).unwrap() as usize;
-                self.audio_system
-                    .lock()
-                    .set_visualizer_canvas_type(canvas_type);
-            }
-            _ => {
-                log::info!("Unhandled key event: {:?}", key_event);
-            }
+        // Check if the '?' key was pressed to toggle help
+        if key_event.code == KeyCode::Char('?') {
+            self.show_help = !self.show_help;
+            return Ok(true);
         }
+
+        // If help is showing, pressing any key dismisses it (except '?' which already toggles it)
+        if self.show_help {
+            self.show_help = false;
+            return Ok(true);
+        }
+
+        // Check if we have a keybinding for this key
+        if let Some(action) = self.keybindings.get_action(&key_event) {
+            match action.name.as_str() {
+                "play_selected" => {
+                    let current_index = self.library.lock().current_index;
+                    self.library.lock().select_track(current_index);
+                    self.playback.lock().current_track = Some(current_index);
+                    self.audio_system.lock().play_track(None)?;
+                }
+                "toggle_playback" => {
+                    if let Err(err) = self.audio_system.lock().toggle_playback() {
+                        log::error!("Error toggling playback: {}", err);
+                    }
+                }
+                "select_previous" => {
+                    self.library.lock().select_previous();
+                    log::info!("Selected previous track");
+                }
+                "select_next" => {
+                    self.library.lock().select_next();
+                    log::info!("Selected next track");
+                }
+                "volume_down" => {
+                    self.audio_system.lock().adjust_volume(-5.0);
+                }
+                "volume_up" => {
+                    self.audio_system.lock().adjust_volume(5.0);
+                }
+                "balance_left" => {
+                    self.audio_system.lock().adjust_balance(-5.0);
+                }
+                "balance_right" => {
+                    self.audio_system.lock().adjust_balance(5.0);
+                }
+                "bass_up" => {
+                    self.audio_system.lock().adjust_bass(5.0);
+                }
+                "bass_down" => {
+                    self.audio_system.lock().adjust_bass(-5.0);
+                }
+                "treble_up" => {
+                    self.audio_system.lock().adjust_treble(5.0);
+                }
+                "treble_down" => {
+                    self.audio_system.lock().adjust_treble(-5.0);
+                }
+                "stop" => {
+                    self.audio_system.lock().stop();
+                }
+                "quit" => {
+                    log::info!("Quit key pressed");
+                    return Ok(false);
+                }
+                name if name.starts_with("visualizer_mode_") => {
+                    if let Some(canvas_type) = name.chars().last().and_then(|c| c.to_digit(10)) {
+                        self.audio_system
+                            .lock()
+                            .set_visualizer_canvas_type(canvas_type as usize);
+                    }
+                }
+                _ => {
+                    log::info!("Unhandled action: {}", action.name);
+                }
+            }
+            return Ok(true);
+        }
+
+        log::info!("Unhandled key event: {:?}", key_event);
         Ok(true)
     }
 }
@@ -121,10 +141,16 @@ impl App {
     pub fn get_sound_state(&self) -> Arc<Mutex<SoundControl>> {
         Arc::clone(&self.audio_system.lock().get_sound_state())
     }
+
     pub fn get_playback_state(&self) -> Arc<Mutex<PlaybackControl>> {
         Arc::clone(&self.playback)
     }
+
     pub fn get_audio_system(&self) -> Arc<Mutex<AudioSystem>> {
         Arc::clone(&self.audio_system)
+    }
+
+    pub fn get_keybindings(&self) -> &Keybindings {
+        &self.keybindings
     }
 }
