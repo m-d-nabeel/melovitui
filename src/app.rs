@@ -8,6 +8,7 @@ use crate::audio_system::{AudioSystem, SoundControl};
 use crate::controls::keybindings::Keybindings;
 use crate::controls::music_library::MusicLibrary;
 use crate::controls::playback_control::PlaybackControl;
+use crate::{log_debug, log_error};
 
 pub struct App {
     audio_system: Arc<Mutex<AudioSystem>>,
@@ -72,16 +73,16 @@ impl App {
                 }
                 "toggle_playback" => {
                     if let Err(err) = self.audio_system.lock().toggle_playback() {
-                        log::error!("Error toggling playback: {}", err);
+                        log_error!("Error toggling playback: {}", err);
                     }
                 }
                 "select_previous" => {
                     self.library.lock().select_previous();
-                    log::info!("Selected previous track");
+                    log_debug!("Selected previous track");
                 }
                 "select_next" => {
                     self.library.lock().select_next();
-                    log::info!("Selected next track");
+                    log_debug!("Selected next track");
                 }
                 "volume_down" => {
                     self.audio_system.lock().adjust_volume(-5.0);
@@ -111,7 +112,7 @@ impl App {
                     self.audio_system.lock().stop();
                 }
                 "quit" => {
-                    log::info!("Quit key pressed");
+                    log_debug!("Quit key pressed");
                     return Ok(false);
                 }
                 name if name.starts_with("visualizer_mode_") => {
@@ -122,13 +123,13 @@ impl App {
                     }
                 }
                 _ => {
-                    log::info!("Unhandled action: {}", action.name);
+                    log_debug!("Unhandled action: {}", action.name);
                 }
             }
             return Ok(true);
         }
 
-        log::info!("Unhandled key event: {:?}", key_event);
+        log_debug!("Unhandled key event: {:?}", key_event);
         Ok(true)
     }
 }
