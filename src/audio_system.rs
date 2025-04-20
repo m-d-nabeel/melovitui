@@ -13,6 +13,7 @@ use rustfft::{FftDirection, FftPlanner};
 use crate::controls::music_library::MusicLibrary;
 use crate::controls::playback_control::{PlaybackControl, PlaybackStatus};
 use crate::controls::spectrum::Spectrum;
+use crate::{log_debug, log_error};
 
 /// Represents audio settings with well-defined constraints
 #[derive(Debug, Clone)]
@@ -57,6 +58,8 @@ impl AudioSystem {
         let sound = Arc::new(Mutex::new(SoundControl::new()));
         let spectrum = Arc::new(Mutex::new(Spectrum::default()));
 
+        log_debug!("Creating new AudioSystem instance");
+
         Ok(Self {
             library,
             playback,
@@ -90,14 +93,14 @@ impl AudioSystem {
                 .clone()
         };
 
-        log::info!("Track Path: {:?}", track_path);
+        log_debug!("Track Path: {:?}", track_path);
 
         // For visualizer dumb approach
         // Try to compute FFT for visualization, but don't let it block playback
         {
             let mut spectrum = self.spectrum.lock();
             *spectrum = AudioSystem::fft(&track_path).unwrap_or_else(|e| {
-                log::warn!("Failed to compute FFT for visualization: {}", e);
+                log_error!("Failed to compute FFT for visualization: {}", e);
                 Spectrum::default()
             });
         }
@@ -119,11 +122,11 @@ impl AudioSystem {
                 .tracks
                 .get(index)
                 .and_then(|track| {
-                    log::info!("==>Track: {:?}", track);
+                    log_debug!("Processing track: {:?}", track);
                     track.duration
                 })
                 .unwrap_or(Duration::ZERO);
-            log::info!("==>Track Duration: {:?}", duration);
+            log_debug!("Track Duration: {:?}", duration);
 
             playback.start(index, duration);
         }
@@ -131,6 +134,7 @@ impl AudioSystem {
         // Apply current sound settings
         self.apply_sound_settings();
 
+        log_debug!("Track playback started successfully");
         Ok(())
     }
 
@@ -160,7 +164,7 @@ impl AudioSystem {
                         should_advance = true;
                     }
                 } else {
-                    log::info!("==>ElapsedTime Update Failed")
+                    log_error!("Failed to update elapsed time: no current track");
                 }
             }
         }
@@ -186,15 +190,14 @@ impl AudioSystem {
 
             match self.play_track(Some(next_index)) {
                 Ok(_) => {
-                    log::info!("Successfully advanced to next track");
+                    log_debug!("Successfully advanced to next track");
                 }
                 Err(e) => {
-                    log::error!("Failed to play next track: {}", e);
-                    // Try to recover by advancing to the next track
-                    let mut playback = self.playback.lock();
-                    playback.status = PlaybackStatus::Stopped;
+                    log_error!("Failed to advance to next track: {}", e);
                 }
             }
+        } else {
+            log_error!("Cannot advance track: no current track");
         }
     }
 
@@ -210,33 +213,50 @@ impl AudioSystem {
         drop(sound);
     }
 
-    /// Toggle playback state intelligently
+    /// Toggle playback between play and pause
     pub fn toggle_playback(&mut self) -> Result<(), Box<dyn Error>> {
-        let playback = self.playback.lock();
-        match playback.status {
+        let current_status = {
+            let playback = self.playback.lock();
+            playback.status.clone()
+        };
+
+        match current_status {
             PlaybackStatus::Playing => {
-                drop(playback);
                 self.pause();
-                log::info!("Playback paused");
+                {
+                    let mut playback = self.playback.lock();
+                    playback.status = PlaybackStatus::Paused;
+                }
+                log_debug!("Playback paused");
             }
             PlaybackStatus::Paused | PlaybackStatus::Stopped => {
-                let current_track = playback.current_track;
-                let tracks_empty = self.library.lock().tracks.is_empty();
-                drop(playback);
+                let (current_track, library_is_empty) = {
+                    let playback = self.playback.lock();
+                    let library = self.library.lock();
+                    (playback.current_track, library.tracks.is_empty())
+                };
 
-                match (current_track, tracks_empty) {
+                match (current_track, library_is_empty) {
                     (Some(_), _) => {
                         self.resume();
-                        log::info!("Playback resumed");
+                        {
+                            let mut playback = self.playback.lock();
+                            playback.status = PlaybackStatus::Playing;
+                        }
+                        log_debug!("Playback resumed");
                     }
                     (None, false) => {
                         self.play_track(Some(0))?;
-                        log::info!("Started first track");
+                        log_debug!("Started first track");
                     }
-                    _ => log::warn!("No tracks available"),
+                    _ => {
+                        log_error!("No tracks available");
+                        log_error!("Cannot start playback - library is empty");
+                    }
                 }
             }
         }
+
         Ok(())
     }
 }
@@ -397,25 +417,25 @@ impl SoundControl {
     /// Adjusts the volume by a delta and clamps it within the valid range
     pub fn adjust_volume(&mut self, delta: f32) {
         self.volume = (self.volume + delta).clamp(0.0, 100.0);
-        log::info!("Volume adjusted to {}", self.volume);
+        log_debug!("Volume adjusted to {}", self.volume);
     }
 
     /// Adjusts the bass by a delta and clamps it within the valid range
     pub fn adjust_bass(&mut self, delta: f32) {
         self.bass = (self.bass + delta).clamp(-100.0, 100.0);
-        log::info!("Bass adjusted to {}", self.bass);
+        log_debug!("Bass adjusted to {}", self.bass);
     }
 
     /// Adjusts the treble by a delta and clamps it within the valid range
     pub fn adjust_treble(&mut self, delta: f32) {
         self.treble = (self.treble + delta).clamp(-100.0, 100.0);
-        log::info!("Treble adjusted to {}", self.treble);
+        log_debug!("Treble adjusted to {}", self.treble);
     }
 
     /// Adjusts the balance by a delta and clamps it within the valid range
     pub fn adjust_balance(&mut self, delta: f32) {
         self.balance = (self.balance + delta).clamp(-100.0, 100.0);
-        log::info!("Balance adjusted to {}", self.balance);
+        log_debug!("Balance adjusted to {}", self.balance);
     }
     /// Getter for volume
     pub fn volume(&self) -> f32 {
