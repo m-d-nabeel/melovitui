@@ -27,6 +27,13 @@ pub fn setup_logging() -> Result<(), Box<dyn std::error::Error>> {
         )))
         .build("logs/error.log")?;
 
+    // Set the appropriate log level based on compilation profile
+    let root_level = if cfg!(debug_assertions) {
+        LevelFilter::Debug
+    } else {
+        LevelFilter::Off
+    };
+
     // Build log configuration
     let config = Config::builder()
         .appender(Appender::builder().build("debug_file", Box::new(debug_log)))
@@ -44,7 +51,7 @@ pub fn setup_logging() -> Result<(), Box<dyn std::error::Error>> {
             Root::builder()
                 .appender("debug_file")
                 .appender("error_file")
-                .build(LevelFilter::Debug),
+                .build(root_level),
         )?;
 
     // Initialize logging
@@ -53,7 +60,11 @@ pub fn setup_logging() -> Result<(), Box<dyn std::error::Error>> {
     // Set up panic handler
     setup_panic_handler();
 
-    debug!("Logging system initialized");
+    if cfg!(debug_assertions) {
+        debug!("Logging system initialized with debug level");
+    } else {
+        debug!("Logging system initialized with info level (debug logs disabled)");
+    }
     Ok(())
 }
 
@@ -90,12 +101,14 @@ fn setup_panic_handler() {
 #[macro_export]
 macro_rules! log_debug {
     ($($arg:tt)*) => {
-        log::debug!(
-            "[{}:{}] {}",
-            file!(),
-            line!(),
-            format!($($arg)*)
-        )
+        if cfg!(debug_assertions) {
+            log::debug!(
+                "[{}:{}] {}",
+                file!(),
+                line!(),
+                format!($($arg)*)
+            )
+        }
     }
 }
 

@@ -10,6 +10,13 @@ use crate::controls::music_library::MusicLibrary;
 use crate::controls::playback_control::PlaybackControl;
 use crate::{log_debug, log_error};
 
+/// Main application state container and controller.
+///
+/// The `App` struct is the central coordinator of the application, managing:
+/// - Audio system and playback
+/// - Music library browsing
+/// - User input handling via keybindings
+/// - UI state (help overlay visibility)
 pub struct App {
     audio_system: Arc<Mutex<AudioSystem>>,
     library: Arc<Mutex<MusicLibrary>>,
@@ -83,6 +90,12 @@ impl App {
                 "select_next" => {
                     self.library.lock().select_next();
                     log_debug!("Selected next track");
+                }
+                "seek_forward" => {
+                    self.audio_system.lock().seek_forward(None);
+                }
+                "seek_backward" => {
+                    self.audio_system.lock().seek_backward(None);
                 }
                 "volume_down" => {
                     self.audio_system.lock().adjust_volume(-5.0);

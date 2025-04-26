@@ -15,7 +15,13 @@ use crate::controls::playback_control::{PlaybackControl, PlaybackStatus};
 use crate::controls::spectrum::Spectrum;
 use crate::{log_debug, log_error};
 
-/// Represents audio settings with well-defined constraints
+/// Audio settings with well-defined constraints for controlling sound characteristics.
+///
+/// This struct manages all user-adjustable audio parameters:
+/// - Volume: Controls overall playback loudness (0-100)
+/// - Bass: Enhances or reduces low frequencies (-100 to 100)
+/// - Treble: Enhances or reduces high frequencies (-100 to 100)
+/// - Balance: Controls left/right channel balance (-100 to 100)
 #[derive(Debug, Clone)]
 pub struct SoundControl {
     volume: f32,
@@ -35,7 +41,14 @@ impl Default for SoundControl {
     }
 }
 
-/// Primary audio system managing playback, library, and sound controls
+/// Primary audio system that manages playback, sound processing, music library,
+/// and visualization.
+///
+/// The `AudioSystem` is the central component responsible for:
+/// - Playing and controlling audio playback
+/// - Applying audio effects and adjustments (volume, bass, treble, balance)
+/// - Track selection and progression
+/// - Audio visualization data processing
 pub struct AudioSystem {
     library: Arc<Mutex<MusicLibrary>>,
     playback: Arc<Mutex<PlaybackControl>>,
@@ -357,7 +370,12 @@ impl AudioSystem {
         let mut playback = self.playback.lock();
         playback.status = PlaybackStatus::Stopped;
         playback.elapsed = Duration::ZERO;
-        self.sink.stop();
+        match self.sink.try_seek(Duration::ZERO) {
+            Ok(_) => {
+                self.sink.pause();
+            }
+            Err(e) => log_error!("{}", e),
+        }
     }
 }
 
@@ -405,6 +423,32 @@ impl AudioSystem {
 
     pub fn get_visualizer_canvas_type(&self) -> usize {
         self.visualizer_canvas
+    }
+}
+
+impl AudioSystem {
+    pub fn seek_forward(&mut self, delta: Option<f32>) {
+        let seek_value = delta.unwrap_or(10.0);
+        let current = self.playback.lock().elapsed;
+        let new_position = current + Duration::from_secs_f32(seek_value);
+        
+        if let Err(e) = self.sink.try_seek(new_position) {
+            log_error!("Failed to seek forward: {}", e);
+        } else {
+            self.playback.lock().update_elapsed(new_position);
+        }
+    }
+
+    pub fn seek_backward(&mut self, delta: Option<f32>) {
+        let seek_value = delta.unwrap_or(10.0);
+        let current = self.playback.lock().elapsed;
+        let new_position = current.saturating_sub(Duration::from_secs_f32(seek_value));
+        
+        if let Err(e) = self.sink.try_seek(new_position) {
+            log_error!("Failed to seek backward: {}", e);
+        } else {
+            self.playback.lock().update_elapsed(new_position);
+        }
     }
 }
 

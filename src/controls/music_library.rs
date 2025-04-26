@@ -9,6 +9,13 @@ use symphonia::core::probe::Hint;
 use symphonia::default::get_probe;
 use walkdir::WalkDir;
 
+/// Manages the collection of audio tracks and track selection state.
+///
+/// This struct is responsible for:
+/// - Loading and indexing audio files from the filesystem
+/// - Maintaining the collection of available tracks
+/// - Tracking which track is currently selected
+/// - Providing navigation between tracks (previous/next)
 #[derive(Default, Clone)]
 pub struct MusicLibrary {
     pub tracks: Vec<Track>,
@@ -18,6 +25,12 @@ pub struct MusicLibrary {
     pub current_dir: PathBuf,
 }
 
+/// Represents an audio track with metadata and file information.
+///
+/// Each track contains:
+/// - Basic metadata (title, optional artist)
+/// - File path to the audio source
+/// - Duration information when available
 #[derive(Clone, Debug)]
 pub struct Track {
     pub title: String,

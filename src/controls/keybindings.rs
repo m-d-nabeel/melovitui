@@ -1,14 +1,21 @@
 use ratatui::crossterm::event::{KeyCode, KeyEvent, KeyModifiers};
 use std::collections::HashMap;
 
-/// Represents an action that can be performed in the application
+/// Represents an action that can be performed in the application.
+///
+/// Actions are mapped to key combinations and contain a name identifier
+/// and a human-readable description.
 #[derive(Debug, Clone)]
 pub struct Action {
     pub name: String,
     pub description: String,
 }
 
-/// Manages all keybindings for the application
+/// Manages all keybindings for the application.
+///
+/// This struct stores mappings between keyboard events and actions,
+/// providing a centralized way to handle user input across the application.
+/// It defines all available keyboard shortcuts and their associated functions.
 #[derive(Debug)]
 pub struct Keybindings {
     pub bindings: HashMap<KeyEvent, Action>,
@@ -58,6 +65,23 @@ impl Keybindings {
             Action {
                 name: "select_previous".to_string(),
                 description: "Select previous track".to_string(),
+            },
+        );
+
+        // Playback seek control
+        bindings.insert(
+            KeyEvent::new(KeyCode::Char('h'), KeyModifiers::NONE),
+            Action {
+                name: "seek_backward".to_string(),
+                description: "Seek backward".to_string(),
+            },
+        );
+
+        bindings.insert(
+            KeyEvent::new(KeyCode::Char('l'), KeyModifiers::NONE),
+            Action {
+                name: "seek_forward".to_string(),
+                description: "Seek forward".to_string(),
             },
         );
 
