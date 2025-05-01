@@ -65,9 +65,9 @@ impl UIManager {
                 let track_title = library_state.tracks[idx].title.clone();
 
                 match playback_state.status {
-                    PlaybackStatus::Stopped => format!("■ {}", track_title),
-                    PlaybackStatus::Playing => format!("▶ {}", track_title),
-                    PlaybackStatus::Paused => format!("❚❚ {}", track_title),
+                    PlaybackStatus::Stopped => format!("⏹ {}", track_title), // Stop button
+                    PlaybackStatus::Playing => format!("⏸ {}", track_title), // Play button
+                    PlaybackStatus::Paused => format!("▶ {}", track_title),  // Pause button
                 }
             } else {
                 "No song playing".to_string()

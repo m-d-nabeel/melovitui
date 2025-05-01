@@ -8,7 +8,7 @@ use ratatui::{
     Frame,
 };
 
-use crate::audio_system::SoundControl;
+use crate::controls::sound_control::SoundControl;
 
 use super::audio_gauge::AudioGauge;
 
