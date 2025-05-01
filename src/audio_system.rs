@@ -1,45 +1,15 @@
 use std::error::Error;
-use std::fs::File;
-use std::io::BufReader;
-use std::path::Path;
 use std::sync::Arc;
 use std::time::Duration;
 
 use parking_lot::Mutex;
-use rodio::{Decoder, OutputStream, OutputStreamHandle, Sink, Source};
-use rustfft::num_complex::Complex;
-use rustfft::{FftDirection, FftPlanner};
+use rodio::{OutputStream, OutputStreamHandle, Sink};
 
 use crate::controls::music_library::MusicLibrary;
 use crate::controls::playback_control::{PlaybackControl, PlaybackStatus};
+use crate::controls::sound_control::SoundControl;
 use crate::controls::spectrum::Spectrum;
 use crate::{log_debug, log_error};
-
-/// Audio settings with well-defined constraints for controlling sound characteristics.
-///
-/// This struct manages all user-adjustable audio parameters:
-/// - Volume: Controls overall playback loudness (0-100)
-/// - Bass: Enhances or reduces low frequencies (-100 to 100)
-/// - Treble: Enhances or reduces high frequencies (-100 to 100)
-/// - Balance: Controls left/right channel balance (-100 to 100)
-#[derive(Debug, Clone)]
-pub struct SoundControl {
-    volume: f32,
-    bass: f32,
-    treble: f32,
-    balance: f32,
-}
-
-impl Default for SoundControl {
-    fn default() -> Self {
-        Self {
-            volume: 50.0,
-            bass: 0.0,
-            treble: 0.0,
-            balance: 0.0,
-        }
-    }
-}
 
 /// Primary audio system that manages playback, sound processing, music library,
 /// and visualization.
@@ -54,10 +24,12 @@ pub struct AudioSystem {
     playback: Arc<Mutex<PlaybackControl>>,
     sound: Arc<Mutex<SoundControl>>,
     sink: Sink,
+
     #[allow(dead_code)]
-    stream: OutputStream,
+    _stream: OutputStream,
     #[allow(dead_code)]
-    stream_handle: OutputStreamHandle,
+    _stream_handle: OutputStreamHandle,
+
     spectrum: Arc<Mutex<Spectrum>>,
     visualizer_canvas: usize,
 }
@@ -78,23 +50,25 @@ impl AudioSystem {
             playback,
             sound,
             sink,
-            stream,
-            stream_handle,
+            _stream: stream,
+            _stream_handle: stream_handle,
             spectrum,
-            visualizer_canvas: 3,
+            visualizer_canvas: 0,
         })
     }
 }
 
 impl AudioSystem {
-    /// Play a track by index with comprehensive error handling
+    /// Play a track by index
     pub fn play_track(&mut self, track_index: Option<usize>) -> Result<(), Box<dyn Error>> {
-        let index: usize;
-        if let Some(idx) = track_index {
-            index = idx;
-        } else {
-            index = self.library.lock().selected_index.unwrap_or(0);
-        }
+        let index = match track_index {
+            Some(idx) => idx,
+            None => self
+                .library
+                .lock()
+                .selected_index
+                .expect("music library must be empty"),
+        };
 
         let track_path = {
             let library = self.library.lock();
@@ -110,9 +84,10 @@ impl AudioSystem {
 
         // For visualizer dumb approach
         // Try to compute FFT for visualization, but don't let it block playback
+        // needs concurrency that will need communication channel to threads
         {
             let mut spectrum = self.spectrum.lock();
-            *spectrum = AudioSystem::fft(&track_path).unwrap_or_else(|e| {
+            *spectrum = Spectrum::fft(&track_path).unwrap_or_else(|e| {
                 log_error!("Failed to compute FFT for visualization: {}", e);
                 Spectrum::default()
             });
@@ -275,62 +250,6 @@ impl AudioSystem {
 }
 
 impl AudioSystem {
-    pub fn fft(path: impl AsRef<Path>) -> Result<Spectrum, Box<dyn Error>> {
-        let src = File::open(path).unwrap();
-
-        let source = Decoder::new_mp3(BufReader::new(src)).unwrap();
-
-        let samples = source.convert_samples::<f32>();
-
-        let ch = samples.channels() as usize;
-        let rate = samples.sample_rate();
-        assert!(rate % 60 == 0); // assume sample rate is divisible by 60 so that we can stream each frame 60 times per second
-        let size = (rate / 60) as usize;
-        let msize = size * ch;
-
-        let mut planner = FftPlanner::<f32>::new();
-        let fft = planner.plan_fft(size, FftDirection::Forward);
-
-        let mut slices = vec![];
-
-        let hamming = apodize::hamming_iter(size)
-            .map(|n| n as f32)
-            .collect::<Vec<f32>>();
-
-        let samples = samples.buffered();
-
-        // TODO buffer not needed bc.: process(&mut slices[a..b])
-        let mut buffer = vec![];
-        for (k, b) in samples.enumerate() {
-            if k != 0 && k % msize == 0 {
-                fft.process(&mut buffer);
-                if buffer.len() != size {
-                    break;
-                }
-                slices.append(&mut buffer);
-            }
-            if k % ch == 0 {
-                buffer.push(Complex {
-                    re: b * hamming[(k % msize) / 2] as f32,
-                    im: 0.0,
-                });
-            }
-        }
-
-        let out = slices
-            .into_iter()
-            .map(|v| (v.re * v.re + v.im * v.im).sqrt())
-            .collect::<Vec<f32>>();
-
-        // in buffer, frames are every `size`, 60 frames = 1sec
-
-        Ok(Spectrum {
-            inner: out,
-            size,
-            fps: 60,
-        })
-    }
-
     pub fn get_current_frame(&self) -> Vec<f32> {
         // Lock the spectrum to gain access
         let spectrum = self.spectrum.lock();
@@ -431,7 +350,7 @@ impl AudioSystem {
         let seek_value = delta.unwrap_or(10.0);
         let current = self.playback.lock().elapsed;
         let new_position = current + Duration::from_secs_f32(seek_value);
-        
+
         if let Err(e) = self.sink.try_seek(new_position) {
             log_error!("Failed to seek forward: {}", e);
         } else {
@@ -443,60 +362,11 @@ impl AudioSystem {
         let seek_value = delta.unwrap_or(10.0);
         let current = self.playback.lock().elapsed;
         let new_position = current.saturating_sub(Duration::from_secs_f32(seek_value));
-        
+
         if let Err(e) = self.sink.try_seek(new_position) {
             log_error!("Failed to seek backward: {}", e);
         } else {
             self.playback.lock().update_elapsed(new_position);
         }
-    }
-}
-
-impl SoundControl {
-    /// Creates a new SoundControl with validated initial values
-    pub fn new() -> Self {
-        Self::default()
-    }
-
-    /// Adjusts the volume by a delta and clamps it within the valid range
-    pub fn adjust_volume(&mut self, delta: f32) {
-        self.volume = (self.volume + delta).clamp(0.0, 100.0);
-        log_debug!("Volume adjusted to {}", self.volume);
-    }
-
-    /// Adjusts the bass by a delta and clamps it within the valid range
-    pub fn adjust_bass(&mut self, delta: f32) {
-        self.bass = (self.bass + delta).clamp(-100.0, 100.0);
-        log_debug!("Bass adjusted to {}", self.bass);
-    }
-
-    /// Adjusts the treble by a delta and clamps it within the valid range
-    pub fn adjust_treble(&mut self, delta: f32) {
-        self.treble = (self.treble + delta).clamp(-100.0, 100.0);
-        log_debug!("Treble adjusted to {}", self.treble);
-    }
-
-    /// Adjusts the balance by a delta and clamps it within the valid range
-    pub fn adjust_balance(&mut self, delta: f32) {
-        self.balance = (self.balance + delta).clamp(-100.0, 100.0);
-        log_debug!("Balance adjusted to {}", self.balance);
-    }
-    /// Getter for volume
-    pub fn volume(&self) -> f32 {
-        self.volume
-    }
-    /// Getter for bass
-    pub fn bass(&self) -> f32 {
-        self.bass
-    }
-
-    /// Getter for treble
-    pub fn treble(&self) -> f32 {
-        self.treble
-    }
-
-    /// Getter for balance
-    pub fn balance(&self) -> f32 {
-        self.balance
     }
 }

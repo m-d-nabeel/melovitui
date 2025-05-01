@@ -81,7 +81,8 @@ impl VisualizerUI {
             7 => self.get_canvas_7(inner_area, &spectrum, time),
             8 => self.get_canvas_8(inner_area, &spectrum, time),
             9 => self.get_canvas_9(inner_area, &spectrum, time),
-            _ => self.get_canvas_3(inner_area, &spectrum, time), // Fallback canvas
+            // Use CAVA as the default visualizer
+            _ => self.get_canvas_cava(inner_area, &spectrum, time),
         };
 
         // Render the selected canvas
@@ -928,6 +929,166 @@ impl VisualizerUI {
                         y2: burst_y,
                         color: self.style.wave_color,
                     });
+                }
+            }))
+    }
+
+    // This function will use CAVA's raw output to create a visualizer
+    #[allow(dead_code, elided_named_lifetimes)]
+    fn get_canvas_cava<'a>(
+        &'a self,
+        inner_area: Rect,
+        _spectrum: &'a [f32], // Not used with CAVA
+        time: f64,
+    ) -> Canvas<CanvasPainter<'a>> {
+        Canvas::default()
+            .marker(symbols::Marker::Braille)
+            .x_bounds([0.0, inner_area.width.into()])
+            .y_bounds([0.0, inner_area.height.into()])
+            .paint(Box::new(move |ctx| {
+                use std::io::{BufReader, Read};
+                use std::process::{Command, Stdio};
+                use std::sync::Mutex;
+                use std::sync::OnceLock;
+                use std::thread;
+
+                static CAVA_DATA: OnceLock<Mutex<Vec<f32>>> = OnceLock::new();
+                static CAVA_RUNNING: OnceLock<Mutex<bool>> = OnceLock::new();
+
+                let cava_data =
+                    CAVA_DATA.get_or_init(|| Mutex::new(vec![0.0; inner_area.width as usize]));
+                let cava_running = CAVA_RUNNING.get_or_init(|| Mutex::new(false));
+
+                if !*cava_running.lock().unwrap() {
+                    let mut guard = cava_running.lock().unwrap();
+                    if !*guard {
+                        thread::spawn(move || {
+                            let config_content = format!(
+                                r#"
+                            [general]
+                            bars = {}
+                            framerate = 60
+                            autosens = 1
+
+                            [input]
+                            method = pulse
+                            source = auto
+
+                            [output]
+                            method = raw
+                            raw_target = /dev/stdout
+                            data_format = binary
+                            bit_format = 8bit
+                            orientation = top
+
+                            [color]
+                            gradient = 1
+                            gradient_count = 2
+                            gradient_color_1 = '#0099ff'
+                            gradient_color_2 = '#ff3399'
+
+                            [smoothing]
+                            monstercat = 1
+                            noise_reduction = 0.77
+
+                            [eq]
+                            1 = 1
+                            2 = 1
+                            3 = 1
+                            4 = 1
+                            5 = 1
+                            "#,
+                                inner_area.width
+                            );
+
+                            let temp_dir = std::env::temp_dir();
+                            let config_path = temp_dir.join("melovitui_cava.conf");
+                            std::fs::write(&config_path, config_content).unwrap();
+
+                            let mut cava = Command::new("cava")
+                                .arg("-p")
+                                .arg(&config_path)
+                                .stdout(Stdio::piped())
+                                .spawn()
+                                .unwrap();
+
+                            *cava_running.lock().unwrap() = true;
+
+                            let stdout = cava.stdout.take().unwrap();
+                            let mut reader = BufReader::new(stdout);
+                            let num_bars = inner_area.width as usize;
+                            let mut buffer = vec![0u8; num_bars];
+
+                            while reader.read_exact(&mut buffer).is_ok() {
+                                let mut data = cava_data.lock().unwrap();
+                                for (i, &val) in buffer.iter().enumerate() {
+                                    if i < num_bars {
+                                        data[i] = val as f32 / 255.0;
+                                    }
+                                }
+
+                                thread::sleep(std::time::Duration::from_millis(16));
+                            }
+
+                            *cava_running.lock().unwrap() = false;
+                            let _ = cava.wait();
+                        });
+
+                        *guard = true;
+                    }
+                }
+
+                // Rendering
+                let width = inner_area.width as f64;
+                let height = inner_area.height as f64;
+
+                ctx.draw(&Rectangle {
+                    x: 0.0,
+                    y: 0.0,
+                    width,
+                    height,
+                    color: Color::Black,
+                });
+
+                let bar_values = {
+                    let data_guard = cava_data.lock().unwrap();
+                    data_guard.clone()
+                };
+
+                let num_bars = bar_values.len();
+                let bar_width = width / num_bars as f64;
+
+                for (i, &value) in bar_values.iter().enumerate() {
+                    let x = i as f64 * bar_width;
+                    let bar_height = value as f64 * height;
+
+                    // Color oscillation
+                    let color_phase = i as f64 / num_bars as f64 + time * 0.1;
+                    let r = ((color_phase * 2.0).sin() * 0.5 + 0.5) * 255.0;
+                    let g = ((color_phase * 2.0 + 2.0).sin() * 0.5 + 0.5) * 255.0;
+                    let b = ((color_phase * 2.0 + 4.0).sin() * 0.5 + 0.5) * 255.0;
+                    let color = Color::Rgb(r as u8, g as u8, b as u8);
+
+                    // Main bar (BOTTOM-UP)
+                    ctx.draw(&Rectangle {
+                        x,
+                        y: 0.0,
+                        width: bar_width - 1.0,
+                        height: bar_height,
+                        color,
+                    });
+
+                    // Peak line
+                    let peak_y = bar_height;
+                    if peak_y < height {
+                        ctx.draw(&Rectangle {
+                            x,
+                            y: peak_y,
+                            width: bar_width - 1.0,
+                            height: 1.0,
+                            color: self.style.peak_color,
+                        });
+                    }
                 }
             }))
     }

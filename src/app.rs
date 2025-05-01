@@ -4,10 +4,11 @@ use std::error::Error;
 use std::path::PathBuf;
 use std::sync::Arc;
 
-use crate::audio_system::{AudioSystem, SoundControl};
+use crate::audio_system::AudioSystem;
 use crate::controls::keybindings::Keybindings;
 use crate::controls::music_library::MusicLibrary;
 use crate::controls::playback_control::PlaybackControl;
+use crate::controls::sound_control::SoundControl;
 use crate::{log_debug, log_error};
 
 /// Main application state container and controller.
