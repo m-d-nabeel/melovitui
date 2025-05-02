@@ -3,15 +3,15 @@ use std::sync::Arc;
 use std::time::Duration;
 
 use parking_lot::Mutex;
-use rodio::{OutputStream, OutputStreamHandle, Sink};
 
 use crate::controls::music_library::MusicLibrary;
 use crate::controls::playback_control::{PlaybackControl, PlaybackStatus};
+use crate::controls::playback_engine::PlaybackEngine;
 use crate::controls::sound_control::SoundControl;
 use crate::controls::spectrum::Spectrum;
 use crate::{log_debug, log_error};
 
-/// Primary audio system that manages playback, sound processing, music library,
+/// Primary audio system that manages playback, sound_control processing, music library,
 /// and visualization.
 ///
 /// The `AudioSystem` is the central component responsible for:
@@ -22,14 +22,8 @@ use crate::{log_debug, log_error};
 pub struct AudioSystem {
     library: Arc<Mutex<MusicLibrary>>,
     playback: Arc<Mutex<PlaybackControl>>,
-    sound: Arc<Mutex<SoundControl>>,
-    sink: Sink,
-
-    #[allow(dead_code)]
-    _stream: OutputStream,
-    #[allow(dead_code)]
-    _stream_handle: OutputStreamHandle,
-
+    sound_control: Arc<Mutex<SoundControl>>,
+    playback_engine: Arc<Mutex<PlaybackEngine>>,
     spectrum: Arc<Mutex<Spectrum>>,
     visualizer_canvas: usize,
 }
@@ -38,21 +32,18 @@ impl AudioSystem {
         library: Arc<Mutex<MusicLibrary>>,
         playback: Arc<Mutex<PlaybackControl>>,
     ) -> Result<Self, Box<dyn Error>> {
-        let (stream, stream_handle) = OutputStream::try_default()?;
-        let sink = Sink::try_new(&stream_handle)?;
-        let sound = Arc::new(Mutex::new(SoundControl::new()));
+        let sound_control = Arc::new(Mutex::new(SoundControl::new()));
         let spectrum = Arc::new(Mutex::new(Spectrum::default()));
+        let playback_engine = Arc::new(Mutex::new(PlaybackEngine::new().unwrap()));
 
         log_debug!("Creating new AudioSystem instance");
 
         Ok(Self {
             library,
             playback,
-            sound,
-            sink,
-            _stream: stream,
-            _stream_handle: stream_handle,
+            sound_control,
             spectrum,
+            playback_engine,
             visualizer_canvas: 0,
         })
     }
@@ -80,8 +71,6 @@ impl AudioSystem {
                 .clone()
         };
 
-        log_debug!("Track Path: {:?}", track_path);
-
         // For visualizer dumb approach
         // Try to compute FFT for visualization, but don't let it block playback
         // needs concurrency that will need communication channel to threads
@@ -93,14 +82,10 @@ impl AudioSystem {
             });
         }
 
-        // Decode and play the track
-        let file = std::fs::File::open(&track_path)?;
-        let source = rodio::Decoder::new(file)?;
-
-        self.sink.clear();
-        self.sink.append(source);
-        self.sink.play();
-
+        match self.playback_engine.lock().play(&track_path) {
+            Ok(_) => log_debug!("Now playing: {:?}", track_path),
+            Err(e) => log_error!("Failed to play {:?}: {:?}", track_path, e),
+        }
         // Update playback state
         {
             let mut playback = self.playback.lock();
@@ -119,7 +104,7 @@ impl AudioSystem {
             playback.start(index, duration);
         }
 
-        // Apply current sound settings
+        // Apply current sound_control settings
         self.apply_sound_settings();
 
         log_debug!("Track playback started successfully");
@@ -189,16 +174,10 @@ impl AudioSystem {
         }
     }
 
-    /// Apply current sound settings to audio output
+    /// Apply current sound_control settings to audio output
     fn apply_sound_settings(&mut self) {
-        let sound = self.sound.lock();
-        let volume = sound.volume() / 100.0;
-        self.sink.set_volume(volume);
-
-        // TODO: Implement advanced audio processing
-        // - Bass and treble adjustments
-        // - Balance control
-        drop(sound);
+        let sound_control = self.sound_control.lock();
+        self.playback_engine.lock().apply_effects(&sound_control);
     }
 
     /// Toggle playback between play and pause
@@ -274,14 +253,14 @@ impl AudioSystem {
     pub fn pause(&mut self) {
         let mut playback = self.playback.lock();
         playback.status = PlaybackStatus::Paused;
-        self.sink.pause();
+        self.playback_engine.lock().pause();
     }
 
     /// Resume paused playback
     pub fn resume(&mut self) {
         let mut playback = self.playback.lock();
         playback.status = PlaybackStatus::Playing;
-        self.sink.play();
+        self.playback_engine.lock().resume();
     }
 
     /// Stop current playback
@@ -289,19 +268,14 @@ impl AudioSystem {
         let mut playback = self.playback.lock();
         playback.status = PlaybackStatus::Stopped;
         playback.elapsed = Duration::ZERO;
-        match self.sink.try_seek(Duration::ZERO) {
-            Ok(_) => {
-                self.sink.pause();
-            }
-            Err(e) => log_error!("{}", e),
-        }
+        self.playback_engine.lock().stop();
     }
 }
 
 impl AudioSystem {
     pub fn adjust_volume(&mut self, delta: f32) {
         {
-            let mut sound_control = self.sound.lock();
+            let mut sound_control = self.sound_control.lock();
             sound_control.adjust_volume(delta);
         }
         self.apply_sound_settings();
@@ -309,7 +283,7 @@ impl AudioSystem {
 
     pub fn adjust_bass(&mut self, delta: f32) {
         {
-            let mut sound_control = self.sound.lock();
+            let mut sound_control = self.sound_control.lock();
             sound_control.adjust_bass(delta);
         }
         self.apply_sound_settings();
@@ -317,7 +291,7 @@ impl AudioSystem {
 
     pub fn adjust_treble(&mut self, delta: f32) {
         {
-            let mut sound_control = self.sound.lock();
+            let mut sound_control = self.sound_control.lock();
             sound_control.adjust_treble(delta);
         }
         self.apply_sound_settings();
@@ -325,7 +299,7 @@ impl AudioSystem {
 
     pub fn adjust_balance(&mut self, delta: f32) {
         {
-            let mut sound_control = self.sound.lock();
+            let mut sound_control = self.sound_control.lock();
             sound_control.adjust_balance(delta);
         }
         self.apply_sound_settings();
@@ -335,9 +309,9 @@ impl AudioSystem {
             self.visualizer_canvas = canvas_type;
         }
     }
-    /// Get a clone of the sound control state
+    /// Get a clone of the sound_control control state
     pub fn get_sound_state(&self) -> Arc<Mutex<SoundControl>> {
-        Arc::clone(&self.sound)
+        Arc::clone(&self.sound_control)
     }
 
     pub fn get_visualizer_canvas_type(&self) -> usize {
@@ -351,22 +325,19 @@ impl AudioSystem {
         let current = self.playback.lock().elapsed;
         let new_position = current + Duration::from_secs_f32(seek_value);
 
-        if let Err(e) = self.sink.try_seek(new_position) {
-            log_error!("Failed to seek forward: {}", e);
-        } else {
-            self.playback.lock().update_elapsed(new_position);
-        }
+        match self.playback_engine.lock().seek_control(new_position) {
+            Ok(_) => self.playback.lock().update_elapsed(new_position),
+            Err(e) => log_error!("Failed to seek forward: {}", e),
+        };
     }
 
     pub fn seek_backward(&mut self, delta: Option<f32>) {
         let seek_value = delta.unwrap_or(10.0);
         let current = self.playback.lock().elapsed;
         let new_position = current.saturating_sub(Duration::from_secs_f32(seek_value));
-
-        if let Err(e) = self.sink.try_seek(new_position) {
-            log_error!("Failed to seek backward: {}", e);
-        } else {
-            self.playback.lock().update_elapsed(new_position);
+        match self.playback_engine.lock().seek_control(new_position) {
+            Ok(_) => self.playback.lock().update_elapsed(new_position),
+            Err(e) => log_error!("Failed to seek backward: {}", e),
         }
     }
 }
