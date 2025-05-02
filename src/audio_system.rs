@@ -1,49 +1,50 @@
 use std::error::Error;
+use std::rc::Rc;
 use std::sync::Arc;
 use std::time::Duration;
 
 use parking_lot::Mutex;
 
+use crate::controls::audio_engine::AudioEngine;
 use crate::controls::music_library::MusicLibrary;
-use crate::controls::playback_control::{PlaybackControl, PlaybackStatus};
-use crate::controls::playback_engine::PlaybackEngine;
+use crate::controls::playback_state::{PlaybackState, PlaybackStatus};
 use crate::controls::sound_control::SoundControl;
 use crate::controls::spectrum::Spectrum;
 use crate::{log_debug, log_error};
 
-/// Primary audio system that manages playback, sound_control processing, music library,
+/// Primary audio system that manages playback_state, sound_control processing, music library,
 /// and visualization.
 ///
 /// The `AudioSystem` is the central component responsible for:
-/// - Playing and controlling audio playback
+/// - Playing and controlling audio playback_state
 /// - Applying audio effects and adjustments (volume, bass, treble, balance)
 /// - Track selection and progression
 /// - Audio visualization data processing
 pub struct AudioSystem {
     library: Arc<Mutex<MusicLibrary>>,
-    playback: Arc<Mutex<PlaybackControl>>,
+    playback_state: Arc<Mutex<PlaybackState>>,
     sound_control: Arc<Mutex<SoundControl>>,
-    playback_engine: Arc<Mutex<PlaybackEngine>>,
+    audio_engine: Rc<Mutex<AudioEngine>>,
     spectrum: Arc<Mutex<Spectrum>>,
     visualizer_canvas: usize,
 }
 impl AudioSystem {
     pub fn new(
         library: Arc<Mutex<MusicLibrary>>,
-        playback: Arc<Mutex<PlaybackControl>>,
+        playback_state: Arc<Mutex<PlaybackState>>,
     ) -> Result<Self, Box<dyn Error>> {
         let sound_control = Arc::new(Mutex::new(SoundControl::new()));
         let spectrum = Arc::new(Mutex::new(Spectrum::default()));
-        let playback_engine = Arc::new(Mutex::new(PlaybackEngine::new().unwrap()));
+        let audio_engine = Rc::new(Mutex::new(AudioEngine::new().unwrap()));
 
         log_debug!("Creating new AudioSystem instance");
 
         Ok(Self {
             library,
-            playback,
+            playback_state,
             sound_control,
             spectrum,
-            playback_engine,
+            audio_engine,
             visualizer_canvas: 0,
         })
     }
@@ -72,7 +73,7 @@ impl AudioSystem {
         };
 
         // For visualizer dumb approach
-        // Try to compute FFT for visualization, but don't let it block playback
+        // Try to compute FFT for visualization, but don't let it block playback_state
         // needs concurrency that will need communication channel to threads
         {
             let mut spectrum = self.spectrum.lock();
@@ -82,13 +83,13 @@ impl AudioSystem {
             });
         }
 
-        match self.playback_engine.lock().play(&track_path) {
+        match self.audio_engine.lock().play(&track_path) {
             Ok(_) => log_debug!("Now playing: {:?}", track_path),
             Err(e) => log_error!("Failed to play {:?}: {:?}", track_path, e),
         }
-        // Update playback state
+        // Update playback_state state
         {
-            let mut playback = self.playback.lock();
+            let mut playback_state = self.playback_state.lock();
             let duration = self
                 .library
                 .lock()
@@ -101,25 +102,25 @@ impl AudioSystem {
                 .unwrap_or(Duration::ZERO);
             log_debug!("Track Duration: {:?}", duration);
 
-            playback.start(index, duration);
+            playback_state.start(index, duration);
         }
 
         // Apply current sound_control settings
         self.apply_sound_settings();
 
-        log_debug!("Track playback started successfully");
+        log_debug!("Track playback_state set to playing successfully");
         Ok(())
     }
 
-    /// Update playback progress and handle track completion
+    /// Update playback_state progress and handle track completion
     pub fn update_playback(&mut self) {
         let mut should_advance = false;
 
-        // Check playback status and update elapsed time
+        // Check playback_state status and update elapsed time
         {
-            let mut playback = self.playback.lock();
-            if playback.status == PlaybackStatus::Playing {
-                if let Some(current_track_index) = playback.current_track {
+            let mut playback_state = self.playback_state.lock();
+            if playback_state.status == PlaybackStatus::Playing {
+                if let Some(current_track_index) = playback_state.current_track {
                     let track_duration = self
                         .library
                         .lock()
@@ -129,8 +130,8 @@ impl AudioSystem {
                         .unwrap_or(Duration::ZERO);
 
                     // Increment elapsed time
-                    let current_elapsed = playback.elapsed + Duration::from_millis(16);
-                    playback.update_elapsed(current_elapsed);
+                    let current_elapsed = playback_state.elapsed + Duration::from_millis(16);
+                    playback_state.update_elapsed(current_elapsed);
 
                     // Check if track has finished
                     if current_elapsed >= track_duration {
@@ -152,8 +153,8 @@ impl AudioSystem {
     fn advance_track(&mut self) {
         let mut library = self.library.lock();
         let current_track = {
-            let playback = self.playback.lock();
-            playback.current_track
+            let playback_state = self.playback_state.lock();
+            playback_state.current_track
         };
 
         if let Some(current_index) = current_track {
@@ -177,40 +178,40 @@ impl AudioSystem {
     /// Apply current sound_control settings to audio output
     fn apply_sound_settings(&mut self) {
         let sound_control = self.sound_control.lock();
-        self.playback_engine.lock().apply_effects(&sound_control);
+        self.audio_engine.lock().apply_effects(&sound_control);
     }
 
-    /// Toggle playback between play and pause
+    /// Toggle playback_state between play and pause
     pub fn toggle_playback(&mut self) -> Result<(), Box<dyn Error>> {
         let current_status = {
-            let playback = self.playback.lock();
-            playback.status.clone()
+            let playback_state = self.playback_state.lock();
+            playback_state.status.clone()
         };
 
         match current_status {
             PlaybackStatus::Playing => {
                 self.pause();
                 {
-                    let mut playback = self.playback.lock();
-                    playback.status = PlaybackStatus::Paused;
+                    let mut playback_state = self.playback_state.lock();
+                    playback_state.status = PlaybackStatus::Paused;
                 }
-                log_debug!("Playback paused");
+                log_debug!("playback_state paused");
             }
             PlaybackStatus::Paused | PlaybackStatus::Stopped => {
                 let (current_track, library_is_empty) = {
-                    let playback = self.playback.lock();
+                    let playback_state = self.playback_state.lock();
                     let library = self.library.lock();
-                    (playback.current_track, library.tracks.is_empty())
+                    (playback_state.current_track, library.tracks.is_empty())
                 };
 
                 match (current_track, library_is_empty) {
                     (Some(_), _) => {
                         self.resume();
                         {
-                            let mut playback = self.playback.lock();
-                            playback.status = PlaybackStatus::Playing;
+                            let mut playback_state = self.playback_state.lock();
+                            playback_state.status = PlaybackStatus::Playing;
                         }
-                        log_debug!("Playback resumed");
+                        log_debug!("playback_state resumed");
                     }
                     (None, false) => {
                         self.play_track(Some(0))?;
@@ -218,7 +219,7 @@ impl AudioSystem {
                     }
                     _ => {
                         log_error!("No tracks available");
-                        log_error!("Cannot start playback - library is empty");
+                        log_error!("Cannot start playback_state - library is empty");
                     }
                 }
             }
@@ -233,7 +234,7 @@ impl AudioSystem {
         // Lock the spectrum to gain access
         let spectrum = self.spectrum.lock();
 
-        let elapsed = self.playback.lock().elapsed.as_millis() as usize;
+        let elapsed = self.playback_state.lock().elapsed.as_millis() as usize;
 
         // Calculate the pointer offset for the current frame
         let ptr = spectrum.size * (elapsed as f32 / (1000.0 / spectrum.fps as f32)) as usize;
@@ -249,26 +250,26 @@ impl AudioSystem {
 }
 
 impl AudioSystem {
-    /// Pause current playback
+    /// Pause current playback_state
     pub fn pause(&mut self) {
-        let mut playback = self.playback.lock();
-        playback.status = PlaybackStatus::Paused;
-        self.playback_engine.lock().pause();
+        let mut playback_state = self.playback_state.lock();
+        playback_state.status = PlaybackStatus::Paused;
+        self.audio_engine.lock().pause();
     }
 
-    /// Resume paused playback
+    /// Resume paused playback_state
     pub fn resume(&mut self) {
-        let mut playback = self.playback.lock();
-        playback.status = PlaybackStatus::Playing;
-        self.playback_engine.lock().resume();
+        let mut playback_state = self.playback_state.lock();
+        playback_state.status = PlaybackStatus::Playing;
+        self.audio_engine.lock().resume();
     }
 
-    /// Stop current playback
+    /// Stop current playback_state
     pub fn stop(&mut self) {
-        let mut playback = self.playback.lock();
-        playback.status = PlaybackStatus::Stopped;
-        playback.elapsed = Duration::ZERO;
-        self.playback_engine.lock().stop();
+        let mut playback_state = self.playback_state.lock();
+        playback_state.status = PlaybackStatus::Stopped;
+        playback_state.elapsed = Duration::ZERO;
+        self.audio_engine.lock().stop();
     }
 }
 
@@ -322,21 +323,21 @@ impl AudioSystem {
 impl AudioSystem {
     pub fn seek_forward(&mut self, delta: Option<f32>) {
         let seek_value = delta.unwrap_or(10.0);
-        let current = self.playback.lock().elapsed;
+        let current = self.playback_state.lock().elapsed;
         let new_position = current + Duration::from_secs_f32(seek_value);
 
-        match self.playback_engine.lock().seek_control(new_position) {
-            Ok(_) => self.playback.lock().update_elapsed(new_position),
+        match self.audio_engine.lock().seek_control(new_position) {
+            Ok(_) => self.playback_state.lock().update_elapsed(new_position),
             Err(e) => log_error!("Failed to seek forward: {}", e),
         };
     }
 
     pub fn seek_backward(&mut self, delta: Option<f32>) {
         let seek_value = delta.unwrap_or(10.0);
-        let current = self.playback.lock().elapsed;
+        let current = self.playback_state.lock().elapsed;
         let new_position = current.saturating_sub(Duration::from_secs_f32(seek_value));
-        match self.playback_engine.lock().seek_control(new_position) {
-            Ok(_) => self.playback.lock().update_elapsed(new_position),
+        match self.audio_engine.lock().seek_control(new_position) {
+            Ok(_) => self.playback_state.lock().update_elapsed(new_position),
             Err(e) => log_error!("Failed to seek backward: {}", e),
         }
     }

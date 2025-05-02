@@ -8,11 +8,11 @@ use std::time::Duration;
 /// - Elapsed time within the current track
 /// - Total duration of the current track
 #[derive(Default, Clone)]
-pub struct PlaybackControl {
+pub struct PlaybackState {
     pub status: PlaybackStatus,
     pub current_track: Option<usize>,
     pub elapsed: Duration,
-    pub duration: Duration,
+    pub total_time: Duration,
 }
 
 /// Represents the current playback status of the audio system.
@@ -29,15 +29,15 @@ pub enum PlaybackStatus {
     Paused,
 }
 
-impl PlaybackControl {
+impl PlaybackState {
     pub fn start(&mut self, track_index: usize, total_duration: Duration) {
         self.current_track = Some(track_index);
         self.status = PlaybackStatus::Playing;
         self.elapsed = Duration::ZERO;
-        self.duration = total_duration;
+        self.total_time = total_duration;
     }
 
     pub fn update_elapsed(&mut self, time: Duration) {
-        self.elapsed = time.min(self.duration);
+        self.elapsed = time.min(self.total_time);
     }
 }

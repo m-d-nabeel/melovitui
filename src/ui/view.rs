@@ -3,7 +3,7 @@ use ratatui::{
     Frame,
 };
 
-use crate::{app::App, controls::playback_control::PlaybackStatus};
+use crate::{app::App, controls::playback_state::PlaybackStatus};
 
 use super::components::{
     help_ui::HelpUI, music_library_ui::MusicLibraryUI, playback_control_ui::PlaybackControlUI,

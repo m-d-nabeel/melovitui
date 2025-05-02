@@ -7,7 +7,7 @@ use std::sync::Arc;
 use crate::audio_system::AudioSystem;
 use crate::controls::keybindings::Keybindings;
 use crate::controls::music_library::MusicLibrary;
-use crate::controls::playback_control::PlaybackControl;
+use crate::controls::playback_state::PlaybackState;
 use crate::controls::sound_control::SoundControl;
 use crate::{log_debug, log_error};
 
@@ -21,7 +21,7 @@ use crate::{log_debug, log_error};
 pub struct App {
     audio_system: Arc<Mutex<AudioSystem>>,
     library: Arc<Mutex<MusicLibrary>>,
-    playback: Arc<Mutex<PlaybackControl>>,
+    playback: Arc<Mutex<PlaybackState>>,
     keybindings: Keybindings,
     pub show_help: bool,
 }
@@ -31,7 +31,7 @@ impl App {
         // Create initial components
         let library = MusicLibrary::new(root_dir)?;
         let library = Arc::new(Mutex::new(library));
-        let playback = Arc::new(Mutex::new(PlaybackControl::default()));
+        let playback = Arc::new(Mutex::new(PlaybackState::default()));
 
         // Initialize audio system with references to necessary components
         // [[CHECKPOINT]]
@@ -157,7 +157,7 @@ impl App {
         Arc::clone(&self.audio_system.lock().get_sound_state())
     }
 
-    pub fn get_playback_state(&self) -> Arc<Mutex<PlaybackControl>> {
+    pub fn get_playback_state(&self) -> Arc<Mutex<PlaybackState>> {
         Arc::clone(&self.playback)
     }
 
