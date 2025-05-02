@@ -53,10 +53,10 @@ impl UIManager {
             app.get_playback_state(),
         );
 
-        let audio_system = app.get_audio_system();
-        let audio_system = audio_system.lock();
-        let spectrum = audio_system.get_current_frame();
-        let canvas_type = audio_system.get_visualizer_canvas_type();
+        let sound = app.get_audio_system();
+        let sound_lock = sound.lock();
+        let spectrum = sound_lock.get_current_frame();
+        let canvas_type = sound_lock.get_visualizer_canvas_type();
 
         let song_text = {
             let playback_state = playback_state.lock();
