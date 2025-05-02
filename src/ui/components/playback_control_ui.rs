@@ -9,7 +9,7 @@ use ratatui::{
     Frame,
 };
 
-use crate::controls::playback_control::PlaybackControl;
+use crate::controls::playback_state::PlaybackState;
 
 pub struct PlaybackControlUI {
     style: PlaybackControlStyle,
@@ -59,7 +59,7 @@ impl PlaybackControlUI {
         &self,
         frame: &mut Frame,
         area: Rect,
-        playback_state: Arc<Mutex<PlaybackControl>>,
+        playback_state: Arc<Mutex<PlaybackState>>,
         song_text: String,
     ) {
         let playback_state = playback_state.lock();
@@ -100,8 +100,8 @@ impl PlaybackControlUI {
             timeline_layout[0],
         );
 
-        let progress = if playback_state.duration.as_secs() > 0 {
-            playback_state.elapsed.as_secs_f64() / playback_state.duration.as_secs_f64()
+        let progress = if playback_state.total_time.as_secs() > 0 {
+            playback_state.elapsed.as_secs_f64() / playback_state.total_time.as_secs_f64()
         } else {
             0.0
         };
@@ -116,7 +116,7 @@ impl PlaybackControlUI {
         );
 
         frame.render_widget(
-            Paragraph::new(Self::format_duration(playback_state.duration))
+            Paragraph::new(Self::format_duration(playback_state.total_time))
                 .style(Style::default().fg(self.style.text_color))
                 .alignment(Alignment::Right),
             timeline_layout[2],
