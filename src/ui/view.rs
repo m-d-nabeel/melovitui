@@ -3,7 +3,7 @@ use ratatui::{
     Frame,
 };
 
-use crate::{app::App, controls::playback_control::PlaybackStatus};
+use crate::{app::App, controls::playback_state::PlaybackStatus};
 
 use super::components::{
     help_ui::HelpUI, music_library_ui::MusicLibraryUI, playback_control_ui::PlaybackControlUI,
@@ -53,10 +53,10 @@ impl UIManager {
             app.get_playback_state(),
         );
 
-        let audio_system = app.get_audio_system();
-        let audio_system = audio_system.lock();
-        let spectrum = audio_system.get_current_frame();
-        let canvas_type = audio_system.get_visualizer_canvas_type();
+        let sound = app.get_audio_system();
+        let sound_lock = sound.lock();
+        let spectrum = sound_lock.get_current_frame();
+        let canvas_type = sound_lock.get_visualizer_canvas_type();
 
         let song_text = {
             let playback_state = playback_state.lock();
@@ -65,9 +65,9 @@ impl UIManager {
                 let track_title = library_state.tracks[idx].title.clone();
 
                 match playback_state.status {
-                    PlaybackStatus::Stopped => format!("■ {}", track_title),
-                    PlaybackStatus::Playing => format!("▶ {}", track_title),
-                    PlaybackStatus::Paused => format!("❚❚ {}", track_title),
+                    PlaybackStatus::Stopped => format!("⏹ {}", track_title), // Stop button
+                    PlaybackStatus::Playing => format!("⏸ {}", track_title), // Play button
+                    PlaybackStatus::Paused => format!("▶ {}", track_title),  // Pause button
                 }
             } else {
                 "No song playing".to_string()

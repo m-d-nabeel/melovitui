@@ -8,7 +8,7 @@ use ratatui::{
     Frame,
 };
 
-use crate::audio_system::SoundControl;
+use crate::controls::sound_control::SoundControl;
 
 use super::audio_gauge::AudioGauge;
 
@@ -46,8 +46,6 @@ impl SoundControlUI {
     }
 
     pub fn render(&self, frame: &mut Frame, area: Rect, sound_state: Arc<Mutex<SoundControl>>) {
-        let sound_state = sound_state.lock();
-
         let block = Block::default()
             .borders(Borders::ALL)
             .title("Audio Controls");
@@ -65,6 +63,7 @@ impl SoundControlUI {
             ])
             .split(inner);
 
+        let sound_state = sound_state.lock();
         let controls = [
             (AudioControlType::Volume, sound_state.volume() / 100.0),
             (AudioControlType::Bass, sound_state.bass() / 100.0),
@@ -74,6 +73,7 @@ impl SoundControlUI {
                 (sound_state.balance() + 100.0) / 200.0,
             ),
         ];
+        drop(sound_state);
 
         for (i, (control_type, value)) in controls.iter().enumerate() {
             self.render_gauge(frame, chunks[i], &control_type.to_string(), *value);
