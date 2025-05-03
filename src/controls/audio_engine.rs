@@ -1,6 +1,7 @@
 use rodio::{OutputStream, OutputStreamHandle, Sink};
 use std::error::Error;
 use std::fs::File;
+use std::io::BufReader;
 use std::path::Path;
 use std::time::Duration;
 
@@ -29,7 +30,8 @@ impl AudioEngine {
     pub fn play(&mut self, path: impl AsRef<Path>) -> Result<(), Box<dyn Error>> {
         self.sink.clear();
         let file = File::open(path)?;
-        let source = rodio::Decoder::new(file)?;
+        let reader = BufReader::new(file);
+        let source = rodio::Decoder::new(reader)?;
         self.sink.append(source);
         self.sink.play();
         Ok(())
