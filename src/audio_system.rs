@@ -72,15 +72,9 @@ impl AudioSystem {
                 .clone()
         };
 
-        // For visualizer dumb approach
-        // Try to compute FFT for visualization, but don't let it block playback_state
-        // needs concurrency that will need communication channel to threads
         {
             let mut spectrum = self.spectrum.lock();
-            *spectrum = Spectrum::fft(&track_path).unwrap_or_else(|e| {
-                log_error!("Failed to compute FFT for visualization: {}", e);
-                Spectrum::default()
-            });
+            *spectrum = Spectrum::fft_async(&track_path)
         }
 
         match self.audio_engine.lock().play(&track_path) {
@@ -117,6 +111,7 @@ impl AudioSystem {
         if self.playback_state.lock().status != PlaybackStatus::Playing {
             return;
         }
+        self.spectrum.lock().update();
         let audio_engine = self.audio_engine.lock();
         if audio_engine.is_sink_empty() {
             drop(audio_engine);
@@ -209,8 +204,11 @@ impl AudioSystem {
 
 impl AudioSystem {
     pub fn get_current_frame(&self) -> Vec<f32> {
-        // Lock the spectrum to gain access
         let spectrum = self.spectrum.lock();
+        if spectrum.processing || spectrum.size == 0 || spectrum.inner.is_empty() {
+            log_debug!("Spectrum state: processing={}", spectrum.processing);
+            return vec![];
+        }
 
         let elapsed = self.playback_state.lock().elapsed.as_millis() as usize;
 
@@ -219,7 +217,7 @@ impl AudioSystem {
 
         // Ensure bounds safety
         if ptr + spectrum.size > spectrum.inner.len() {
-            return vec![]; // Return an empty vector if out of bounds
+            return vec![];
         }
 
         // Copy the current frame into a new vector

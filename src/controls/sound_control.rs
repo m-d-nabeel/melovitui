@@ -4,9 +4,9 @@ use crate::log_debug;
 ///
 /// This struct manages all user-adjustable audio parameters:
 /// - Volume: Controls overall playback loudness (0-100)
-/// - Bass: Enhances or reduces low frequencies (-100 to 100)
-/// - Treble: Enhances or reduces high frequencies (-100 to 100)
-/// - Balance: Controls left/right channel balance (-100 to 100)
+/// - Bass: Enhances or reduces low frequencies (0-100)
+/// - Treble: Enhances or reduces high frequencies (0-100)
+/// - Balance: Controls left/right channel balance (-100-100)
 #[derive(Debug, Clone)]
 pub struct SoundControl {
     volume: f32,
@@ -40,13 +40,13 @@ impl SoundControl {
 
     /// Adjusts the bass by a delta and clamps it within the valid range
     pub fn adjust_bass(&mut self, delta: f32) {
-        self.bass = (self.bass + delta).clamp(-100.0, 100.0);
+        self.bass = (self.bass + delta).clamp(0.0, 100.0);
         log_debug!("Bass adjusted to {}", self.bass);
     }
 
     /// Adjusts the treble by a delta and clamps it within the valid range
     pub fn adjust_treble(&mut self, delta: f32) {
-        self.treble = (self.treble + delta).clamp(-100.0, 100.0);
+        self.treble = (self.treble + delta).clamp(0.0, 100.0);
         log_debug!("Treble adjusted to {}", self.treble);
     }
 
