@@ -114,39 +114,17 @@ impl AudioSystem {
 
     /// Update playback_state progress and handle track completion
     pub fn update_playback(&mut self) {
-        let mut should_advance = false;
-
-        // Check playback_state status and update elapsed time
-        {
-            let mut playback_state = self.playback_state.lock();
-            if playback_state.status == PlaybackStatus::Playing {
-                if let Some(current_track_index) = playback_state.current_track {
-                    let track_duration = self
-                        .library
-                        .lock()
-                        .tracks
-                        .get(current_track_index)
-                        .and_then(|track| track.duration)
-                        .unwrap_or(Duration::ZERO);
-
-                    // Increment elapsed time
-                    let current_elapsed = playback_state.elapsed + Duration::from_millis(16);
-                    playback_state.update_elapsed(current_elapsed);
-
-                    // Check if track has finished
-                    if current_elapsed >= track_duration {
-                        should_advance = true;
-                    }
-                } else {
-                    log_error!("Failed to update elapsed time: no current track");
-                }
-            }
+        if self.playback_state.lock().status != PlaybackStatus::Playing {
+            return;
         }
-
-        // Advance track if needed
-        if should_advance {
+        let audio_engine = self.audio_engine.lock();
+        if audio_engine.is_sink_empty() {
+            drop(audio_engine);
             self.advance_track();
+            return;
         }
+        let current_elapsed = audio_engine.get_current_pos();
+        self.playback_state.lock().update_elapsed(current_elapsed);
     }
 
     /// Advance to the next track automatically

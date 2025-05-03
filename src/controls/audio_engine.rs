@@ -69,4 +69,12 @@ impl AudioEngine {
         // The AudioProcessor would need to be more complex to implement true
         // equalization and balance control.
     }
+
+    pub fn get_current_pos(&self) -> std::time::Duration {
+        self.sink.get_pos()
+    }
+
+    pub fn is_sink_empty(&self) -> bool {
+        self.sink.empty()
+    }
 }
