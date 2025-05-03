@@ -82,11 +82,12 @@ music_dir = "/path/to/your/music"
   - `l`: Seek forward
 - **Volume Control**
   - `←`/`→`: Adjust volume
+  - `Shift + ←/→`: Adjust pitch
 - **Application**
   - `q`: Quit
   - `?`: Toggle help overlay
 
-> **Note**: Advanced audio processing features (bass, treble, and balance adjustment) are currently in development. These features require additional implementation using the DASP (Digital Audio Signal Processing) library. While the key bindings exist in the code (`Shift + ←/→` for balance, `Shift + ↑/↓` for treble, and `↑/↓` for bass), they are not currently functional.
+> **Note**: Advanced audio processing features (bass and treble adjustment) are currently in development. These features require additional implementation using the DASP (Digital Audio Signal Processing) library. While the key bindings exist in the code (`Shift + ↑/↓` for treble, and `↑/↓` for bass), they are not currently functional.
 
 > **Known Issue**: Seeking in FLAC files is not fully supported due to limitations in the underlying Claxon decoder used by Rodio.
 

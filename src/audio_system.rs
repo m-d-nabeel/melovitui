@@ -17,7 +17,7 @@ use crate::{log_debug, log_error};
 ///
 /// The `AudioSystem` is the central component responsible for:
 /// - Playing and controlling audio playback_state
-/// - Applying audio effects and adjustments (volume, bass, treble, balance)
+/// - Applying audio effects and adjustments (volume, bass, treble, pitch)
 /// - Track selection and progression
 /// - Audio visualization data processing
 pub struct AudioSystem {
@@ -118,8 +118,16 @@ impl AudioSystem {
             self.advance_track();
             return;
         }
-        let current_elapsed = audio_engine.get_current_pos();
-        self.playback_state.lock().update_elapsed(current_elapsed);
+
+        let raw_elapsed = audio_engine.get_current_pos();
+        let speed_factor = self.get_current_speed();
+        let adjusted_elapsed = if speed_factor != 0.0 {
+            Duration::from_secs_f64(raw_elapsed.as_secs_f64() * speed_factor as f64)
+        } else {
+            raw_elapsed
+        };
+
+        self.playback_state.lock().update_elapsed(adjusted_elapsed);
     }
 
     /// Advance to the next track automatically
@@ -206,7 +214,6 @@ impl AudioSystem {
     pub fn get_current_frame(&self) -> Vec<f32> {
         let spectrum = self.spectrum.lock();
         if spectrum.processing || spectrum.size == 0 || spectrum.inner.is_empty() {
-            log_debug!("Spectrum state: processing={}", spectrum.processing);
             return vec![];
         }
 
@@ -274,10 +281,10 @@ impl AudioSystem {
         self.apply_sound_settings();
     }
 
-    pub fn adjust_balance(&mut self, delta: f32) {
+    pub fn adjust_pitch(&mut self, delta: f32) {
         {
             let mut sound_control = self.sound_control.lock();
-            sound_control.adjust_balance(delta);
+            sound_control.adjust_pitch(delta);
         }
         self.apply_sound_settings();
     }
@@ -299,22 +306,61 @@ impl AudioSystem {
 impl AudioSystem {
     pub fn seek_forward(&mut self, delta: Option<f32>) {
         let seek_value = delta.unwrap_or(10.0);
-        let current = self.playback_state.lock().elapsed;
-        let new_position = current + Duration::from_secs_f32(seek_value);
 
-        match self.audio_engine.lock().seek_control(new_position) {
-            Ok(_) => self.playback_state.lock().update_elapsed(new_position),
+        // Calculate actual audio position
+        let audio_engine = self.audio_engine.lock();
+        let actual_position = audio_engine.get_current_pos();
+        drop(audio_engine);
+
+        // Add the fixed seek value to the actual audio position
+        let new_audio_position = actual_position + Duration::from_secs_f32(seek_value);
+
+        match self.audio_engine.lock().seek_control(new_audio_position) {
+            Ok(_) => {
+                // Update the elapsed time based on the current speed factor
+                let speed_factor = self.get_current_speed();
+                let new_playback_position =
+                    Duration::from_secs_f64(new_audio_position.as_secs_f64() * speed_factor as f64);
+                self.playback_state
+                    .lock()
+                    .update_elapsed(new_playback_position);
+                log_debug!("Successfully sought forward to {:?}", new_playback_position);
+            }
             Err(e) => log_error!("Failed to seek forward: {}", e),
         };
     }
 
     pub fn seek_backward(&mut self, delta: Option<f32>) {
         let seek_value = delta.unwrap_or(10.0);
-        let current = self.playback_state.lock().elapsed;
-        let new_position = current.saturating_sub(Duration::from_secs_f32(seek_value));
-        match self.audio_engine.lock().seek_control(new_position) {
-            Ok(_) => self.playback_state.lock().update_elapsed(new_position),
+
+        // Calculate actual audio position
+        let audio_engine = self.audio_engine.lock();
+        let actual_position = audio_engine.get_current_pos();
+        drop(audio_engine);
+
+        // Subtract the fixed seek value from the actual audio position
+        let new_audio_position =
+            actual_position.saturating_sub(Duration::from_secs_f32(seek_value));
+
+        match self.audio_engine.lock().seek_control(new_audio_position) {
+            Ok(_) => {
+                // Update the elapsed time based on the current speed factor
+                let speed_factor = self.get_current_speed();
+                let new_playback_position =
+                    Duration::from_secs_f64(new_audio_position.as_secs_f64() * speed_factor as f64);
+                self.playback_state
+                    .lock()
+                    .update_elapsed(new_playback_position);
+                log_debug!(
+                    "Successfully sought backward to {:?}",
+                    new_playback_position
+                );
+            }
             Err(e) => log_error!("Failed to seek backward: {}", e),
-        }
+        };
+    }
+    pub fn get_current_speed(&self) -> f32 {
+        let pitch = self.sound_control.lock().pitch();
+        AudioEngine::calc_playback_speed(pitch)
     }
 }

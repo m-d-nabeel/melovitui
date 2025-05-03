@@ -104,11 +104,11 @@ impl App {
                 "volume_up" => {
                     self.audio_system.lock().adjust_volume(5.0);
                 }
-                "balance_left" => {
-                    self.audio_system.lock().adjust_balance(-5.0);
+                "pitch_left" => {
+                    self.audio_system.lock().adjust_pitch(-5.0);
                 }
-                "balance_right" => {
-                    self.audio_system.lock().adjust_balance(5.0);
+                "pitch_right" => {
+                    self.audio_system.lock().adjust_pitch(5.0);
                 }
                 "bass_up" => {
                     self.audio_system.lock().adjust_bass(5.0);

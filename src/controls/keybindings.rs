@@ -85,7 +85,7 @@ impl Keybindings {
             },
         );
 
-        // Volume/Balance controls
+        // Volume/Pitch controls
         bindings.insert(
             KeyEvent::new(KeyCode::Left, KeyModifiers::NONE),
             Action {
@@ -105,16 +105,16 @@ impl Keybindings {
         bindings.insert(
             KeyEvent::new(KeyCode::Left, KeyModifiers::SHIFT),
             Action {
-                name: "balance_left".to_string(),
-                description: "Adjust balance left".to_string(),
+                name: "pitch_left".to_string(),
+                description: "Adjust pitch down".to_string(),
             },
         );
 
         bindings.insert(
             KeyEvent::new(KeyCode::Right, KeyModifiers::SHIFT),
             Action {
-                name: "balance_right".to_string(),
-                description: "Adjust balance right".to_string(),
+                name: "pitch_right".to_string(),
+                description: "Adjust pitch up".to_string(),
             },
         );
 

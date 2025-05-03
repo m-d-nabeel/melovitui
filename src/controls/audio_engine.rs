@@ -56,8 +56,18 @@ impl AudioEngine {
     }
 
     pub fn seek_control(&mut self, new_position: Duration) -> Result<(), Box<dyn Error>> {
-        self.sink.try_seek(new_position)?;
-        Ok(())
+        log::debug!("Attempting to seek to position: {:?}", new_position);
+
+        match self.sink.try_seek(new_position) {
+            Ok(_) => {
+                log::debug!("Successfully sought to position: {:?}", new_position);
+                Ok(())
+            }
+            Err(e) => {
+                log::error!("Failed to seek to position {:?}: {:?}", new_position, e);
+                Err(Box::new(e))
+            }
+        }
     }
 
     pub fn apply_effects(&mut self, sound_control: &SoundControl) {
@@ -65,11 +75,18 @@ impl AudioEngine {
         let volume = sound_control.volume() / 100.0;
         self.sink.set_volume(volume);
 
-        // For bass, treble and balance, we would ideally use the AudioProcessor,
+        // // Set pitch (map -100..100 to -1.0..1.0 range)
+        // let pitch = 1.0 + (sound_control.pitch() / 100.0);
+        // self.sink.set_speed(pitch);
+
+        let speed = Self::calc_playback_speed(sound_control.pitch());
+        self.sink.set_speed(speed);
+
+        // For bass, treble and pitch, we would ideally use the AudioProcessor,
         // but since rodio doesn't provide built-in equalization, we'll rely on
         // just setting the volume for now.
         // The AudioProcessor would need to be more complex to implement true
-        // equalization and balance control.
+        // equalization and pitch control.
     }
 
     pub fn get_current_pos(&self) -> std::time::Duration {
@@ -78,5 +95,12 @@ impl AudioEngine {
 
     pub fn is_sink_empty(&self) -> bool {
         self.sink.empty()
+    }
+
+    pub fn calc_playback_speed(pitch: f32) -> f32 {
+        let pitch_factor = pitch / 100.0;
+        let semitone_range = 24.0;
+        let speed = 2.0f32.powf(pitch_factor * semitone_range / 12.0);
+        speed.clamp(0.5, 2.0)
     }
 }

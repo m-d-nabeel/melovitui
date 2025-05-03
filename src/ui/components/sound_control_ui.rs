@@ -26,7 +26,7 @@ pub enum AudioControlType {
     Volume,
     Bass,
     Treble,
-    Balance,
+    Pitch,
 }
 
 impl Default for ControlStyle {
@@ -69,8 +69,8 @@ impl SoundControlUI {
             (AudioControlType::Bass, sound_state.bass() / 100.0),
             (AudioControlType::Treble, sound_state.treble() / 100.0),
             (
-                AudioControlType::Balance,
-                (sound_state.balance() + 100.0) / 200.0,
+                AudioControlType::Pitch,
+                (sound_state.pitch() + 100.0) / 200.0,
             ),
         ];
         drop(sound_state);
@@ -110,7 +110,7 @@ impl std::fmt::Display for AudioControlType {
             AudioControlType::Volume => write!(f, "Volume"),
             AudioControlType::Bass => write!(f, "Bass"),
             AudioControlType::Treble => write!(f, "Treble"),
-            AudioControlType::Balance => write!(f, "Balance"),
+            AudioControlType::Pitch => write!(f, "Pitch"),
         }
     }
 }

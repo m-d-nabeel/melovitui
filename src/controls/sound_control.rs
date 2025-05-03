@@ -6,13 +6,13 @@ use crate::log_debug;
 /// - Volume: Controls overall playback loudness (0-100)
 /// - Bass: Enhances or reduces low frequencies (0-100)
 /// - Treble: Enhances or reduces high frequencies (0-100)
-/// - Balance: Controls left/right channel balance (-100-100)
+/// - Pitch: Controls audio pitch adjustment (-100-100)
 #[derive(Debug, Clone)]
 pub struct SoundControl {
     volume: f32,
     bass: f32,
     treble: f32,
-    balance: f32,
+    pitch: f32,
 }
 
 impl Default for SoundControl {
@@ -21,7 +21,7 @@ impl Default for SoundControl {
             volume: 50.0,
             bass: 0.0,
             treble: 0.0,
-            balance: 0.0,
+            pitch: 0.0,
         }
     }
 }
@@ -50,10 +50,10 @@ impl SoundControl {
         log_debug!("Treble adjusted to {}", self.treble);
     }
 
-    /// Adjusts the balance by a delta and clamps it within the valid range
-    pub fn adjust_balance(&mut self, delta: f32) {
-        self.balance = (self.balance + delta).clamp(-100.0, 100.0);
-        log_debug!("Balance adjusted to {}", self.balance);
+    /// Adjusts the pitch by a delta and clamps it within the valid range
+    pub fn adjust_pitch(&mut self, delta: f32) {
+        self.pitch = (self.pitch + delta).clamp(-100.0, 100.0);
+        log_debug!("Pitch adjusted to {}", self.pitch);
     }
     /// Getter for volume
     pub fn volume(&self) -> f32 {
@@ -69,8 +69,8 @@ impl SoundControl {
         self.treble
     }
 
-    /// Getter for balance
-    pub fn balance(&self) -> f32 {
-        self.balance
+    /// Getter for pitch
+    pub fn pitch(&self) -> f32 {
+        self.pitch
     }
 }
