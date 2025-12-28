@@ -2,6 +2,7 @@ use parking_lot::Mutex;
 use ratatui::crossterm::event::{KeyCode, KeyEvent};
 use std::error::Error;
 use std::path::PathBuf;
+use std::process::{Command, Stdio};
 use std::sync::Arc;
 
 use crate::audio_system::AudioSystem;
@@ -53,6 +54,16 @@ impl App {
         let mut audio = self.audio_system.lock();
         // Update playback state update visualizer with it
         audio.update_playback();
+    }
+
+    pub fn is_cava_installed() -> bool {
+        Command::new("cava")
+            .arg("-v")
+            .stdout(Stdio::null())
+            .stderr(Stdio::null())
+            .status()
+            .map(|s| s.success())
+            .unwrap_or(false)
     }
 }
 

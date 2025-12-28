@@ -5,6 +5,7 @@ use std::time::Duration;
 
 use parking_lot::Mutex;
 
+use crate::app::App;
 use crate::controls::audio_engine::AudioEngine;
 use crate::controls::music_library::MusicLibrary;
 use crate::controls::playback_state::{PlaybackState, PlaybackStatus};
@@ -45,7 +46,7 @@ impl AudioSystem {
             sound_control,
             spectrum,
             audio_engine,
-            visualizer_canvas: 0,
+            visualizer_canvas: usize::from(!App::is_cava_installed()),
         })
     }
 }
