@@ -1,6 +1,6 @@
 use core::f64;
-use std::process::Command;
 
+use crate::app::App;
 use ratatui::layout::Alignment;
 use ratatui::{
     layout::Rect,
@@ -72,13 +72,7 @@ impl VisualizerUI {
             2 => self.get_canvas_2(inner_area, &spectrum, time),
             3 => self.get_canvas_3(inner_area, &spectrum, time),
             4 => self.get_canvas_4(inner_area, &spectrum, time),
-            _ => {
-                if is_cava_installed() {
-                    self.get_canvas_cava(inner_area, &spectrum, time)
-                } else {
-                    self.get_canvas_4(inner_area, &spectrum, time)
-                }
-            }
+            _ => self.get_canvas_4(inner_area, &spectrum, time),
         };
 
         // Render the selected canvas
@@ -87,7 +81,7 @@ impl VisualizerUI {
 }
 
 impl VisualizerUI {
-    #[allow(dead_code, elided_named_lifetimes)]
+    #[allow(dead_code, mismatched_lifetime_syntaxes)]
     fn get_canvas_1<'a>(
         &'a self,
         inner_area: Rect,
@@ -305,7 +299,7 @@ impl VisualizerUI {
             }))
     }
 
-    #[allow(dead_code, elided_named_lifetimes)]
+    #[allow(dead_code, mismatched_lifetime_syntaxes)]
     fn get_canvas_cava<'a>(
         &'a self,
         inner_area: Rect,
@@ -323,7 +317,7 @@ impl VisualizerUI {
                 use std::sync::OnceLock;
                 use std::thread;
 
-                if !is_cava_installed() {
+                if !App::is_cava_installed() {
                     return;
                 }
 
@@ -338,6 +332,53 @@ impl VisualizerUI {
                     let mut guard = cava_running.lock().unwrap();
                     if !*guard {
                         thread::spawn(move || {
+                            // Try to detect PulseAudio/PipeWire default sink and use its monitor
+                            let monitor_source = (|| {
+                                // Default to "auto" when detection fails
+                                let fallback = String::from("auto");
+
+                                if let Ok(info_out) = Command::new("pactl").arg("info").output() {
+                                    if info_out.status.success() {
+                                        if let Ok(info_str) = String::from_utf8(info_out.stdout) {
+                                            for line in info_str.lines() {
+                                                if let Some(rest) =
+                                                    line.strip_prefix("Default Sink:")
+                                                {
+                                                    let sink = rest.trim();
+                                                    if !sink.is_empty() {
+                                                        let candidate = format!("{}.monitor", sink);
+                                                        // Verify that the monitor exists in sources
+                                                        if let Ok(sources_out) =
+                                                            Command::new("pactl")
+                                                                .arg("list")
+                                                                .arg("short")
+                                                                .arg("sources")
+                                                                .output()
+                                                        {
+                                                            if sources_out.status.success() {
+                                                                if let Ok(sources_str) =
+                                                                    String::from_utf8(
+                                                                        sources_out.stdout,
+                                                                    )
+                                                                {
+                                                                    if sources_str
+                                                                        .contains(&candidate)
+                                                                    {
+                                                                        return candidate;
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                                fallback
+                            })();
+
                             let config_content = format!(
                                 r#"
                             [general]
@@ -347,14 +388,13 @@ impl VisualizerUI {
 
                             [input]
                             method = pulse
-                            source = auto
+                            source = {}
 
                             [output]
                             method = raw
                             raw_target = /dev/stdout
                             data_format = binary
                             bit_format = 8bit
-                            orientation = top
 
                             [color]
                             gradient = 1
@@ -373,7 +413,7 @@ impl VisualizerUI {
                             4 = 1
                             5 = 1
                             "#,
-                                inner_area.width
+                                inner_area.width, monitor_source
                             );
 
                             let temp_dir = std::env::temp_dir();
@@ -475,7 +515,7 @@ impl VisualizerUI {
             }))
     }
 
-    #[allow(dead_code, elided_named_lifetimes)]
+    #[allow(dead_code, mismatched_lifetime_syntaxes)]
     fn get_canvas_2<'a>(
         &'a self,
         inner_area: Rect,
@@ -650,7 +690,7 @@ impl VisualizerUI {
             }))
     }
 
-    #[allow(dead_code, elided_named_lifetimes)]
+    #[allow(dead_code, mismatched_lifetime_syntaxes)]
     fn get_canvas_3<'a>(
         &'a self,
         inner_area: Rect,
@@ -768,7 +808,7 @@ impl VisualizerUI {
             }))
     }
 
-    #[allow(dead_code, elided_named_lifetimes)]
+    #[allow(dead_code, mismatched_lifetime_syntaxes)]
     fn get_canvas_4<'a>(
         &'a self,
         inner_area: Rect,
@@ -988,12 +1028,4 @@ fn hsl_to_rgb(h: f64, s: f64, l: f64) -> (u8, u8, u8) {
         ((g + m) * 255.0) as u8,
         ((b + m) * 255.0) as u8,
     )
-}
-
-fn is_cava_installed() -> bool {
-    Command::new("cava")
-        .arg("-v")
-        .output()
-        .map(|o| o.status.success())
-        .unwrap_or(false)
 }
