@@ -2,6 +2,10 @@
 
 MeloviTUI is a terminal-based music player and audio visualizer built in Rust. It features a beautiful spectrum analyzer, playback controls, and an intuitive terminal user interface.
 ![MeloviTUI Screenshot](images/screenshot.png)
+[![Release](https://img.shields.io/github/v/release/m-d-nabeel/melovitui)](https://github.com/m-d-nabeel/melovitui/releases)
+[![Release date](https://img.shields.io/github/release-date/m-d-nabeel/melovitui)](https://github.com/m-d-nabeel/melovitui/releases)
+<br/>
+[![License](https://img.shields.io/github/license/martinvonz/jj)](https://github.com/m-d-nabeel/melovitui/blob/main/LICENSE)
 
 ## ✨ Features
 
